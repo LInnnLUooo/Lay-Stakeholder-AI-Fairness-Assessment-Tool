@@ -1,0 +1,103 @@
+/* .App {
+  font-family: sans-serif;
+  text-align: center;
+} */
+
+/* 设置表格元素使用 MUI 默认字体 */
+table {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  border-collapse: collapse;
+}
+
+table td, table th {
+  padding: 2px 5px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.ImageListItem:hover {  /* 在CSS中使用 :hover 伪类来定义某个元素的悬停状态样式时，只要用户将鼠标悬停在匹配的元素上，
+                            悬停效果就会自动触发，而无需在HTML或JavaScript中编写其他代码。在属性中设置：className="ImageListItem"即可*/
+  opacity: 0.7; /* 降低透明度 */
+  transition: opacity 0.3s ease; /* 添加渐变效果 */
+}
+
+
+.sticky-right-column1 {
+  position: sticky; 
+  right: 0;
+  background-color: white; /* To ensure the background is not transparent */
+}
+
+.sticky-right-column2 {
+  position: sticky; 
+  right: 140px;
+  background-color: white; /* To ensure the background is not transparent */
+}
+
+.sticky-right-column3 {
+  position: sticky; 
+  right: 320px;
+  background-color: white; /* To ensure the background is not transparent */
+}
+
+
+.height-30 {
+  height: 30px;
+  min-height: 30px;
+  overflow:hidden;
+  white-space: nowrap;
+}
+
+.width-130 {
+  min-width: 130px;
+  max-width: 130px;
+}
+
+.width-140 {
+  min-width: 140px;
+  max-width: 140px;
+}
+
+.width-170 {
+  min-width: 170px;
+  max-width: 170px;
+}
+
+
+
+
+
+
+table {
+  border-collapse: collapse;
+}
+
+table td, table th {
+  padding: 2px 5px;
+}
+
+.highlight {
+  background-color: rgb(202, 172, 239);
+  /* background-color:#86c0fa */
+}
+
+
+/* 创建一个滚动容器 */
+.scroll-container {
+  height: 300px; /* 您可以根据需要设置高度 */
+  overflow-y: auto; 
+  width: 100%;
+  border: 1px solid #ccc; /* 可选的边框 */
+}
+
+/* 固定表头 */
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: white; /* 背景颜色确保表头在其他内容上方可见 */
+  z-index: 1; /* 将其放在其他内容之上 */
+
+  /* 字体和颜色设置 */
+  font-family: 'Arial', sans-serif; /* 您可以选择所需的字体 */
+  font-size: 16px; /* 调整为所需的大小 */
+  /* color:#1976D2; 设置文本颜色 */
+}

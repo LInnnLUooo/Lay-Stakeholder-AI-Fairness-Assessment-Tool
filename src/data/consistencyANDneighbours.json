@@ -1,0 +1,2602 @@
+{
+    "1": {
+        "ID": 1,
+        "consistency_score": 1.0,
+        "neighbours": [
+            1,
+            89,
+            72,
+            22,
+            174,
+            142
+        ],
+        "Predicted Credit": "Good"
+    },
+    "2": {
+        "ID": 2,
+        "consistency_score": 0.67,
+        "neighbours": [
+            2,
+            56,
+            98,
+            104,
+            92,
+            94
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "3": {
+        "ID": 3,
+        "consistency_score": 0.67,
+        "neighbours": [
+            3,
+            60,
+            200,
+            104,
+            2,
+            27
+        ],
+        "Predicted Credit": "Good"
+    },
+    "4": {
+        "ID": 4,
+        "consistency_score": 1.0,
+        "neighbours": [
+            4,
+            103,
+            84,
+            107,
+            169,
+            145
+        ],
+        "Predicted Credit": "Good"
+    },
+    "5": {
+        "ID": 5,
+        "consistency_score": 1.0,
+        "neighbours": [
+            5,
+            176,
+            113,
+            24,
+            115,
+            164
+        ],
+        "Predicted Credit": "Good"
+    },
+    "6": {
+        "ID": 6,
+        "consistency_score": 1.0,
+        "neighbours": [
+            6,
+            188,
+            42,
+            164,
+            93,
+            102
+        ],
+        "Predicted Credit": "Good"
+    },
+    "7": {
+        "ID": 7,
+        "consistency_score": 1.0,
+        "neighbours": [
+            7,
+            78,
+            134,
+            74,
+            43,
+            17
+        ],
+        "Predicted Credit": "Good"
+    },
+    "8": {
+        "ID": 8,
+        "consistency_score": 1.0,
+        "neighbours": [
+            8,
+            147,
+            43,
+            74,
+            41,
+            78
+        ],
+        "Predicted Credit": "Good"
+    },
+    "9": {
+        "ID": 9,
+        "consistency_score": 0.83,
+        "neighbours": [
+            9,
+            127,
+            146,
+            159,
+            106,
+            18
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "10": {
+        "ID": 10,
+        "consistency_score": 0.33,
+        "neighbours": [
+            10,
+            56,
+            104,
+            98,
+            2,
+            158
+        ],
+        "Predicted Credit": "Good"
+    },
+    "11": {
+        "ID": 11,
+        "consistency_score": 0.83,
+        "neighbours": [
+            11,
+            157,
+            111,
+            189,
+            18,
+            51
+        ],
+        "Predicted Credit": "Good"
+    },
+    "12": {
+        "ID": 12,
+        "consistency_score": 1.0,
+        "neighbours": [
+            12,
+            145,
+            76,
+            177,
+            59,
+            4
+        ],
+        "Predicted Credit": "Good"
+    },
+    "13": {
+        "ID": 13,
+        "consistency_score": 0.83,
+        "neighbours": [
+            13,
+            114,
+            57,
+            151,
+            129,
+            2
+        ],
+        "Predicted Credit": "Good"
+    },
+    "14": {
+        "ID": 14,
+        "consistency_score": 0.17,
+        "neighbours": [
+            14,
+            17,
+            137,
+            108,
+            44,
+            133
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "15": {
+        "ID": 15,
+        "consistency_score": 1.0,
+        "neighbours": [
+            15,
+            123,
+            174,
+            144,
+            53,
+            89
+        ],
+        "Predicted Credit": "Good"
+    },
+    "16": {
+        "ID": 16,
+        "consistency_score": 1.0,
+        "neighbours": [
+            16,
+            198,
+            153,
+            82,
+            150,
+            20
+        ],
+        "Predicted Credit": "Good"
+    },
+    "17": {
+        "ID": 17,
+        "consistency_score": 1.0,
+        "neighbours": [
+            17,
+            37,
+            172,
+            74,
+            137,
+            75
+        ],
+        "Predicted Credit": "Good"
+    },
+    "18": {
+        "ID": 18,
+        "consistency_score": 0.83,
+        "neighbours": [
+            18,
+            106,
+            159,
+            121,
+            64,
+            69
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "19": {
+        "ID": 19,
+        "consistency_score": 1.0,
+        "neighbours": [
+            19,
+            142,
+            61,
+            164,
+            6,
+            29
+        ],
+        "Predicted Credit": "Good"
+    },
+    "20": {
+        "ID": 20,
+        "consistency_score": 1.0,
+        "neighbours": [
+            20,
+            109,
+            79,
+            67,
+            16,
+            52
+        ],
+        "Predicted Credit": "Good"
+    },
+    "21": {
+        "ID": 21,
+        "consistency_score": 1.0,
+        "neighbours": [
+            21,
+            129,
+            151,
+            173,
+            97,
+            114
+        ],
+        "Predicted Credit": "Good"
+    },
+    "22": {
+        "ID": 22,
+        "consistency_score": 1.0,
+        "neighbours": [
+            22,
+            174,
+            1,
+            140,
+            15,
+            144
+        ],
+        "Predicted Credit": "Good"
+    },
+    "23": {
+        "ID": 23,
+        "consistency_score": 1.0,
+        "neighbours": [
+            23,
+            113,
+            160,
+            24,
+            115,
+            46
+        ],
+        "Predicted Credit": "Good"
+    },
+    "24": {
+        "ID": 24,
+        "consistency_score": 0.67,
+        "neighbours": [
+            24,
+            25,
+            125,
+            68,
+            181,
+            176
+        ],
+        "Predicted Credit": "Good"
+    },
+    "25": {
+        "ID": 25,
+        "consistency_score": 0.67,
+        "neighbours": [
+            25,
+            68,
+            24,
+            65,
+            125,
+            77
+        ],
+        "Predicted Credit": "Good"
+    },
+    "26": {
+        "ID": 26,
+        "consistency_score": 1.0,
+        "neighbours": [
+            26,
+            48,
+            37,
+            154,
+            137,
+            88
+        ],
+        "Predicted Credit": "Good"
+    },
+    "27": {
+        "ID": 27,
+        "consistency_score": 1.0,
+        "neighbours": [
+            27,
+            185,
+            163,
+            67,
+            129,
+            91
+        ],
+        "Predicted Credit": "Good"
+    },
+    "28": {
+        "ID": 28,
+        "consistency_score": 1.0,
+        "neighbours": [
+            28,
+            70,
+            153,
+            151,
+            114,
+            143
+        ],
+        "Predicted Credit": "Good"
+    },
+    "29": {
+        "ID": 29,
+        "consistency_score": 1.0,
+        "neighbours": [
+            29,
+            142,
+            170,
+            61,
+            83,
+            93
+        ],
+        "Predicted Credit": "Good"
+    },
+    "30": {
+        "ID": 30,
+        "consistency_score": 1.0,
+        "neighbours": [
+            30,
+            137,
+            37,
+            17,
+            35,
+            48
+        ],
+        "Predicted Credit": "Good"
+    },
+    "31": {
+        "ID": 31,
+        "consistency_score": 1.0,
+        "neighbours": [
+            31,
+            108,
+            190,
+            95,
+            172,
+            154
+        ],
+        "Predicted Credit": "Good"
+    },
+    "32": {
+        "ID": 32,
+        "consistency_score": 1.0,
+        "neighbours": [
+            32,
+            166,
+            90,
+            70,
+            112,
+            82
+        ],
+        "Predicted Credit": "Good"
+    },
+    "33": {
+        "ID": 33,
+        "consistency_score": 1.0,
+        "neighbours": [
+            33,
+            46,
+            193,
+            111,
+            199,
+            51
+        ],
+        "Predicted Credit": "Good"
+    },
+    "34": {
+        "ID": 34,
+        "consistency_score": 1.0,
+        "neighbours": [
+            34,
+            136,
+            67,
+            145,
+            4,
+            103
+        ],
+        "Predicted Credit": "Good"
+    },
+    "35": {
+        "ID": 35,
+        "consistency_score": 1.0,
+        "neighbours": [
+            35,
+            132,
+            38,
+            77,
+            75,
+            160
+        ],
+        "Predicted Credit": "Good"
+    },
+    "36": {
+        "ID": 36,
+        "consistency_score": 0.83,
+        "neighbours": [
+            36,
+            141,
+            107,
+            99,
+            84,
+            103
+        ],
+        "Predicted Credit": "Good"
+    },
+    "37": {
+        "ID": 37,
+        "consistency_score": 1.0,
+        "neighbours": [
+            37,
+            172,
+            17,
+            30,
+            38,
+            132
+        ],
+        "Predicted Credit": "Good"
+    },
+    "38": {
+        "ID": 38,
+        "consistency_score": 1.0,
+        "neighbours": [
+            38,
+            196,
+            138,
+            164,
+            102,
+            199
+        ],
+        "Predicted Credit": "Good"
+    },
+    "39": {
+        "ID": 39,
+        "consistency_score": 0.17,
+        "neighbours": [
+            39,
+            17,
+            161,
+            154,
+            7,
+            31
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "40": {
+        "ID": 40,
+        "consistency_score": 1.0,
+        "neighbours": [
+            40,
+            140,
+            144,
+            171,
+            11,
+            152
+        ],
+        "Predicted Credit": "Good"
+    },
+    "41": {
+        "ID": 41,
+        "consistency_score": 1.0,
+        "neighbours": [
+            41,
+            179,
+            74,
+            132,
+            78,
+            8
+        ],
+        "Predicted Credit": "Good"
+    },
+    "42": {
+        "ID": 42,
+        "consistency_score": 0.83,
+        "neighbours": [
+            42,
+            6,
+            188,
+            131,
+            93,
+            117
+        ],
+        "Predicted Credit": "Good"
+    },
+    "43": {
+        "ID": 43,
+        "consistency_score": 1.0,
+        "neighbours": [
+            43,
+            78,
+            7,
+            134,
+            17,
+            8
+        ],
+        "Predicted Credit": "Good"
+    },
+    "44": {
+        "ID": 44,
+        "consistency_score": 0.83,
+        "neighbours": [
+            44,
+            108,
+            111,
+            18,
+            51,
+            116
+        ],
+        "Predicted Credit": "Good"
+    },
+    "45": {
+        "ID": 45,
+        "consistency_score": 0.67,
+        "neighbours": [
+            45,
+            92,
+            156,
+            64,
+            56,
+            125
+        ],
+        "Predicted Credit": "Good"
+    },
+    "46": {
+        "ID": 46,
+        "consistency_score": 1.0,
+        "neighbours": [
+            46,
+            33,
+            199,
+            111,
+            23,
+            182
+        ],
+        "Predicted Credit": "Good"
+    },
+    "47": {
+        "ID": 47,
+        "consistency_score": 1.0,
+        "neighbours": [
+            47,
+            124,
+            198,
+            80,
+            87,
+            52
+        ],
+        "Predicted Credit": "Good"
+    },
+    "48": {
+        "ID": 48,
+        "consistency_score": 1.0,
+        "neighbours": [
+            48,
+            137,
+            26,
+            17,
+            75,
+            37
+        ],
+        "Predicted Credit": "Good"
+    },
+    "49": {
+        "ID": 49,
+        "consistency_score": 1.0,
+        "neighbours": [
+            49,
+            162,
+            97,
+            85,
+            191,
+            199
+        ],
+        "Predicted Credit": "Good"
+    },
+    "50": {
+        "ID": 50,
+        "consistency_score": 0.5,
+        "neighbours": [
+            50,
+            94,
+            13,
+            91,
+            99,
+            194
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "51": {
+        "ID": 51,
+        "consistency_score": 1.0,
+        "neighbours": [
+            51,
+            111,
+            157,
+            33,
+            11,
+            85
+        ],
+        "Predicted Credit": "Good"
+    },
+    "52": {
+        "ID": 52,
+        "consistency_score": 1.0,
+        "neighbours": [
+            52,
+            198,
+            20,
+            157,
+            47,
+            153
+        ],
+        "Predicted Credit": "Good"
+    },
+    "53": {
+        "ID": 53,
+        "consistency_score": 1.0,
+        "neighbours": [
+            53,
+            135,
+            144,
+            72,
+            123,
+            119
+        ],
+        "Predicted Credit": "Good"
+    },
+    "54": {
+        "ID": 54,
+        "consistency_score": 0.67,
+        "neighbours": [
+            54,
+            200,
+            55,
+            104,
+            158,
+            3
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "55": {
+        "ID": 55,
+        "consistency_score": 0.67,
+        "neighbours": [
+            55,
+            104,
+            54,
+            10,
+            200,
+            73
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "56": {
+        "ID": 56,
+        "consistency_score": 0.5,
+        "neighbours": [
+            56,
+            2,
+            98,
+            10,
+            92,
+            158
+        ],
+        "Predicted Credit": "Good"
+    },
+    "57": {
+        "ID": 57,
+        "consistency_score": 0.83,
+        "neighbours": [
+            57,
+            151,
+            173,
+            13,
+            98,
+            114
+        ],
+        "Predicted Credit": "Good"
+    },
+    "58": {
+        "ID": 58,
+        "consistency_score": 1.0,
+        "neighbours": [
+            58,
+            153,
+            79,
+            82,
+            166,
+            70
+        ],
+        "Predicted Credit": "Good"
+    },
+    "59": {
+        "ID": 59,
+        "consistency_score": 1.0,
+        "neighbours": [
+            59,
+            177,
+            12,
+            82,
+            83,
+            80
+        ],
+        "Predicted Credit": "Good"
+    },
+    "60": {
+        "ID": 60,
+        "consistency_score": 0.83,
+        "neighbours": [
+            60,
+            3,
+            200,
+            27,
+            2,
+            91
+        ],
+        "Predicted Credit": "Good"
+    },
+    "61": {
+        "ID": 61,
+        "consistency_score": 1.0,
+        "neighbours": [
+            61,
+            83,
+            72,
+            192,
+            29,
+            96
+        ],
+        "Predicted Credit": "Good"
+    },
+    "62": {
+        "ID": 62,
+        "consistency_score": 0.67,
+        "neighbours": [
+            62,
+            126,
+            18,
+            65,
+            156,
+            125
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "63": {
+        "ID": 63,
+        "consistency_score": 0.83,
+        "neighbours": [
+            63,
+            77,
+            176,
+            164,
+            25,
+            68
+        ],
+        "Predicted Credit": "Good"
+    },
+    "64": {
+        "ID": 64,
+        "consistency_score": 1.0,
+        "neighbours": [
+            64,
+            167,
+            125,
+            148,
+            106,
+            126
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "65": {
+        "ID": 65,
+        "consistency_score": 0.5,
+        "neighbours": [
+            65,
+            125,
+            68,
+            25,
+            148,
+            24
+        ],
+        "Predicted Credit": "Good"
+    },
+    "66": {
+        "ID": 66,
+        "consistency_score": 0.83,
+        "neighbours": [
+            66,
+            76,
+            181,
+            68,
+            195,
+            176
+        ],
+        "Predicted Credit": "Good"
+    },
+    "67": {
+        "ID": 67,
+        "consistency_score": 1.0,
+        "neighbours": [
+            67,
+            194,
+            109,
+            185,
+            27,
+            20
+        ],
+        "Predicted Credit": "Good"
+    },
+    "68": {
+        "ID": 68,
+        "consistency_score": 0.5,
+        "neighbours": [
+            68,
+            25,
+            125,
+            65,
+            24,
+            148
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "69": {
+        "ID": 69,
+        "consistency_score": 0.83,
+        "neighbours": [
+            69,
+            18,
+            106,
+            127,
+            64,
+            196
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "70": {
+        "ID": 70,
+        "consistency_score": 1.0,
+        "neighbours": [
+            70,
+            28,
+            153,
+            150,
+            166,
+            82
+        ],
+        "Predicted Credit": "Good"
+    },
+    "71": {
+        "ID": 71,
+        "consistency_score": 0.83,
+        "neighbours": [
+            71,
+            133,
+            39,
+            159,
+            14,
+            149
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "72": {
+        "ID": 72,
+        "consistency_score": 1.0,
+        "neighbours": [
+            72,
+            61,
+            96,
+            197,
+            53,
+            178
+        ],
+        "Predicted Credit": "Good"
+    },
+    "73": {
+        "ID": 73,
+        "consistency_score": 0.67,
+        "neighbours": [
+            73,
+            104,
+            55,
+            158,
+            45,
+            180
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "74": {
+        "ID": 74,
+        "consistency_score": 1.0,
+        "neighbours": [
+            74,
+            17,
+            7,
+            78,
+            132,
+            41
+        ],
+        "Predicted Credit": "Good"
+    },
+    "75": {
+        "ID": 75,
+        "consistency_score": 1.0,
+        "neighbours": [
+            75,
+            161,
+            17,
+            86,
+            120,
+            35
+        ],
+        "Predicted Credit": "Good"
+    },
+    "76": {
+        "ID": 76,
+        "consistency_score": 1.0,
+        "neighbours": [
+            76,
+            66,
+            195,
+            12,
+            197,
+            142
+        ],
+        "Predicted Credit": "Good"
+    },
+    "77": {
+        "ID": 77,
+        "consistency_score": 1.0,
+        "neighbours": [
+            77,
+            25,
+            63,
+            65,
+            164,
+            191
+        ],
+        "Predicted Credit": "Good"
+    },
+    "78": {
+        "ID": 78,
+        "consistency_score": 1.0,
+        "neighbours": [
+            78,
+            7,
+            43,
+            74,
+            134,
+            17
+        ],
+        "Predicted Credit": "Good"
+    },
+    "79": {
+        "ID": 79,
+        "consistency_score": 1.0,
+        "neighbours": [
+            79,
+            185,
+            20,
+            84,
+            153,
+            187
+        ],
+        "Predicted Credit": "Good"
+    },
+    "80": {
+        "ID": 80,
+        "consistency_score": 1.0,
+        "neighbours": [
+            80,
+            124,
+            186,
+            83,
+            47,
+            67
+        ],
+        "Predicted Credit": "Good"
+    },
+    "81": {
+        "ID": 81,
+        "consistency_score": 1.0,
+        "neighbours": [
+            81,
+            194,
+            67,
+            124,
+            109,
+            47
+        ],
+        "Predicted Credit": "Good"
+    },
+    "82": {
+        "ID": 82,
+        "consistency_score": 1.0,
+        "neighbours": [
+            82,
+            83,
+            150,
+            16,
+            198,
+            61
+        ],
+        "Predicted Credit": "Good"
+    },
+    "83": {
+        "ID": 83,
+        "consistency_score": 1.0,
+        "neighbours": [
+            83,
+            82,
+            61,
+            198,
+            72,
+            29
+        ],
+        "Predicted Credit": "Good"
+    },
+    "84": {
+        "ID": 84,
+        "consistency_score": 1.0,
+        "neighbours": [
+            84,
+            169,
+            4,
+            103,
+            187,
+            36
+        ],
+        "Predicted Credit": "Good"
+    },
+    "85": {
+        "ID": 85,
+        "consistency_score": 1.0,
+        "neighbours": [
+            85,
+            97,
+            111,
+            162,
+            49,
+            175
+        ],
+        "Predicted Credit": "Good"
+    },
+    "86": {
+        "ID": 86,
+        "consistency_score": 1.0,
+        "neighbours": [
+            86,
+            132,
+            75,
+            179,
+            154,
+            161
+        ],
+        "Predicted Credit": "Good"
+    },
+    "87": {
+        "ID": 87,
+        "consistency_score": 1.0,
+        "neighbours": [
+            87,
+            114,
+            129,
+            110,
+            92,
+            20
+        ],
+        "Predicted Credit": "Good"
+    },
+    "88": {
+        "ID": 88,
+        "consistency_score": 1.0,
+        "neighbours": [
+            88,
+            199,
+            75,
+            48,
+            147,
+            37
+        ],
+        "Predicted Credit": "Good"
+    },
+    "89": {
+        "ID": 89,
+        "consistency_score": 1.0,
+        "neighbours": [
+            89,
+            144,
+            72,
+            1,
+            16,
+            123
+        ],
+        "Predicted Credit": "Good"
+    },
+    "90": {
+        "ID": 90,
+        "consistency_score": 1.0,
+        "neighbours": [
+            90,
+            118,
+            152,
+            101,
+            166,
+            183
+        ],
+        "Predicted Credit": "Good"
+    },
+    "91": {
+        "ID": 91,
+        "consistency_score": 1.0,
+        "neighbours": [
+            91,
+            27,
+            182,
+            163,
+            165,
+            129
+        ],
+        "Predicted Credit": "Good"
+    },
+    "92": {
+        "ID": 92,
+        "consistency_score": 0.83,
+        "neighbours": [
+            92,
+            124,
+            45,
+            156,
+            2,
+            87
+        ],
+        "Predicted Credit": "Good"
+    },
+    "93": {
+        "ID": 93,
+        "consistency_score": 1.0,
+        "neighbours": [
+            93,
+            188,
+            176,
+            6,
+            115,
+            131
+        ],
+        "Predicted Credit": "Good"
+    },
+    "94": {
+        "ID": 94,
+        "consistency_score": 0.67,
+        "neighbours": [
+            94,
+            50,
+            2,
+            126,
+            92,
+            13
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "95": {
+        "ID": 95,
+        "consistency_score": 1.0,
+        "neighbours": [
+            95,
+            113,
+            115,
+            105,
+            23,
+            24
+        ],
+        "Predicted Credit": "Good"
+    },
+    "96": {
+        "ID": 96,
+        "consistency_score": 1.0,
+        "neighbours": [
+            96,
+            197,
+            72,
+            178,
+            61,
+            66
+        ],
+        "Predicted Credit": "Good"
+    },
+    "97": {
+        "ID": 97,
+        "consistency_score": 1.0,
+        "neighbours": [
+            97,
+            85,
+            162,
+            129,
+            182,
+            196
+        ],
+        "Predicted Credit": "Good"
+    },
+    "98": {
+        "ID": 98,
+        "consistency_score": 0.5,
+        "neighbours": [
+            98,
+            2,
+            56,
+            57,
+            156,
+            69
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "99": {
+        "ID": 99,
+        "consistency_score": 0.17,
+        "neighbours": [
+            99,
+            36,
+            141,
+            109,
+            143,
+            184
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "100": {
+        "ID": 100,
+        "consistency_score": 1.0,
+        "neighbours": [
+            100,
+            198,
+            83,
+            82,
+            16,
+            80
+        ],
+        "Predicted Credit": "Good"
+    },
+    "101": {
+        "ID": 101,
+        "consistency_score": 1.0,
+        "neighbours": [
+            101,
+            152,
+            173,
+            57,
+            90,
+            21
+        ],
+        "Predicted Credit": "Good"
+    },
+    "102": {
+        "ID": 102,
+        "consistency_score": 1.0,
+        "neighbours": [
+            102,
+            138,
+            164,
+            184,
+            38,
+            6
+        ],
+        "Predicted Credit": "Good"
+    },
+    "103": {
+        "ID": 103,
+        "consistency_score": 1.0,
+        "neighbours": [
+            103,
+            4,
+            107,
+            84,
+            36,
+            169
+        ],
+        "Predicted Credit": "Good"
+    },
+    "104": {
+        "ID": 104,
+        "consistency_score": 0.67,
+        "neighbours": [
+            104,
+            55,
+            2,
+            3,
+            10,
+            148
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "105": {
+        "ID": 105,
+        "consistency_score": 1.0,
+        "neighbours": [
+            105,
+            160,
+            95,
+            115,
+            191,
+            187
+        ],
+        "Predicted Credit": "Good"
+    },
+    "106": {
+        "ID": 106,
+        "consistency_score": 0.83,
+        "neighbours": [
+            106,
+            18,
+            159,
+            64,
+            121,
+            125
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "107": {
+        "ID": 107,
+        "consistency_score": 1.0,
+        "neighbours": [
+            107,
+            36,
+            103,
+            141,
+            84,
+            4
+        ],
+        "Predicted Credit": "Good"
+    },
+    "108": {
+        "ID": 108,
+        "consistency_score": 1.0,
+        "neighbours": [
+            108,
+            190,
+            137,
+            44,
+            31,
+            133
+        ],
+        "Predicted Credit": "Good"
+    },
+    "109": {
+        "ID": 109,
+        "consistency_score": 0.83,
+        "neighbours": [
+            109,
+            124,
+            67,
+            20,
+            99,
+            145
+        ],
+        "Predicted Credit": "Good"
+    },
+    "110": {
+        "ID": 110,
+        "consistency_score": 1.0,
+        "neighbours": [
+            110,
+            186,
+            163,
+            143,
+            85,
+            87
+        ],
+        "Predicted Credit": "Good"
+    },
+    "111": {
+        "ID": 111,
+        "consistency_score": 1.0,
+        "neighbours": [
+            111,
+            51,
+            85,
+            175,
+            97,
+            199
+        ],
+        "Predicted Credit": "Good"
+    },
+    "112": {
+        "ID": 112,
+        "consistency_score": 1.0,
+        "neighbours": [
+            112,
+            140,
+            192,
+            174,
+            170,
+            123
+        ],
+        "Predicted Credit": "Good"
+    },
+    "113": {
+        "ID": 113,
+        "consistency_score": 1.0,
+        "neighbours": [
+            113,
+            115,
+            23,
+            181,
+            95,
+            24
+        ],
+        "Predicted Credit": "Good"
+    },
+    "114": {
+        "ID": 114,
+        "consistency_score": 1.0,
+        "neighbours": [
+            114,
+            129,
+            151,
+            87,
+            13,
+            173
+        ],
+        "Predicted Credit": "Good"
+    },
+    "115": {
+        "ID": 115,
+        "consistency_score": 1.0,
+        "neighbours": [
+            115,
+            113,
+            93,
+            95,
+            23,
+            24
+        ],
+        "Predicted Credit": "Good"
+    },
+    "116": {
+        "ID": 116,
+        "consistency_score": 1.0,
+        "neighbours": [
+            116,
+            193,
+            46,
+            111,
+            175,
+            33
+        ],
+        "Predicted Credit": "Good"
+    },
+    "117": {
+        "ID": 117,
+        "consistency_score": 0.5,
+        "neighbours": [
+            117,
+            126,
+            164,
+            142,
+            167,
+            102
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "118": {
+        "ID": 118,
+        "consistency_score": 1.0,
+        "neighbours": [
+            118,
+            90,
+            152,
+            139,
+            101,
+            130
+        ],
+        "Predicted Credit": "Good"
+    },
+    "119": {
+        "ID": 119,
+        "consistency_score": 1.0,
+        "neighbours": [
+            119,
+            53,
+            199,
+            189,
+            168,
+            15
+        ],
+        "Predicted Credit": "Good"
+    },
+    "120": {
+        "ID": 120,
+        "consistency_score": 1.0,
+        "neighbours": [
+            120,
+            133,
+            161,
+            75,
+            190,
+            17
+        ],
+        "Predicted Credit": "Good"
+    },
+    "121": {
+        "ID": 121,
+        "consistency_score": 0.33,
+        "neighbours": [
+            121,
+            106,
+            18,
+            159,
+            125,
+            11
+        ],
+        "Predicted Credit": "Good"
+    },
+    "122": {
+        "ID": 122,
+        "consistency_score": 0.67,
+        "neighbours": [
+            122,
+            172,
+            142,
+            167,
+            184,
+            117
+        ],
+        "Predicted Credit": "Good"
+    },
+    "123": {
+        "ID": 123,
+        "consistency_score": 1.0,
+        "neighbours": [
+            123,
+            144,
+            157,
+            135,
+            53,
+            174
+        ],
+        "Predicted Credit": "Good"
+    },
+    "124": {
+        "ID": 124,
+        "consistency_score": 1.0,
+        "neighbours": [
+            124,
+            109,
+            92,
+            47,
+            80,
+            67
+        ],
+        "Predicted Credit": "Good"
+    },
+    "125": {
+        "ID": 125,
+        "consistency_score": 0.67,
+        "neighbours": [
+            125,
+            65,
+            68,
+            148,
+            64,
+            25
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "126": {
+        "ID": 126,
+        "consistency_score": 0.67,
+        "neighbours": [
+            126,
+            64,
+            117,
+            24,
+            25,
+            125
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "127": {
+        "ID": 127,
+        "consistency_score": 1.0,
+        "neighbours": [
+            127,
+            69,
+            9,
+            159,
+            106,
+            18
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "128": {
+        "ID": 128,
+        "consistency_score": 0.5,
+        "neighbours": [
+            128,
+            148,
+            24,
+            64,
+            181,
+            115
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "129": {
+        "ID": 129,
+        "consistency_score": 1.0,
+        "neighbours": [
+            129,
+            151,
+            21,
+            114,
+            97,
+            182
+        ],
+        "Predicted Credit": "Good"
+    },
+    "130": {
+        "ID": 130,
+        "consistency_score": 1.0,
+        "neighbours": [
+            130,
+            183,
+            90,
+            171,
+            40,
+            101
+        ],
+        "Predicted Credit": "Good"
+    },
+    "131": {
+        "ID": 131,
+        "consistency_score": 1.0,
+        "neighbours": [
+            131,
+            93,
+            188,
+            42,
+            6,
+            122
+        ],
+        "Predicted Credit": "Good"
+    },
+    "132": {
+        "ID": 132,
+        "consistency_score": 1.0,
+        "neighbours": [
+            132,
+            35,
+            38,
+            86,
+            172,
+            77
+        ],
+        "Predicted Credit": "Good"
+    },
+    "133": {
+        "ID": 133,
+        "consistency_score": 1.0,
+        "neighbours": [
+            133,
+            120,
+            108,
+            161,
+            190,
+            137
+        ],
+        "Predicted Credit": "Good"
+    },
+    "134": {
+        "ID": 134,
+        "consistency_score": 1.0,
+        "neighbours": [
+            134,
+            7,
+            43,
+            78,
+            137,
+            74
+        ],
+        "Predicted Credit": "Good"
+    },
+    "135": {
+        "ID": 135,
+        "consistency_score": 1.0,
+        "neighbours": [
+            135,
+            123,
+            144,
+            53,
+            174,
+            147
+        ],
+        "Predicted Credit": "Good"
+    },
+    "136": {
+        "ID": 136,
+        "consistency_score": 1.0,
+        "neighbours": [
+            136,
+            34,
+            67,
+            185,
+            27,
+            186
+        ],
+        "Predicted Credit": "Good"
+    },
+    "137": {
+        "ID": 137,
+        "consistency_score": 1.0,
+        "neighbours": [
+            137,
+            48,
+            30,
+            108,
+            190,
+            17
+        ],
+        "Predicted Credit": "Good"
+    },
+    "138": {
+        "ID": 138,
+        "consistency_score": 1.0,
+        "neighbours": [
+            138,
+            102,
+            38,
+            184,
+            164,
+            191
+        ],
+        "Predicted Credit": "Good"
+    },
+    "139": {
+        "ID": 139,
+        "consistency_score": 1.0,
+        "neighbours": [
+            139,
+            171,
+            152,
+            52,
+            118,
+            10
+        ],
+        "Predicted Credit": "Good"
+    },
+    "140": {
+        "ID": 140,
+        "consistency_score": 1.0,
+        "neighbours": [
+            140,
+            174,
+            112,
+            40,
+            171,
+            192
+        ],
+        "Predicted Credit": "Good"
+    },
+    "141": {
+        "ID": 141,
+        "consistency_score": 0.83,
+        "neighbours": [
+            141,
+            36,
+            107,
+            99,
+            186,
+            145
+        ],
+        "Predicted Credit": "Good"
+    },
+    "142": {
+        "ID": 142,
+        "consistency_score": 0.83,
+        "neighbours": [
+            142,
+            29,
+            164,
+            122,
+            117,
+            102
+        ],
+        "Predicted Credit": "Good"
+    },
+    "143": {
+        "ID": 143,
+        "consistency_score": 0.83,
+        "neighbours": [
+            143,
+            163,
+            110,
+            186,
+            99,
+            129
+        ],
+        "Predicted Credit": "Good"
+    },
+    "144": {
+        "ID": 144,
+        "consistency_score": 1.0,
+        "neighbours": [
+            144,
+            123,
+            89,
+            157,
+            174,
+            40
+        ],
+        "Predicted Credit": "Good"
+    },
+    "145": {
+        "ID": 145,
+        "consistency_score": 1.0,
+        "neighbours": [
+            145,
+            12,
+            67,
+            24,
+            109,
+            141
+        ],
+        "Predicted Credit": "Good"
+    },
+    "146": {
+        "ID": 146,
+        "consistency_score": 1.0,
+        "neighbours": [
+            146,
+            97,
+            182,
+            162,
+            165,
+            196
+        ],
+        "Predicted Credit": "Good"
+    },
+    "147": {
+        "ID": 147,
+        "consistency_score": 1.0,
+        "neighbours": [
+            147,
+            135,
+            123,
+            144,
+            8,
+            199
+        ],
+        "Predicted Credit": "Good"
+    },
+    "148": {
+        "ID": 148,
+        "consistency_score": 0.83,
+        "neighbours": [
+            148,
+            125,
+            64,
+            68,
+            65,
+            167
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "149": {
+        "ID": 149,
+        "consistency_score": 0.33,
+        "neighbours": [
+            149,
+            155,
+            190,
+            108,
+            31,
+            146
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "150": {
+        "ID": 150,
+        "consistency_score": 0.83,
+        "neighbours": [
+            150,
+            82,
+            16,
+            70,
+            83,
+            99
+        ],
+        "Predicted Credit": "Good"
+    },
+    "151": {
+        "ID": 151,
+        "consistency_score": 1.0,
+        "neighbours": [
+            151,
+            173,
+            129,
+            114,
+            57,
+            21
+        ],
+        "Predicted Credit": "Good"
+    },
+    "152": {
+        "ID": 152,
+        "consistency_score": 1.0,
+        "neighbours": [
+            152,
+            101,
+            166,
+            40,
+            173,
+            90
+        ],
+        "Predicted Credit": "Good"
+    },
+    "153": {
+        "ID": 153,
+        "consistency_score": 1.0,
+        "neighbours": [
+            153,
+            28,
+            16,
+            198,
+            70,
+            79
+        ],
+        "Predicted Credit": "Good"
+    },
+    "154": {
+        "ID": 154,
+        "consistency_score": 1.0,
+        "neighbours": [
+            154,
+            161,
+            86,
+            37,
+            172,
+            75
+        ],
+        "Predicted Credit": "Good"
+    },
+    "155": {
+        "ID": 155,
+        "consistency_score": 0.67,
+        "neighbours": [
+            155,
+            149,
+            127,
+            159,
+            108,
+            137
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "156": {
+        "ID": 156,
+        "consistency_score": 1.0,
+        "neighbours": [
+            156,
+            189,
+            199,
+            157,
+            92,
+            11
+        ],
+        "Predicted Credit": "Good"
+    },
+    "157": {
+        "ID": 157,
+        "consistency_score": 1.0,
+        "neighbours": [
+            157,
+            11,
+            111,
+            51,
+            144,
+            189
+        ],
+        "Predicted Credit": "Good"
+    },
+    "158": {
+        "ID": 158,
+        "consistency_score": 0.33,
+        "neighbours": [
+            158,
+            173,
+            10,
+            56,
+            57,
+            2
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "159": {
+        "ID": 159,
+        "consistency_score": 0.83,
+        "neighbours": [
+            159,
+            106,
+            18,
+            121,
+            148,
+            125
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "160": {
+        "ID": 160,
+        "consistency_score": 1.0,
+        "neighbours": [
+            160,
+            23,
+            105,
+            168,
+            95,
+            77
+        ],
+        "Predicted Credit": "Good"
+    },
+    "161": {
+        "ID": 161,
+        "consistency_score": 1.0,
+        "neighbours": [
+            161,
+            75,
+            120,
+            133,
+            154,
+            17
+        ],
+        "Predicted Credit": "Good"
+    },
+    "162": {
+        "ID": 162,
+        "consistency_score": 1.0,
+        "neighbours": [
+            162,
+            97,
+            85,
+            49,
+            196,
+            111
+        ],
+        "Predicted Credit": "Good"
+    },
+    "163": {
+        "ID": 163,
+        "consistency_score": 1.0,
+        "neighbours": [
+            163,
+            143,
+            27,
+            186,
+            110,
+            185
+        ],
+        "Predicted Credit": "Good"
+    },
+    "164": {
+        "ID": 164,
+        "consistency_score": 1.0,
+        "neighbours": [
+            164,
+            102,
+            138,
+            38,
+            142,
+            25
+        ],
+        "Predicted Credit": "Good"
+    },
+    "165": {
+        "ID": 165,
+        "consistency_score": 1.0,
+        "neighbours": [
+            165,
+            182,
+            129,
+            97,
+            46,
+            146
+        ],
+        "Predicted Credit": "Good"
+    },
+    "166": {
+        "ID": 166,
+        "consistency_score": 1.0,
+        "neighbours": [
+            166,
+            152,
+            153,
+            58,
+            79,
+            70
+        ],
+        "Predicted Credit": "Good"
+    },
+    "167": {
+        "ID": 167,
+        "consistency_score": 0.67,
+        "neighbours": [
+            167,
+            64,
+            148,
+            184,
+            125,
+            122
+        ],
+        "Predicted Credit": "Bad"
+    },
+    "168": {
+        "ID": 168,
+        "consistency_score": 1.0,
+        "neighbours": [
+            168,
+            97,
+            189,
+            199,
+            49,
+            162
+        ],
+        "Predicted Credit": "Good"
+    },
+    "169": {
+        "ID": 169,
+        "consistency_score": 1.0,
+        "neighbours": [
+            169,
+            84,
+            187,
+            103,
+            4,
+            168
+        ],
+        "Predicted Credit": "Good"
+    },
+    "170": {
+        "ID": 170,
+        "consistency_score": 1.0,
+        "neighbours": [
+            170,
+            29,
+            112,
+            174,
+            192,
+            142
+        ],
+        "Predicted Credit": "Good"
+    },
+    "171": {
+        "ID": 171,
+        "consistency_score": 1.0,
+        "neighbours": [
+            171,
+            140,
+            139,
+            40,
+            144,
+            166
+        ],
+        "Predicted Credit": "Good"
+    },
+    "172": {
+        "ID": 172,
+        "consistency_score": 0.83,
+        "neighbours": [
+            172,
+            122,
+            37,
+            17,
+            132,
+            167
+        ],
+        "Predicted Credit": "Good"
+    },
+    "173": {
+        "ID": 173,
+        "consistency_score": 1.0,
+        "neighbours": [
+            173,
+            151,
+            57,
+            101,
+            21,
+            129
+        ],
+        "Predicted Credit": "Good"
+    },
+    "174": {
+        "ID": 174,
+        "consistency_score": 1.0,
+        "neighbours": [
+            174,
+            140,
+            144,
+            112,
+            135,
+            123
+        ],
+        "Predicted Credit": "Good"
+    },
+    "175": {
+        "ID": 175,
+        "consistency_score": 1.0,
+        "neighbours": [
+            175,
+            111,
+            85,
+            33,
+            162,
+            116
+        ],
+        "Predicted Credit": "Good"
+    },
+    "176": {
+        "ID": 176,
+        "consistency_score": 1.0,
+        "neighbours": [
+            176,
+            93,
+            24,
+            164,
+            6,
+            25
+        ],
+        "Predicted Credit": "Good"
+    },
+    "177": {
+        "ID": 177,
+        "consistency_score": 1.0,
+        "neighbours": [
+            177,
+            59,
+            82,
+            12,
+            83,
+            76
+        ],
+        "Predicted Credit": "Good"
+    },
+    "178": {
+        "ID": 178,
+        "consistency_score": 1.0,
+        "neighbours": [
+            178,
+            96,
+            197,
+            72,
+            144,
+            11
+        ],
+        "Predicted Credit": "Good"
+    },
+    "179": {
+        "ID": 179,
+        "consistency_score": 1.0,
+        "neighbours": [
+            179,
+            86,
+            41,
+            75,
+            7,
+            154
+        ],
+        "Predicted Credit": "Good"
+    },
+    "180": {
+        "ID": 180,
+        "consistency_score": 0.5,
+        "neighbours": [
+            180,
+            73,
+            45,
+            56,
+            104,
+            55
+        ],
+        "Predicted Credit": "Good"
+    },
+    "181": {
+        "ID": 181,
+        "consistency_score": 0.83,
+        "neighbours": [
+            181,
+            24,
+            113,
+            66,
+            115,
+            148
+        ],
+        "Predicted Credit": "Good"
+    },
+    "182": {
+        "ID": 182,
+        "consistency_score": 1.0,
+        "neighbours": [
+            182,
+            165,
+            97,
+            129,
+            46,
+            146
+        ],
+        "Predicted Credit": "Good"
+    },
+    "183": {
+        "ID": 183,
+        "consistency_score": 1.0,
+        "neighbours": [
+            183,
+            130,
+            90,
+            101,
+            118,
+            152
+        ],
+        "Predicted Credit": "Good"
+    },
+    "184": {
+        "ID": 184,
+        "consistency_score": 0.67,
+        "neighbours": [
+            184,
+            138,
+            102,
+            167,
+            25,
+            64
+        ],
+        "Predicted Credit": "Good"
+    },
+    "185": {
+        "ID": 185,
+        "consistency_score": 1.0,
+        "neighbours": [
+            185,
+            187,
+            27,
+            186,
+            79,
+            67
+        ],
+        "Predicted Credit": "Good"
+    },
+    "186": {
+        "ID": 186,
+        "consistency_score": 1.0,
+        "neighbours": [
+            186,
+            185,
+            163,
+            110,
+            187,
+            36
+        ],
+        "Predicted Credit": "Good"
+    },
+    "187": {
+        "ID": 187,
+        "consistency_score": 1.0,
+        "neighbours": [
+            187,
+            185,
+            84,
+            186,
+            79,
+            169
+        ],
+        "Predicted Credit": "Good"
+    },
+    "188": {
+        "ID": 188,
+        "consistency_score": 1.0,
+        "neighbours": [
+            188,
+            93,
+            6,
+            42,
+            24,
+            131
+        ],
+        "Predicted Credit": "Good"
+    },
+    "189": {
+        "ID": 189,
+        "consistency_score": 1.0,
+        "neighbours": [
+            189,
+            156,
+            11,
+            111,
+            157,
+            199
+        ],
+        "Predicted Credit": "Good"
+    },
+    "190": {
+        "ID": 190,
+        "consistency_score": 1.0,
+        "neighbours": [
+            190,
+            108,
+            137,
+            31,
+            133,
+            120
+        ],
+        "Predicted Credit": "Good"
+    },
+    "191": {
+        "ID": 191,
+        "consistency_score": 1.0,
+        "neighbours": [
+            191,
+            49,
+            138,
+            164,
+            38,
+            77
+        ],
+        "Predicted Credit": "Good"
+    },
+    "192": {
+        "ID": 192,
+        "consistency_score": 1.0,
+        "neighbours": [
+            192,
+            61,
+            112,
+            140,
+            123,
+            29
+        ],
+        "Predicted Credit": "Good"
+    },
+    "193": {
+        "ID": 193,
+        "consistency_score": 1.0,
+        "neighbours": [
+            193,
+            33,
+            116,
+            46,
+            111,
+            175
+        ],
+        "Predicted Credit": "Good"
+    },
+    "194": {
+        "ID": 194,
+        "consistency_score": 1.0,
+        "neighbours": [
+            194,
+            81,
+            67,
+            113,
+            91,
+            145
+        ],
+        "Predicted Credit": "Good"
+    },
+    "195": {
+        "ID": 195,
+        "consistency_score": 1.0,
+        "neighbours": [
+            195,
+            66,
+            76,
+            142,
+            23,
+            122
+        ],
+        "Predicted Credit": "Good"
+    },
+    "196": {
+        "ID": 196,
+        "consistency_score": 0.83,
+        "neighbours": [
+            196,
+            97,
+            38,
+            162,
+            69,
+            111
+        ],
+        "Predicted Credit": "Good"
+    },
+    "197": {
+        "ID": 197,
+        "consistency_score": 1.0,
+        "neighbours": [
+            197,
+            96,
+            178,
+            72,
+            76,
+            61
+        ],
+        "Predicted Credit": "Good"
+    },
+    "198": {
+        "ID": 198,
+        "consistency_score": 1.0,
+        "neighbours": [
+            198,
+            16,
+            83,
+            100,
+            52,
+            153
+        ],
+        "Predicted Credit": "Good"
+    },
+    "199": {
+        "ID": 199,
+        "consistency_score": 1.0,
+        "neighbours": [
+            199,
+            46,
+            111,
+            156,
+            33,
+            51
+        ],
+        "Predicted Credit": "Good"
+    },
+    "200": {
+        "ID": 200,
+        "consistency_score": 0.5,
+        "neighbours": [
+            200,
+            54,
+            60,
+            3,
+            148,
+            9
+        ],
+        "Predicted Credit": "Good"
+    }
+}

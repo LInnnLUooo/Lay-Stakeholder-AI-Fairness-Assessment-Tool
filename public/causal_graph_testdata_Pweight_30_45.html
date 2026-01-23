@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#8ac4ea", "fixed": true, "id": "Duration", "label": "Duration", "shape": "dot", "x": 500.0, "y": 0.0}, {"color": "#8ac4ea", "fixed": true, "id": "Credit amount", "label": "Credit amount", "shape": "dot", "x": 477.7864028930703, "y": 147.3775872054521}, {"color": "#8ac4ea", "fixed": true, "id": "Installment rate", "label": "Installment rate", "shape": "dot", "x": 413.11938715799744, "y": 281.660029031811}, {"color": "#8ac4ea", "fixed": true, "id": "Present residence", "label": "Present residence", "shape": "dot", "x": 311.7449009293668, "y": 390.9157412340149}, {"color": "#8ac4ea", "fixed": true, "id": "Existing credits", "label": "Existing credits", "shape": "dot", "x": 182.6705121831975, "y": 465.43687432210214}, {"color": "#8ac4ea", "fixed": true, "id": "Dependents", "label": "Dependents", "shape": "dot", "x": 37.36504679321209, "y": 498.60189859059005}, {"color": "#f99c8b", "fixed": true, "id": "Age", "label": "Age", "shape": "dot", "x": -111.26046697815717, "y": 487.46395609091184}, {"color": "#f99c8b", "fixed": true, "id": "Gender", "label": "Gender", "shape": "dot", "x": -250.0000000000001, "y": 433.0127018922193}, {"color": "#8ac4ea", "fixed": true, "id": "Checking account", "label": "Checking account", "shape": "dot", "x": -366.5259359149132, "y": 340.0863688854597}, {"color": "#8ac4ea", "fixed": true, "id": "Credit history", "label": "Credit history", "shape": "dot", "x": -450.4844339512095, "y": 216.9418695587791}, {"color": "#8ac4ea", "fixed": true, "id": "Purpose", "label": "Purpose", "shape": "dot", "x": -494.41541311256424, "y": 74.52113308808714}, {"color": "#8ac4ea", "fixed": true, "id": "Savings", "label": "Savings", "shape": "dot", "x": -494.41541311256424, "y": -74.52113308808724}, {"color": "#8ac4ea", "fixed": true, "id": "Employment", "label": "Employment", "shape": "dot", "x": -450.48443395120955, "y": -216.94186955877902}, {"color": "#8ac4ea", "fixed": true, "id": "Debtors", "label": "Debtors", "shape": "dot", "x": -366.52593591491313, "y": -340.0863688854597}, {"color": "#8ac4ea", "fixed": true, "id": "Property", "label": "Property", "shape": "dot", "x": -249.9999999999998, "y": -433.0127018922194}, {"color": "#8ac4ea", "fixed": true, "id": "Installment plans", "label": "Installment plans", "shape": "dot", "x": -111.2604669781573, "y": -487.46395609091184}, {"color": "#8ac4ea", "fixed": true, "id": "Housing", "label": "Housing", "shape": "dot", "x": 37.36504679321218, "y": -498.60189859059005}, {"color": "#8ac4ea", "fixed": true, "id": "Job", "label": "Job", "shape": "dot", "x": 182.67051218319767, "y": -465.4368743221021}, {"color": "#8ac4ea", "fixed": true, "id": "Telephone", "label": "Telephone", "shape": "dot", "x": 311.7449009293667, "y": -390.91574123401494}, {"color": "#8ac4ea", "fixed": true, "id": "Foreign worker", "label": "Foreign worker", "shape": "dot", "x": 413.11938715799744, "y": -281.66002903181095}, {"color": "#5939f1", "fixed": true, "id": "Credit Level", "label": "Credit Level", "shape": "dot", "x": 477.7864028930704, "y": -147.37758720545193}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#53e295", "from": "Duration", "title": "Weight: 0.53", "to": "Purpose", "value": 0.5345269882669517, "width": 2.672634941334758}, {"arrows": "to", "color": "#53e295", "from": "Credit amount", "title": "Weight: 0.47", "to": "Duration", "value": 0.4723722138223604, "width": 2.361861069111802}, {"arrows": "to", "color": "#53e295", "from": "Existing credits", "title": "Weight: 1.02", "to": "Credit history", "value": 1.0247758115910812, "width": 5.123879057955406}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.51", "to": "Duration", "value": 0.513299257107824, "width": 2.56649628553912}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.76", "to": "Existing credits", "value": 0.7631021292545632, "width": 3.8155106462728163}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.54", "to": "Employment", "value": 0.5352532909906084, "width": 2.676266454953042}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.64", "to": "Job", "value": 0.6442044639253409, "width": 3.2210223196267047}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 1.46", "to": "Credit Level", "value": 1.4618036554134053, "width": 7.309018277067026}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.52", "to": "Dependents", "value": 0.5180694737139652, "width": 2.5903473685698257}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.88", "to": "Checking account", "value": 0.8773037258742357, "width": 4.386518629371178}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.76", "to": "Housing", "value": 0.7590488007507858, "width": 3.795244003753929}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.59", "to": "Credit Level", "value": 0.5899167724065005, "width": 2.949583862032503}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.74", "to": "Age", "value": 0.742737185699479, "width": 3.713685928497395}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.60", "to": "Employment", "value": 0.6011325789214435, "width": 3.0056628946072173}, {"arrows": "to", "color": "#53e295", "from": "Checking account", "title": "Weight: 0.77", "to": "Credit Level", "value": 0.7694365465326284, "width": 3.847182732663142}, {"arrows": "to", "color": "#53e295", "from": "Credit history", "title": "Weight: 0.58", "to": "Credit Level", "value": 0.5785779492507858, "width": 2.8928897462539287}, {"arrows": "to", "color": "#53e295", "from": "Installment plans", "title": "Weight: 0.70", "to": "Credit Level", "value": 0.7023925380889398, "width": 3.5119626904446988}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.56", "to": "Property", "value": 0.56429385050406, "width": 2.8214692525203002}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.81", "to": "Credit amount", "value": 0.8074119778841027, "width": 4.037059889420513}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.60", "to": "Installment rate", "value": 0.6023325749158648, "width": 3.011662874579324}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.47", "to": "Property", "value": 0.4713047113389019, "width": 2.3565235566945093}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.46", "to": "Installment plans", "value": 0.4641531850089207, "width": 2.3207659250446038}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.76", "to": "Gender", "value": 0.762407255385687, "width": 3.812036276928435}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.61", "to": "Job", "value": 0.612610949563701, "width": 3.063054747818505}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.93", "to": "Dependents", "value": 0.9331321797454794, "width": 4.665660898727396}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.96", "to": "Gender", "value": 0.9595270886046766, "width": 4.797635443023383}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.64", "to": "Savings", "value": 0.644810492778038, "width": 3.22405246389019}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.59", "to": "Installment plans", "value": 0.5906808006404317, "width": 2.9534040032021585}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"interaction": {"dragNodes": false, "dragView": false, "zoomView": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var edges = network.body.data.edges.get();
+
+        function highlightEdges(params) {
+        var allEdges = network.body.data.edges.get();
+        var connectedEdges = network.getConnectedEdges(params.nodes[0]);
+        var updateArray = [];
+
+        for (var edge of allEdges) {
+            if (connectedEdges.includes(edge.id)) {
+            updateArray.push({id: edge.id, color: '#00b300'});  // 深绿色高亮
+            } else {
+            updateArray.push({id: edge.id, color: 'rgba(200,200,200,0.5)'});
+            }
+        }
+        network.body.data.edges.update(updateArray);
+        }
+
+        network.on("selectNode", function(params) {
+        highlightEdges(params);
+        });
+
+        network.on("deselectNode", function(params) {
+        var allEdges = network.body.data.edges.get();
+        var updateArray = [];
+
+        for (var edge of allEdges) {
+            updateArray.push({id: edge.id, color: '#53e295'});  // 恢复为浅绿色
+        }
+        network.body.data.edges.update(updateArray);
+        });
+
+        network.on("click", function(params) {
+        if (params.nodes.length === 0) {
+            var allEdges = network.body.data.edges.get();
+            var updateArray = [];
+
+            for (var edge of allEdges) {
+            updateArray.push({id: edge.id, color: '#53e295'});  // 恢复为浅绿色
+            }
+            network.body.data.edges.update(updateArray);
+        }
+        });
+    });
+    </script>
+    

@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 100vh;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#8ac4ea", "fixed": true, "id": "Duration", "label": "Duration", "shape": "dot", "x": 500.0, "y": 0.0}, {"color": "#8ac4ea", "fixed": true, "id": "Credit amount", "label": "Credit amount", "shape": "dot", "x": 477.7864028930703, "y": 147.3775872054521}, {"color": "#8ac4ea", "fixed": true, "id": "Installment rate", "label": "Installment rate", "shape": "dot", "x": 413.11938715799744, "y": 281.660029031811}, {"color": "#8ac4ea", "fixed": true, "id": "Present residence", "label": "Present residence", "shape": "dot", "x": 311.7449009293668, "y": 390.9157412340149}, {"color": "#8ac4ea", "fixed": true, "id": "Existing credits", "label": "Existing credits", "shape": "dot", "x": 182.6705121831975, "y": 465.43687432210214}, {"color": "#8ac4ea", "fixed": true, "id": "Dependents", "label": "Dependents", "shape": "dot", "x": 37.36504679321209, "y": 498.60189859059005}, {"color": "#f99c8b", "fixed": true, "id": "Age", "label": "Age", "shape": "dot", "x": -111.26046697815717, "y": 487.46395609091184}, {"color": "#f99c8b", "fixed": true, "id": "Gender", "label": "Gender", "shape": "dot", "x": -250.0000000000001, "y": 433.0127018922193}, {"color": "#8ac4ea", "fixed": true, "id": "Checking account", "label": "Checking account", "shape": "dot", "x": -366.5259359149132, "y": 340.0863688854597}, {"color": "#8ac4ea", "fixed": true, "id": "Credit history", "label": "Credit history", "shape": "dot", "x": -450.4844339512095, "y": 216.9418695587791}, {"color": "#8ac4ea", "fixed": true, "id": "Purpose", "label": "Purpose", "shape": "dot", "x": -494.41541311256424, "y": 74.52113308808714}, {"color": "#8ac4ea", "fixed": true, "id": "Savings", "label": "Savings", "shape": "dot", "x": -494.41541311256424, "y": -74.52113308808724}, {"color": "#8ac4ea", "fixed": true, "id": "Employment", "label": "Employment", "shape": "dot", "x": -450.48443395120955, "y": -216.94186955877902}, {"color": "#8ac4ea", "fixed": true, "id": "Debtors", "label": "Debtors", "shape": "dot", "x": -366.52593591491313, "y": -340.0863688854597}, {"color": "#8ac4ea", "fixed": true, "id": "Property", "label": "Property", "shape": "dot", "x": -249.9999999999998, "y": -433.0127018922194}, {"color": "#8ac4ea", "fixed": true, "id": "Installment plans", "label": "Installment plans", "shape": "dot", "x": -111.2604669781573, "y": -487.46395609091184}, {"color": "#8ac4ea", "fixed": true, "id": "Housing", "label": "Housing", "shape": "dot", "x": 37.36504679321218, "y": -498.60189859059005}, {"color": "#8ac4ea", "fixed": true, "id": "Job", "label": "Job", "shape": "dot", "x": 182.67051218319767, "y": -465.4368743221021}, {"color": "#8ac4ea", "fixed": true, "id": "Telephone", "label": "Telephone", "shape": "dot", "x": 311.7449009293667, "y": -390.91574123401494}, {"color": "#8ac4ea", "fixed": true, "id": "Foreign worker", "label": "Foreign worker", "shape": "dot", "x": 413.11938715799744, "y": -281.66002903181095}, {"color": "#5939f1", "fixed": true, "id": "Credit Level", "label": "Credit Level", "shape": "dot", "x": 477.7864028930704, "y": -147.37758720545193}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#53e295", "from": "Duration", "title": "Weight: 0.32", "to": "Purpose", "value": 0.32273938528974855, "width": 1.6136969264487426}, {"arrows": "to", "color": "#53e295", "from": "Credit amount", "title": "Weight: 0.80", "to": "Duration", "value": 0.7957474622807027, "width": 3.9787373114035134}, {"arrows": "to", "color": "#53e295", "from": "Installment rate", "title": "Weight: 0.41", "to": "Duration", "value": 0.41477781402899255, "width": 2.0738890701449626}, {"arrows": "to", "color": "#53e295", "from": "Installment rate", "title": "Weight: 0.17", "to": "Present residence", "value": 0.17298617479646272, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Installment rate", "title": "Weight: 0.35", "to": "Purpose", "value": 0.35250047379207555, "width": 1.7625023689603778}, {"arrows": "to", "color": "#53e295", "from": "Present residence", "title": "Weight: 0.27", "to": "Employment", "value": 0.2700932222068958, "width": 1.3504661110344789}, {"arrows": "to", "color": "#53e295", "from": "Existing credits", "title": "Weight: 0.24", "to": "Credit amount", "value": 0.24307211982872795, "width": 1.2153605991436398}, {"arrows": "to", "color": "#53e295", "from": "Existing credits", "title": "Weight: 0.24", "to": "Installment rate", "value": 0.24360515365491464, "width": 1.2180257682745732}, {"arrows": "to", "color": "#53e295", "from": "Existing credits", "title": "Weight: 0.36", "to": "Present residence", "value": 0.3561674832123279, "width": 1.7808374160616394}, {"arrows": "to", "color": "#53e295", "from": "Existing credits", "title": "Weight: 0.86", "to": "Credit history", "value": 0.8630058378280661, "width": 4.31502918914033}, {"arrows": "to", "color": "#53e295", "from": "Existing credits", "title": "Weight: 0.66", "to": "Purpose", "value": 0.6595042521466709, "width": 3.297521260733354}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.34", "to": "Credit amount", "value": 0.3409142385265477, "width": 1.7045711926327383}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.36", "to": "Installment rate", "value": 0.35803125262956936, "width": 1.7901562631478467}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.63", "to": "Present residence", "value": 0.630783529635194, "width": 3.15391764817597}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.47", "to": "Existing credits", "value": 0.4687667228155452, "width": 2.343833614077726}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.26", "to": "Purpose", "value": 0.25749835073839406, "width": 1.2874917536919703}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.18", "to": "Savings", "value": 0.17881253319839382, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.16", "to": "Employment", "value": 0.1583679833340747, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.17", "to": "Property", "value": 0.16923412296264004, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.54", "to": "Installment plans", "value": 0.5391393211095543, "width": 2.695696605547772}, {"arrows": "to", "color": "#53e295", "from": "Dependents", "title": "Weight: 0.64", "to": "Job", "value": 0.6413751671372241, "width": 3.2068758356861204}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.23", "to": "Installment rate", "value": 0.2289445970953139, "width": 1.1447229854765695}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.28", "to": "Existing credits", "value": 0.2768264194407202, "width": 1.3841320972036009}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.46", "to": "Dependents", "value": 0.4593508078827149, "width": 2.2967540394135746}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.23", "to": "Checking account", "value": 0.23288250273719077, "width": 1.1644125136859538}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.29", "to": "Employment", "value": 0.29035587644680444, "width": 1.4517793822340221}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.67", "to": "Housing", "value": 0.6747472389406577, "width": 3.3737361947032882}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.35", "to": "Job", "value": 0.34718215874527136, "width": 1.7359107937263567}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.38", "to": "Telephone", "value": 0.3757632042258242, "width": 1.8788160211291212}, {"arrows": "to", "color": "#53e295", "from": "Age", "title": "Weight: 0.38", "to": "Credit Level", "value": 0.3757630493897093, "width": 1.8788152469485464}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.30", "to": "Credit amount", "value": 0.30275711350066165, "width": 1.5137855675033083}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.28", "to": "Dependents", "value": 0.27592935469057156, "width": 1.379646773452858}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.33", "to": "Employment", "value": 0.325596929784744, "width": 1.6279846489237202}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.37", "to": "Housing", "value": 0.3690436143697585, "width": 1.8452180718487927}, {"arrows": "to", "color": "#53e295", "from": "Gender", "title": "Weight: 0.16", "to": "Credit Level", "value": 0.1587091029500626, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Checking account", "title": "Weight: 0.26", "to": "Purpose", "value": 0.26277778056632145, "width": 1.3138889028316072}, {"arrows": "to", "color": "#53e295", "from": "Checking account", "title": "Weight: 0.20", "to": "Savings", "value": 0.20372952266619263, "width": 1.0186476133309632}, {"arrows": "to", "color": "#53e295", "from": "Credit history", "title": "Weight: 0.15", "to": "Checking account", "value": 0.1513545179186932, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Property", "title": "Weight: 0.33", "to": "Credit amount", "value": 0.3290927035201606, "width": 1.645463517600803}, {"arrows": "to", "color": "#53e295", "from": "Property", "title": "Weight: 0.21", "to": "Present residence", "value": 0.2103023714235371, "width": 1.0515118571176856}, {"arrows": "to", "color": "#53e295", "from": "Installment plans", "title": "Weight: 0.17", "to": "Credit amount", "value": 0.16997612122335895, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Installment plans", "title": "Weight: 0.32", "to": "Installment rate", "value": 0.31560402684736133, "width": 1.5780201342368065}, {"arrows": "to", "color": "#53e295", "from": "Installment plans", "title": "Weight: 0.16", "to": "Present residence", "value": 0.16232458467696623, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Installment plans", "title": "Weight: 0.26", "to": "Credit history", "value": 0.26370651978394893, "width": 1.3185325989197447}, {"arrows": "to", "color": "#53e295", "from": "Installment plans", "title": "Weight: 0.27", "to": "Purpose", "value": 0.26937942889926075, "width": 1.3468971444963038}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.16", "to": "Duration", "value": 0.15908795993956487, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.18", "to": "Credit amount", "value": 0.17662818910550865, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.24", "to": "Installment rate", "value": 0.23701543989633217, "width": 1.185077199481661}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.27", "to": "Dependents", "value": 0.27323513798017524, "width": 1.3661756899008761}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.68", "to": "Property", "value": 0.6806611620393246, "width": 3.403305810196623}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.29", "to": "Job", "value": 0.28803182434436425, "width": 1.4401591217218213}, {"arrows": "to", "color": "#53e295", "from": "Housing", "title": "Weight: 0.16", "to": "Credit Level", "value": 0.16203823152544086, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.56", "to": "Credit amount", "value": 0.5602018802271979, "width": 2.8010094011359894}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.45", "to": "Installment rate", "value": 0.44739935919818624, "width": 2.2369967959909314}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.17", "to": "Employment", "value": 0.1713782027537541, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.38", "to": "Property", "value": 0.38171111506334204, "width": 1.9085555753167103}, {"arrows": "to", "color": "#53e295", "from": "Job", "title": "Weight: 0.34", "to": "Installment plans", "value": 0.34227413308908966, "width": 1.7113706654454484}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.49", "to": "Credit amount", "value": 0.4880570661670158, "width": 2.4402853308350787}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.17", "to": "Present residence", "value": 0.17040824666008655, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.16", "to": "Purpose", "value": 0.160934452484496, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.16", "to": "Savings", "value": 0.16001927556590614, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.17", "to": "Property", "value": 0.16528013396292404, "width": 1}, {"arrows": "to", "color": "#53e295", "from": "Telephone", "title": "Weight: 0.58", "to": "Job", "value": 0.5813798072407901, "width": 2.90689903620395}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.32", "to": "Savings", "value": 0.31556577790711354, "width": 1.5778288895355677}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.49", "to": "Debtors", "value": 0.49440331865421316, "width": 2.472016593271066}, {"arrows": "to", "color": "#53e295", "from": "Foreign worker", "title": "Weight: 0.25", "to": "Credit Level", "value": 0.2461045454265241, "width": 1.2305227271326205}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"interaction": {"dragNodes": false, "dragView": false, "zoomView": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var edges = network.body.data.edges.get();
+
+        function highlightEdges(params) {
+        var allEdges = network.body.data.edges.get();
+        var connectedEdges = network.getConnectedEdges(params.nodes[0]);
+        var updateArray = [];
+
+        for (var edge of allEdges) {
+            if (connectedEdges.includes(edge.id)) {
+            updateArray.push({id: edge.id, color: '#00b300'});
+            } else {
+            updateArray.push({id: edge.id, color: 'rgba(200,200,200,0.5)'});
+            }
+        }
+        network.body.data.edges.update(updateArray);
+        }
+
+        network.on("selectNode", function(params) {
+        highlightEdges(params);
+        });
+
+        network.on("deselectNode", function(params) {
+        var allEdges = network.body.data.edges.get();
+        var updateArray = [];
+
+        for (var edge of allEdges) {
+            updateArray.push({id: edge.id, color: '#53e295'});
+        }
+        network.body.data.edges.update(updateArray);
+        });
+
+        network.on("click", function(params) {
+        if (params.nodes.length === 0) {
+            var allEdges = network.body.data.edges.get();
+            var updateArray = [];
+
+            for (var edge of allEdges) {
+            updateArray.push({id: edge.id, color: '#53e295'});
+            }
+            network.body.data.edges.update(updateArray);
+        }
+        });
+    });
+    </script>
+    
