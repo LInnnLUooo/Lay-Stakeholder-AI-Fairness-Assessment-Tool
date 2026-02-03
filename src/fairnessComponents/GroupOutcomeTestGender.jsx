@@ -8,47 +8,40 @@ import * as d3 from 'd3';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 
 import { useNavigate } from 'react-router-dom';
-//nevigate path：
 const OTIMAGE_GENDER_PATH = "/explanationGender/OTimage";
 
 export default function GroupOutcomeTestGender() {
     const navigate = useNavigate(); 
-    // Scatter Plot 
     const [data] = useState([63,80,-17])
     const svgRef = useRef();
     
     useEffect(()=>{
         
-    // step1：set up container dimensons & svg 
-    const w = 400; // width
-    const h = 400; //height
+    const w = 400;
+    const h = 400;
     const svg = d3.select(svgRef.current)
           .attr('width',w)
           .attr('height',h)
           .style('overflow','visible')
           .style('margin-top','20px')
-    // step2：set up scaling
     const xScale = d3.scaleBand()
-          .domain(['female','male','difference']) // x value scale
-          .range([0, w])   // chart dimensions of x
+          .domain(['female','male','difference'])
+          .range([0, w])
           .padding(0.5)
     const yScale = d3.scaleLinear()
-          .domain([-50, 100]) // x value scale
-          .range([h, 0]);    // chart dimensions of y     
+          .domain([-50, 100])
+          .range([h, 0]);
 
-    // step3：set up axis           
-    const xAxis = d3.axisBottom(xScale).ticks(data.length); //  put the x scale in the X axis
-    const yAxis = d3.axisLeft(yScale).ticks(15); // ticks: number of dots in the axis
-    svg.append('g').call(xAxis).attr('transform', `translate(0, ${h/3*2})`).style("font-size", "18px").selectAll("text").attr("dy", "60px");// 将一个<g>元素添加到SVG元素中。<g>元素通常用于组合其他图形元素，例如坐标轴、标签等，以便进行位置和样式的集中管理
+    const xAxis = d3.axisBottom(xScale).ticks(data.length);
+    const yAxis = d3.axisLeft(yScale).ticks(15);
+    svg.append('g').call(xAxis).attr('transform', `translate(0, ${h/3*2})`).style("font-size", "18px").selectAll("text").attr("dy", "60px");
     svg.append('g').call(yAxis);
 
 
-    // step4：set up axis labelling
-    // svg.append('text').attr('x',w/3).attr('y',h+10).text('Demographic Parity'); 已经设置好位置了可以直接使用的，但是不需要，因为已经有单独的标题了。
     svg.append('text').attr('y',-40).attr('x',-120)
                 .attr('transform', 'rotate(-90)')
-                .style('text-anchor', 'middle') // 水平居中对齐
-                .style('dominant-baseline', 'middle') // 垂直居中对齐
+                .style('text-anchor', 'middle')
+                .style('dominant-baseline', 'middle')
                 .text('Fairness Results');
 
     const femaleData = data.filter((d, i) => ['female', 'male', 'difference'][i] === 'female');
@@ -57,12 +50,11 @@ export default function GroupOutcomeTestGender() {
 
     svg.selectAll('.female-bar')
     .data(femaleData)
-    .join('g') // 使用 'g' 元素包装每个 bar 和文本标签
+    .join('g')
     .attr('class', 'female-bar')
     .each(function (d) {
         const bar = d3.select(this);
 
-        // 创建矩形 bar
         bar.append('rect')
         .attr('x', xScale('female'))
         .attr('y', d => (d >= 0 ? yScale(d) : yScale(0)))
@@ -70,23 +62,21 @@ export default function GroupOutcomeTestGender() {
         .attr('height', d => Math.abs(yScale(0) - yScale(d)))
         .style("fill", "#8ECFC9");
 
-        // 添加文本标签
         bar.append('text')
-        .attr('x', xScale('female') + xScale.bandwidth() / 2) // 文本标签居中
-        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // 根据数据项的正负调整位置
-        .attr('text-anchor', 'middle') // 水平居中对齐
-        .style('fill', 'black') // 文本颜色
-        .text(`${Math.abs(d)}%`); // 显示数据项的值
+        .attr('x', xScale('female') + xScale.bandwidth() / 2)
+        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
+        .attr('text-anchor', 'middle')
+        .style('fill', 'black')
+        .text(`${Math.abs(d)}%`);
     });
 
     svg.selectAll('.male-bar')
     .data(maleData)
-    .join('g') // 使用 'g' 元素包装每个 bar 和文本标签
+    .join('g')
     .attr('class', 'malebar')
     .each(function (d) {
         const bar = d3.select(this);
 
-        // 创建矩形 bar
         bar.append('rect')
         .attr('x', xScale('male'))
         .attr('y', d => (d >= 0 ? yScale(d) : yScale(0)))
@@ -94,13 +84,12 @@ export default function GroupOutcomeTestGender() {
         .attr('height', d => Math.abs(yScale(0) - yScale(d)))
         .style("fill", "#BEB8DC");
 
-        // 添加文本标签
         bar.append('text')
-        .attr('x', xScale('male') + xScale.bandwidth() / 2) // 文本标签居中
-        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // 根据数据项的正负调整位置
-        .attr('text-anchor', 'middle') // 水平居中对齐
-        .style('fill', 'black') // 文本颜色
-        .text(`${Math.abs(d)}%`); // 显示数据项的值
+        .attr('x', xScale('male') + xScale.bandwidth() / 2)
+        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
+        .attr('text-anchor', 'middle')
+        .style('fill', 'black')
+        .text(`${Math.abs(d)}%`);
     });
 
     function handleMouseover(diffValue) {
@@ -108,60 +97,59 @@ export default function GroupOutcomeTestGender() {
             svg.selectAll('.female-bar').remove(); 
             svg.selectAll('.female-bar')
                     .data(femaleData)
-                    .join('g') // 使用 'g' 元素包装每个 bar 和文本标签
+                    .join('g')
                     .attr('class', 'female-bar')
                     .each(function (d) {
                         const bar = d3.select(this);
                         bar.append('rect')
                         .attr('x', xScale('female'))
-                        .attr('y', d => yScale(d)) // 设置 y 坐标为 femaleData 的值
+                        .attr('y', d => yScale(d))
                         .attr('width', xScale.bandwidth())
                         .attr('height', d => Math.abs(yScale(d) - yScale(maleData))) 
                         .style("fill", "#FA7F6F");                   
                         bar.append('rect')
                         .attr('x', xScale('female'))
-                        .attr('y', yScale(maleData)) // 设置 y 坐标为 differenceData 的值
+                        .attr('y', yScale(maleData))
                         .attr('width', xScale.bandwidth())
                         .attr('height', Math.abs(yScale(0) - yScale(maleData))) 
                         .style("fill", "#8ECFC9");
     
-                        // 添加文本标签
                         bar.append('text')
-                        .attr('x', xScale('female') + xScale.bandwidth() / 2) // 文本标签居中
-                        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // 根据数据项的正负调整位置
-                        .attr('text-anchor', 'middle') // 水平居中对齐
-                        .style('fill', 'black') // 文本颜色
-                        .text(`${Math.abs(d)}%`); // 显示数据项的值
+                        .attr('x', xScale('female') + xScale.bandwidth() / 2)
+                        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
+                        .attr('text-anchor', 'middle')
+                        .style('fill', 'black')
+                        .text(`${Math.abs(d)}%`);
                     });
         } 
         else {
             svg.selectAll('.male-bar').remove(); 
             svg.selectAll('.male-bar')
                 .data(maleData)
-                .join('g') // 使用 'g' 元素包装每个 bar 和文本标签
+                .join('g')
                 .attr('class', 'male-bar')
                 .each(function (d) {
                     const bar = d3.select(this);
                     bar.append('rect')
                     .attr('x', xScale('male'))
-                    .attr('y', d => yScale(d)) // 设置 y 坐标为 femaleData 的值
+                    .attr('y', d => yScale(d))
                     .attr('width', xScale.bandwidth())
                     .attr('height', d => Math.abs(yScale(d) - yScale(femaleData))) 
                     .style("fill", "#FA7F6F");
                     
                     bar.append('rect')
                     .attr('x', xScale('male'))
-                    .attr('y', yScale(femaleData)) // 设置 y 坐标为 differenceData 的值
+                    .attr('y', yScale(femaleData))
                     .attr('width', xScale.bandwidth())
                     .attr('height', Math.abs(yScale(0) - yScale(femaleData))) 
                     .style("fill", "#BEB8DC");
                     
                     bar.append('text')
-                        .attr('x', xScale('male') + xScale.bandwidth() / 2) // 文本标签居中
-                        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // 根据数据项的正负调整位置
-                        .attr('text-anchor', 'middle') // 水平居中对齐
-                        .style('fill', 'black') // 文本颜色
-                        .text(`${Math.abs(d)}%`); // 显示数据项的值
+                        .attr('x', xScale('male') + xScale.bandwidth() / 2)
+                        .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
+                        .attr('text-anchor', 'middle')
+                        .style('fill', 'black')
+                        .text(`${Math.abs(d)}%`);
                     })
         
         }}
@@ -171,12 +159,11 @@ export default function GroupOutcomeTestGender() {
             svg.selectAll('.female-bar').remove();
             svg.selectAll('.female-bar')
             .data(femaleData)
-            .join('g') // 使用 'g' 元素包装每个 bar 和文本标签
+            .join('g')
             .attr('class', 'female-bar')
             .each(function (d) {
                 const bar = d3.select(this);
         
-                // 创建矩形 bar
                 bar.append('rect')
                 .attr('x', xScale('female'))
                 .attr('y', d => (d >= 0 ? yScale(d) : yScale(0)))
@@ -184,25 +171,23 @@ export default function GroupOutcomeTestGender() {
                 .attr('height', d => Math.abs(yScale(0) - yScale(d)))
                 .style("fill", "#8ECFC9");
         
-                // 添加文本标签
                 bar.append('text')
-                .attr('x', xScale('female') + xScale.bandwidth() / 2) // 文本标签居中
-                .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // 根据数据项的正负调整位置
-                .attr('text-anchor', 'middle') // 水平居中对齐
-                .style('fill', 'black') // 文本颜色
-                .text(`${Math.abs(d)}%`); // 显示数据项的值
+                .attr('x', xScale('female') + xScale.bandwidth() / 2)
+                .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
+                .attr('text-anchor', 'middle')
+                .style('fill', 'black')
+                .text(`${Math.abs(d)}%`);
             });
         } 
         else {
             svg.selectAll('.male-bar').remove();
             svg.selectAll('.male-bar')
             .data(maleData)
-            .join('g') // 使用 'g' 元素包装每个 bar 和文本标签
+            .join('g')
             .attr('class', 'male-bar')
             .each(function (d) {
                 const bar = d3.select(this);
         
-                // 创建矩形 bar
                 bar.append('rect')
                 .attr('x', xScale('male'))
                 .attr('y', d => (d >= 0 ? yScale(d) : yScale(0)))
@@ -210,17 +195,15 @@ export default function GroupOutcomeTestGender() {
                 .attr('height', d => Math.abs(yScale(0) - yScale(d)))
                 .style("fill", "#BEB8DC");
         
-                // 添加文本标签
                 bar.append('text')
-                .attr('x', xScale('male') + xScale.bandwidth() / 2) // 文本标签居中
-                .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // 根据数据项的正负调整位置
-                .attr('text-anchor', 'middle') // 水平居中对齐
-                .style('fill', 'black') // 文本颜色
-                .text(`${Math.abs(d)}%`); // 显示数据项的值
+                .attr('x', xScale('male') + xScale.bandwidth() / 2)
+                .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
+                .attr('text-anchor', 'middle')
+                .style('fill', 'black')
+                .text(`${Math.abs(d)}%`);
             });
         
     }}
-    // 渲染 "difference" 数据
     svg.selectAll('.difference-bar')
     .data(differenceData)
     .join('rect')
@@ -230,19 +213,18 @@ export default function GroupOutcomeTestGender() {
     .attr('height', d => Math.abs(yScale(0) - yScale(d)))
     .attr('class', 'difference-bar')
     .style("fill", "#FA7F6F")
-    .on('mouseover', handleMouseover) // 鼠标悬浮时调用 handleMouseover 函数
+    .on('mouseover', handleMouseover)
     .on('mouseout', handleMouseout);
 
-    // Add text labels for the difference bars
     svg.selectAll('.difference-label')
     .data(differenceData)
     .join('text')
-    .attr('x', (d, i) => xScale('difference') + xScale.bandwidth() / 2) // center the text on the bar's position
-    .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5)) // position the text above the bar or above the x-axis depending on the data's sign
+    .attr('x', (d, i) => xScale('difference') + xScale.bandwidth() / 2)
+    .attr('y', d => (d >= 0 ? yScale(d) - 5 : yScale(0) - 5))
     .attr('class', 'difference-label')
-    .attr('text-anchor', 'middle') // center the text horizontally
-    .style('fill', 'black') // set the text color
-    .text(d=>`${d}%`); // display the data value
+    .attr('text-anchor', 'middle')
+    .style('fill', 'black')
+    .text(d=>`${d}%`);
     
 
 
@@ -253,7 +235,6 @@ export default function GroupOutcomeTestGender() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
          
-         {/* 1 title */}
         <Box display="flex" justifyContent="space-between" width="100%">
             <Typography 
                 variant="h5" 
@@ -269,7 +250,7 @@ export default function GroupOutcomeTestGender() {
                 title={
                     <span 
                     style={{ 
-                        fontSize: '2em'  // 调整为你需要的大小
+                        fontSize: '2em'
                     }}
                     >
                     The AI application is fairness if it has "equal" probability for females Predicted as Good Credit and males Predicted as Good Credit to have Rated Good Credit.
@@ -282,20 +263,17 @@ export default function GroupOutcomeTestGender() {
         </Box>
         
 
-        {/* 2 chart： fairness metric result */}
         <Box 
             display="flex"
             padding="6px"
             margin="12px" 
-            alignItems="center"  // 控制垂直方向的对齐
-            justifyContent="center" // 控制水平方向的对齐
+            alignItems="center"
+            justifyContent="center"
             height="400px"
-            //border={`2px solid #42a5f5`}
         >    
                 <svg ref={svgRef} > </svg>
           </Box>
 
-        {/* 3 Text Explanation */}
        <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", fontWeight: "bold"}}>
             Of <span style={{textDecoration: 'underline' }}>females predicted as Good Credit</span>, <span style={{ color: '#1976D2' }}>63%</span> have <span style={{textDecoration: 'underline' }}>Rated Good Credit</span>.
             <br />
@@ -305,7 +283,6 @@ export default function GroupOutcomeTestGender() {
         </Typography>
 
        
-        {/* 4 Image Button*/}
         <Box 
         display="flex"
         alignItems="center" 

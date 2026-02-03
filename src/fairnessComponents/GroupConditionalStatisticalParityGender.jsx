@@ -15,7 +15,6 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { Chart, BarController, BarElement, LinearScale, CategoryScale } from 'chart.js';
 
 import { useNavigate } from 'react-router-dom';
-//nevigate path：
 const CSPIMAGE_GENDER_PATH = "/explanationGender/CSPimage";
 
 Chart.register(BarController, BarElement, LinearScale, CategoryScale);
@@ -25,12 +24,11 @@ export default function GroupConditionalStatisticalParityGender() {
 
     const percentFormatter = (value) => `${value}%`; 
     
-    // for conditioanl statistical parity
-     const [condition, setCondition] = useState(10); //job,savings,employment,credit history
+     const [condition, setCondition] = useState(10);
      const [series, setSeries] = useState([{ data: [60, 84, 82], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter}, 
      { data: [91, 94, 87], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },  
      { data: [-31, -10, -5], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter } ]); 
-     const [conditionValues,setConditionValues] = useState(['Management/Officer', 'Skilled', 'Unskilled/Unemployed']);//设置不同condition下，不同的condition values 有什么，如job:unemployment,skilled等
+     const [conditionValues,setConditionValues] = useState(['Management/Officer', 'Skilled', 'Unskilled/Unemployed']);
      
      const handleChange = (event) => {
         const selectedCondition = event.target.value;
@@ -39,43 +37,43 @@ export default function GroupConditionalStatisticalParityGender() {
         let newSeriesData;
         let newConditionValues;
         switch(selectedCondition) {
-            case 10: // Job
+            case 10:
                 newSeriesData = [
-                    { data: [60, 84, 82], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},  // 红色& valueFormatter是hover时候，label的显示form
-                    { data: [91, 94, 87], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                    { data: [-31, -10, -5], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                    { data: [60, 84, 82], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},
+                    { data: [91, 94, 87], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },
+                    { data: [-31, -10, -5], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['Management/Officer', 'Skilled', 'Unskilled/Unemployed'];
                 break;
-            case 20: // Savings
+            case 20:
                 newSeriesData = [
-                    { data: [80, 100, 100], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},  // 红色& valueFormatter是hover时候，label的显示form
-                    { data: [91, 93, 100], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                    { data: [-11, 7, 0], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                    { data: [80, 100, 100], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},
+                    { data: [91, 93, 100], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },
+                    { data: [-11, 7, 0], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['<500DM/Unknown','500-1000 DM', '>=1000DM'];
                 break;
-            case 30: // Employment
+            case 30:
                 newSeriesData = [
-                    { data: [77, 89, 77], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},  // 红色& valueFormatter是hover时候，label的显示form
-                    { data: [74, 94, 96], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                    { data: [3, -5, -19], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                    { data: [77, 89, 77], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},
+                    { data: [74, 94, 96], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },
+                    { data: [3, -5, -19], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['Unemployed/<1 Year','1-4 Years', '>=4 Years'];
                 break;
-            case 40: // Credit History
+            case 40:
                 newSeriesData = [
-                    { data: [74,100, 94], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},  // 红色& valueFormatter是hover时候，label的显示form
-                    { data: [87,94, 100], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                    { data: [-13,6, -6], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                    { data: [74,100, 94], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},
+                    { data: [87,94, 100], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },
+                    { data: [-13,6, -6], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
-                newConditionValues = ['Paid back duly/Paid up/No credits','Delayed', 'Other Credits Existing'];//paidbackduly&no credits taken/paidup
+                newConditionValues = ['Paid back duly/Paid up/No credits','Delayed', 'Other Credits Existing'];
                 break;
             default:
                 newSeriesData = [
-                    { data: [60, 84, 82], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},  // 红色& valueFormatter是hover时候，label的显示form
-                    { data: [91, 94, 87], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                    { data: [-31, -10, -5], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                    { data: [60, 84, 82], label:'female', color: '#8ECFC9', valueFormatter:percentFormatter},
+                    { data: [91, 94, 87], label:'male', color: '#BEB8DC',valueFormatter:percentFormatter },
+                    { data: [-31, -10, -5], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['Management/Officer', 'Skilled', 'Unskilled/Unemployed'];             
         };
@@ -87,7 +85,6 @@ export default function GroupConditionalStatisticalParityGender() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
          
-            {/* 1 title */}
         <Box display="flex" justifyContent="space-between" width="100%">
             <Typography 
                 variant="h5" 
@@ -103,7 +100,7 @@ export default function GroupConditionalStatisticalParityGender() {
                 title={
                     <span 
                     style={{ 
-                        fontSize: '2em'  // 调整为你需要的大小
+                        fontSize: '2em'
                     }}
                     >
                     The AI application is fairness if it has "equal" probability for females and males with specific conditions to have good predicted credit.
@@ -116,7 +113,6 @@ export default function GroupConditionalStatisticalParityGender() {
         </Box>
 
 
-         {/* 2 Select Button */}
          <Box sx={{ minWidth: 130 }}>
             <FormControl fullWidth>
                 <InputLabel id="conditions">Condition</InputLabel>
@@ -135,15 +131,13 @@ export default function GroupConditionalStatisticalParityGender() {
             </FormControl>
         </Box>
 
-        {/* 3 chart： fairness metric result */}
         <Box 
             display="flex"
             padding="6px"
             margin="12px" 
-            alignItems="center"  // 控制垂直方向的对齐
-            justifyContent="center" // 控制水平方向的对齐
+            alignItems="center"
+            justifyContent="center"
             height="400px"
-            //border={`2px solid #42a5f5`}
         >    
                 <BarChart
                     xAxis={[{ scaleType: 'band', data: conditionValues }]}
@@ -157,9 +151,8 @@ export default function GroupConditionalStatisticalParityGender() {
                     />    
           </Box>
 
-        {/* 4 Text Explanation */}
         <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", fontWeight: "bold"}}>
-            {(() => {  //  ！！！No parameter needed here！
+            {(() => {
                 switch (condition) {
                     case 10:
                         return (
@@ -205,11 +198,8 @@ export default function GroupConditionalStatisticalParityGender() {
                         return null;
                 }
             })()}   
-             {/* {注意必须要有上面的括号/* the pattern (() => { ... })() defines an arrow function and immediately invokes it.  */}
-             {/* This is useful in JSX when we need to execute some logic inline and return a value or a component. */} 
         </Typography>
 
-        {/* 5 Image Button*/}
         <Box 
             display="flex"
             alignItems="center"  > 

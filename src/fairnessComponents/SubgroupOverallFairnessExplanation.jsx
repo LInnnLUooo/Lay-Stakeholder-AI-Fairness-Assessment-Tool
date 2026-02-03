@@ -13,8 +13,7 @@ import Paper from '@mui/material/Paper';
 
 export default function SubgroupOverallFairnessExplanation() {
 
-    // set selected metric：default： DP
-     const [metric, setMetric] = useState("Demographic Parity"); //different group fairness metrics
+     const [metric, setMetric] = useState("Demographic Parity");
    
      const handleChange = (event) => {
         const selectedMetric = event.target.value;
@@ -26,7 +25,6 @@ export default function SubgroupOverallFairnessExplanation() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {800}> 
          
-        {/* 1 title */}
         <Box display="flex" justifyContent="space-between" width="100%">
             <Typography 
                 variant="h5" 
@@ -41,7 +39,6 @@ export default function SubgroupOverallFairnessExplanation() {
         </Box>
 
 
-         {/* 2 Select Button */}
          <Box sx={{ minWidth: 130, margin: 2 }}>
             <FormControl fullWidth style={{width: '380px'}} variant="outlined">
                 <InputLabel id="metrics">Metric</InputLabel>
@@ -65,7 +62,6 @@ export default function SubgroupOverallFairnessExplanation() {
             </FormControl>
         </Box>
 
-         {/* 3 Selected Metric Title */}
          <Box display="flex" justifyContent="space-between" width="100%">
                 <Typography 
                     variant="body2" 
@@ -74,12 +70,12 @@ export default function SubgroupOverallFairnessExplanation() {
                     color="black" 
                     sx={{ flexGrow: 1, textAlign: 'left' }}
                 >
-                     {(() => {  //  ！！！No parameter needed here！
+                     {(() => {
                     switch (metric) {
                         case "Demographic Parity":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & gender subgroups </strong>to have good predicted credit.
@@ -87,7 +83,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Equal Opportunity":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different Rated Good Credit age & gender subgroups </strong> to have good predicted credit.
@@ -95,7 +91,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Predictive Equality":
                            return <span 
                            style={{ 
-                               fontSize: '2em'  // 调整为你需要的大小
+                               fontSize: '2em'
                            }}
                            >
                            The AI application is fairness if it has "equal" probability for<strong> different Rated Bad Credit age & gender subgroups</strong> to have good predicted credit.
@@ -103,7 +99,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Equalized Odds":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if Equal Opportunity and Predictive Equality meet the fairness requirement.
@@ -111,7 +107,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Outcome Test":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability fo <strong>different Predicted as Good Credit age & gender subgroups</strong> to have Rated Good Credit.
@@ -119,7 +115,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Conditional Statistical Parity: Job":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & gender subgroups with sepcific job conditions</strong> to have good predicted credit.
@@ -127,7 +123,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Conditional Statistical Parity: Savings":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & gender subgroups with sepcific savings conditions</strong> to have good predicted credit.
@@ -135,7 +131,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Conditional Statistical Parity: Employment":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & gender subgroups with sepcific employment conditions</strong> to have good predicted credit.
@@ -143,7 +139,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         case "Conditional Statistical Parity: Credit History":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & gender subgroups with sepcific credit history conditions</strong> to have good predicted credit.
@@ -151,7 +147,7 @@ export default function SubgroupOverallFairnessExplanation() {
                         default:
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & gender subgroups </strong>to have good predicted credit.
@@ -161,17 +157,15 @@ export default function SubgroupOverallFairnessExplanation() {
                 </Typography>  
             </Box>
 
-            {/* 4 chart： fairness metric result */}
             <Box 
                 display="flex"
                 padding="6px"
                 margin="20px" 
-                alignItems="center"  // 控制垂直方向的对齐
-                justifyContent="center" // 控制水平方向的对齐
-                //border={`2px solid #42a5f5`}
+                alignItems="center"
+                justifyContent="center"
             >    
     
-                    {(() => {  //  ！！！No parameter needed here！
+                    {(() => {
                     switch (metric) {
                         case "Demographic Parity":
                             return (
@@ -250,10 +244,9 @@ export default function SubgroupOverallFairnessExplanation() {
                 })()}  
             </Box>
 
-            {/* 4 Text Explanation */}
             <Paper elevation={3} sx={{ width: '85%', backgroundColor: '#f5f5f5', padding: '10px', margin: '50px',borderRadius: '8px' }}>
               <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", width: '95%', fontWeight: "bold"}}>
-              {(() => {  //  ！！！No parameter needed here！
+              {(() => {
                     switch (metric) {
                         case "Demographic Parity":
                             return (
@@ -348,8 +341,6 @@ export default function SubgroupOverallFairnessExplanation() {
                             return null;
                     }
                 })()}   
-                {/* {注意必须要有上面的括号/* the pattern (() => { ... })() defines an arrow function and immediately invokes it.  */}
-                {/* This is useful in JSX when we need to execute some logic inline and return a value or a component. */} 
             
               </Typography>
             </Paper>
@@ -363,14 +354,12 @@ export default function SubgroupOverallFairnessExplanation() {
 }
 
 function MetricChart({ data, domain,w}) {
-    // Scatter Plot 
     const svgRef = useRef();
     
     useEffect(()=>{
         
-    // step1：set up container dimensons & svg 
     
-    const h = 400; //height
+    const h = 400;
     const svg = d3.select(svgRef.current)
           .attr('width',w)
           .attr('height',h)
@@ -378,36 +367,32 @@ function MetricChart({ data, domain,w}) {
           .style('margin-top','20px')
     svg.selectAll("*").remove();
     
-    // step2：set up scaling
     const xScale = d3.scaleBand()
-          .domain(domain) // x value scale
-          .range([0, w])   // chart dimensions of x
+          .domain(domain)
+          .range([0, w])
           .padding(0.5)
     const yScale = d3.scaleLinear()
-          .domain([0, 100]) // x value scale
-          .range([h, 0]);    // chart dimensions of y     
+          .domain([0, 100])
+          .range([h, 0]);
 
-    // step3：set up axis           
-    const xAxis = d3.axisBottom(xScale).ticks(data.length); //  put the x scale in the X axis
-    const yAxis = d3.axisLeft(yScale).ticks(15); // ticks: number of dots in the axis
+    const xAxis = d3.axisBottom(xScale).ticks(data.length);
+    const yAxis = d3.axisLeft(yScale).ticks(15);
     svg.append('g')
         .call(xAxis)
         .attr('transform', `translate(0, ${h})`)
-        .style("font-size", "18px")// 将一个<g>元素添加到SVG元素中。<g>元素通常用于组合其他图形元素，例如坐标轴、标签等，以便进行位置和样式的集中管理
+        .style("font-size", "18px")
         .selectAll("text")  
-        .style("text-anchor", "end")  //middle： bar的正下方， end用于设置rotate角度的时候
-        .attr("dx", "0em") // 
-        .attr("dy", "0.7em") // Adjust as needed
+        .style("text-anchor", "end")
+        .attr("dx", "0em")
+        .attr("dy", "0.7em")
         .attr("transform", "rotate(-20)");
     svg.append('g').call(yAxis);
 
 
-    // step4：set up axis labelling
-    // svg.append('text').attr('x',w/3).attr('y',h+10).text('Equalized Odds'); 已经设置好位置了可以直接使用的，但是不需要，因为已经有单独的标题了。
     svg.append('text').attr('y',-40).attr('x',-120)
                 .attr('transform', 'rotate(-90)')
-                .style('text-anchor', 'middle') // 水平居中对齐
-                .style('dominant-baseline', 'middle') // 垂直居中对齐
+                .style('text-anchor', 'middle')
+                .style('dominant-baseline', 'middle')
                 .text('Fairness Results');
    
     const nonDifferenceData = data.filter((d, i) => domain[i] !== 'difference');
@@ -415,7 +400,6 @@ function MetricChart({ data, domain,w}) {
     
     const nonDifferenceDomain = domain.filter(d => d !== 'difference');
     
-    // 绘制柱子
     svg.selectAll('.non-difference-bar')
     .data(nonDifferenceData)
     .join('rect')
@@ -426,7 +410,6 @@ function MetricChart({ data, domain,w}) {
     .attr('height', d => Math.abs(yScale(0) - yScale(d)))
     .style("fill", "#8ECFC9");
     
-    // 添加文本标签
     svg.selectAll('.non-difference-label')
     .data(nonDifferenceData)
     .join('text')
@@ -438,17 +421,14 @@ function MetricChart({ data, domain,w}) {
     .text(d => `${d}%`);
 
     
-    //add hover functions in the useEffect  & before using them.
     function handleMouseoverDifference() {
         const maxValue = d3.max(nonDifferenceData);
         const minValue = d3.min(nonDifferenceData);
     
-        // 为最大值对应的bar设置浅蓝色
         svg.selectAll('.non-difference-bar')
         .filter(d => d === maxValue)
         .style('fill', '#4d94ff');
 
-        // 为最小值对应的bar设置黄色
         svg.selectAll('.non-difference-bar')
             .filter(d => d === minValue)
             .style('fill', 'yellow');
@@ -458,24 +438,22 @@ function MetricChart({ data, domain,w}) {
     function handleMouseoutDifference() {
         svg.selectAll('.non-difference-bar')
            .filter(d => d === d3.max(nonDifferenceData) || d === d3.min(nonDifferenceData))
-           .style('fill', '#8ECFC9');  // 恢复原始颜色
+           .style('fill', '#8ECFC9');
     }
     
-    //绘制difference bar
     svg.selectAll('.difference-bar')
     .data(differenceData)
     .join('rect')
     .attr('class', 'difference-bar')
-    .attr('x', xScale('difference')) // 因为只有一个 'difference' 类别，所以直接使用这个值
+    .attr('x', xScale('difference'))
     .attr('y', d => (d >= 0 ? yScale(d) : yScale(0)))
     .attr('width', xScale.bandwidth())
     .attr('height', d => Math.abs(yScale(0) - yScale(d)))
-    .style("fill", "#FA7F6F") // 使用与其他柱子不同的颜色以区分
+    .style("fill", "#FA7F6F")
     .on('mouseover', handleMouseoverDifference)
     .on('mouseout', handleMouseoutDifference);
     
 
-    // 添加文本标签
     svg.selectAll('.difference-label')
     .data(differenceData)
     .join('text')
@@ -495,16 +473,13 @@ function MetricChart({ data, domain,w}) {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
          
-           {/* 1 title */}
 
-        {/* 2 chart： fairness metric result */}
         <Box 
             display="flex"
             padding="6px"
             margin="12px" 
-            alignItems="center"  // 控制垂直方向的对齐
-            justifyContent="center" // 控制水平方向的对齐
-            //border={`2px solid #42a5f5`}
+            alignItems="center"
+            justifyContent="center"
         >    
                 <svg ref={svgRef} > </svg>
           </Box>
@@ -517,14 +492,12 @@ function MetricChart({ data, domain,w}) {
 }
 
 function MetricEOsChart({ data, domain,w}) {
-    // Scatter Plot 
     const svgRef = useRef();
     
     useEffect(()=>{
         
-    // step1：set up container dimensons & svg 
     
-    const h = 400; //height
+    const h = 400;
     const svg = d3.select(svgRef.current)
           .attr('width',w)
           .attr('height',h)
@@ -532,36 +505,32 @@ function MetricEOsChart({ data, domain,w}) {
           .style('margin-top','20px')
     svg.selectAll("*").remove();
     
-    // step2：set up scaling
     const xScale = d3.scaleBand()
-          .domain(domain) // x value scale
-          .range([0, w])   // chart dimensions of x
+          .domain(domain)
+          .range([0, w])
           .padding(0.5)
     const yScale = d3.scaleLinear()
-          .domain([0, 100]) // x value scale
-          .range([h, 0]);    // chart dimensions of y     
+          .domain([0, 100])
+          .range([h, 0]);
 
-    // step3：set up axis           
-    const xAxis = d3.axisBottom(xScale).ticks(data.length); //  put the x scale in the X axis
-    const yAxis = d3.axisLeft(yScale).ticks(15); // ticks: number of dots in the axis
+    const xAxis = d3.axisBottom(xScale).ticks(data.length);
+    const yAxis = d3.axisLeft(yScale).ticks(15);
     svg.append('g')
         .call(xAxis)
         .attr('transform', `translate(0, ${h})`)
-        .style("font-size", "18px")// 将一个<g>元素添加到SVG元素中。<g>元素通常用于组合其他图形元素，例如坐标轴、标签等，以便进行位置和样式的集中管理
+        .style("font-size", "18px")
         .selectAll("text")  
-        .style("text-anchor", "end")  //middle： bar的正下方， end用于设置rotate角度的时候
-        .attr("dx", "0em") // 
-        .attr("dy", "0.7em") // Adjust as needed
+        .style("text-anchor", "end")
+        .attr("dx", "0em")
+        .attr("dy", "0.7em")
         .attr("transform", "rotate(-20)");
     svg.append('g').call(yAxis);
 
 
-    // step4：set up axis labelling
-    // svg.append('text').attr('x',w/3).attr('y',h+10).text('Equalized Odds'); 已经设置好位置了可以直接使用的，但是不需要，因为已经有单独的标题了。
     svg.append('text').attr('y',-40).attr('x',-120)
                 .attr('transform', 'rotate(-90)')
-                .style('text-anchor', 'middle') // 水平居中对齐
-                .style('dominant-baseline', 'middle') // 垂直居中对齐
+                .style('text-anchor', 'middle')
+                .style('dominant-baseline', 'middle')
                 .text('Fairness Results');
    
     const nonDifferenceData = data.filter((d, i) => domain[i] !== 'Equalized Odds');
@@ -569,7 +538,6 @@ function MetricEOsChart({ data, domain,w}) {
     
     const nonDifferenceDomain = domain.filter(d => d !== 'Equalized Odds');
     
-    // 绘制柱子
     svg.selectAll('.non-difference-bar')
     .data(nonDifferenceData)
     .join('rect')
@@ -580,7 +548,6 @@ function MetricEOsChart({ data, domain,w}) {
     .attr('height', d => Math.abs(yScale(0) - yScale(d)))
     .style("fill", "#8ECFC9");
     
-    // 添加文本标签
     svg.selectAll('.non-difference-label')
     .data(nonDifferenceData)
     .join('text')
@@ -592,11 +559,9 @@ function MetricEOsChart({ data, domain,w}) {
     .text(d => `${d}%`);
 
     
-    //add hover functions in the useEffect  & before using them.
     function handleMouseoverDifference() {
         const maxValue = d3.max(nonDifferenceData);
     
-        // 为最大值对应的bar设置color
         svg.selectAll('.non-difference-bar')
         .filter(d => d === maxValue)
         .style('fill', "#FA7F6F");
@@ -607,24 +572,22 @@ function MetricEOsChart({ data, domain,w}) {
     function handleMouseoutDifference() {
         svg.selectAll('.non-difference-bar')
            .filter(d => d === d3.max(nonDifferenceData))
-           .style('fill', '#8ECFC9');  // 恢复原始颜色
+           .style('fill', '#8ECFC9');
     }
     
-    //绘制difference bar
     svg.selectAll('.difference-bar')
     .data(differenceData)
     .join('rect')
     .attr('class', 'difference-bar')
-    .attr('x', xScale('Equalized Odds')) // 因为只有一个 'difference' 类别，所以直接使用这个值
+    .attr('x', xScale('Equalized Odds'))
     .attr('y', d => (d >= 0 ? yScale(d) : yScale(0)))
     .attr('width', xScale.bandwidth())
     .attr('height', d => Math.abs(yScale(0) - yScale(d)))
-    .style("fill", "#FA7F6F") // 使用与其他柱子不同的颜色以区分
+    .style("fill", "#FA7F6F")
     .on('mouseover', handleMouseoverDifference)
     .on('mouseout', handleMouseoutDifference);
     
 
-    // 添加文本标签
     svg.selectAll('.difference-label')
     .data(differenceData)
     .join('text')
@@ -642,16 +605,13 @@ function MetricEOsChart({ data, domain,w}) {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
          
-           {/* 1 title */}
 
-        {/* 2 chart： fairness metric result */}
         <Box 
             display="flex"
             padding="6px"
             margin="12px" 
-            alignItems="center"  // 控制垂直方向的对齐
-            justifyContent="center" // 控制水平方向的对齐
-            //border={`2px solid #42a5f5`}
+            alignItems="center"
+            justifyContent="center"
         >    
                 <svg ref={svgRef} > </svg>
           </Box>

@@ -5,10 +5,10 @@ import { Box, Typography, useTheme } from '@mui/material';
 
 
 const StyledDashboardTitle = styled('div')({
-  background:  '#26a69a', // 背景色 '#8ac6d1' #4db6ac
-  width: '100%', // 铺满外层box的横向
-  color: 'black', // 文字颜色为白色
-  padding: '2px', // 添加一些内边距
+  background:  '#26a69a',
+  width: '100%',
+  color: 'black',
+  padding: '2px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -16,28 +16,23 @@ const StyledDashboardTitle = styled('div')({
   borderRadius: '10px',
 });
 
-// const Title = styled('div')({
-//   fontSize: '20px', // 标题字体大小
-//   fontWeight: 'bold', // 标题字体粗细
-//   margin: '4px 4px', // 上下外边距
-// });
 
 const Subtitle = styled('div')({
-  fontSize: '16px', // 副标题字体大小
-  textAlign: 'center', // 副标题居中
+  fontSize: '16px',
+  textAlign: 'center',
 });
 
 
 const ContentContainer = styled('div')({
   display: 'flex',
-  alignItems: 'center', // 垂直居中
-  justifyContent: 'center', // 水平居中
+  alignItems: 'center',
+  justifyContent: 'center',
   });
   
   const IconContainer = styled('div')({
-    marginRight: '8px', // 图标距离标题和副标题的右侧距离
+    marginRight: '8px',
     display: 'flex', 
-    alignItems: 'center', // 垂直居中
+    alignItems: 'center',
   });
 
 function Header({title,subtitle}) {
@@ -45,9 +40,6 @@ function Header({title,subtitle}) {
   return (
     <StyledDashboardTitle>
       <ContentContainer>
-        {/* <IconContainer>
-          <img src='/logo.png' alt="Logo" style={{ width: '50px', height: '50px' }} />
-        </IconContainer> */}
         
         <Typography 
         variant="h4" 

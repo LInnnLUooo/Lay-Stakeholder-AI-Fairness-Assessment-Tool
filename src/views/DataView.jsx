@@ -23,13 +23,10 @@ export default function DataView(selectedID) {
   };
   
   
-  // //selected ID 传进来了
-    // console.log(selectedID)
     const ID =  selectedID.selectedID;
     console.log(`ID: ${ID}, Type: ${typeof ID}`);
     
 
-    //set sutomatic scroll--> 在组件加载完毕或 ID 更改时滚动到保存的 ref
     const highlightedRowRef = useRef(null);
     const tableContainerRef = useRef(null);
     useEffect(() => {
@@ -46,7 +43,7 @@ export default function DataView(selectedID) {
 
     const data = useMemo(()=>creditdata,[])
     const columns = [
-        { accessorKey: 'id', header: 'ID',  className: 'height-30',getCanFilter: () => true,type:'number' },//field为对应数据中的key，headerName为显示在tabel中的column name
+        { accessorKey: 'id', header: 'ID',  className: 'height-30',getCanFilter: () => true,type:'number' },
         { accessorKey: 'Duration', header: 'Duration', className: 'height-30',getCanFilter: () => true },
         { accessorKey: 'Credit Amount', header: 'Credit Amount',  className: 'height-30',getCanFilter: () => true }, 
         { accessorKey: 'Installment Rate', header: 'Installment Rate',  className: 'height-30' ,getCanFilter: () => true,type:'number'},
@@ -74,7 +71,6 @@ export default function DataView(selectedID) {
                 cell: (params) => {
                   const value = params.getValue();
 
-                    // 根据 'Good' 或 'Bad' 的值来选择图像
                     const imageSource = value === 'Good' ? '/GoodIcon.png' : '/BadIcon.png';
             
                     return (
@@ -95,7 +91,6 @@ export default function DataView(selectedID) {
                 cell: (params) => {
                   const value = params.getValue();
 
-                    // 根据 'Good' 或 'Bad' 的值来选择图像
                     const imageSource = value === 'Good' ? '/GoodIcon.png' : '/BadIcon.png';
             
                     return (
@@ -112,15 +107,12 @@ export default function DataView(selectedID) {
         { accessorKey: 'Probability', header: 'Probability', className: 'width-130 height-30 sticky-right-column1',
             getCanFilter: () => false,  
             cell: (params) => {
-              // 获取概率数据
-              const probabilities = params.getValue();// 这里假设 params.value 是一个包含两个概率值的数组 [0.21, 0.79]
+              const probabilities = params.getValue();
               
-              // 计算柱状图的宽度，假设容器宽度为 100px
               const maxWidth = 100;
               const bar1Width = Math.round(probabilities[0] * maxWidth);
               const bar2Width = maxWidth - bar1Width;
               
-              // 返回包含柱状图的 JSX
 
                   return (
                   <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -128,24 +120,22 @@ export default function DataView(selectedID) {
                       <div
                           style={{
                               width: `${bar1Width}px`,
-                              height: '20px', // 柱状图高度
-                              backgroundColor: '#FF3366', // 柱状图颜色
+                              height: '20px',
+                              backgroundColor: '#FF3366',
                               fontSize: '8px'
                           }}
                           >
-                          {/* {probabilities[0]} */}
                           </div>
                       </Tooltip>
                       <Tooltip title={`Probability of Good Credit: ${probabilities[1]}`}>
                           <div
                           style={{
                               width: `${bar2Width}px`,
-                              height: '20px', // 柱状图高度
-                              backgroundColor: '#33CC33', // 柱状图颜色
+                              height: '20px',
+                              backgroundColor: '#33CC33',
                               fontSize: '8px'
                           }}
                           >
-                          {/* {probabilities[1]} */}
                           </div>
                       </Tooltip>
                   </div>
@@ -171,8 +161,7 @@ export default function DataView(selectedID) {
         state: {
         sorting: sorting,
         globalFilter: filtering,
-        columnFilters: columnFilters, // 添加列过滤状态
-          // pageSize:20
+        columnFilters: columnFilters,
         },
         onSortingChange: setSorting,
         onGlobalFilterChange: setFiltering,
@@ -186,7 +175,6 @@ export default function DataView(selectedID) {
 
     function ColumnFilter({ column }) {
 
-      // input
       const [localFilterValue, setLocalFilterValue] = useState(column.getFilterValue() || "");      
 
       const sortedUniqueValues = 
@@ -200,7 +188,7 @@ export default function DataView(selectedID) {
       )
       
       if (column.id === 'Probability') {
-        return null;  // 或者返回 <div></div> 如果你想保留空间
+        return null;
       }
       
       if (column.columnDef.type === 'number') {
@@ -252,11 +240,6 @@ export default function DataView(selectedID) {
         </datalist>
 
         <input
-          // type="text"
-          // value={localFilterValue}
-          // onChange={(e) => setLocalFilterValue(e.target.value)}
-          // onBlur={handleTextBlur}
-          // placeholder={`Search...`}
           type="text"
           value={localFilterValue ?? ''}
           onChange={e => column.setFilterValue(e.target.value)}
@@ -270,13 +253,6 @@ export default function DataView(selectedID) {
     
     return (
         <div style={{ width: '100%',height:'380px'}}>
-          {/* delete global searching */}
-          {/* <input
-            type='text'
-            value={filtering}
-            onChange={e => setFiltering(e.target.value)}
-            placeholder={`Search anthing globally...`}
-          /> */}
           <div style={{ width: '100%',height:'360px',borderRadius: '8px', boxShadow: '0px 4px 12px #7986cb',paddingLeft: '6px' }} className="scroll-container" ref={tableContainerRef}>
             <table >
 
@@ -323,7 +299,6 @@ export default function DataView(selectedID) {
                         )}
                         {header.column.getCanFilter() ? (
                           <div>
-                            {/* <ColumnFilter column={header.column} onClick={(e) => e.stopPropagation()} /> */}
                             <ColumnFilter column={header.column} />
                           </div>
                         ) : null}
@@ -337,8 +312,8 @@ export default function DataView(selectedID) {
               <tbody>
                 {table.getRowModel().rows.map(row => (
                   <tr key={row.id} 
-                  className={row.original.id === ID ? 'highlight' : '' }// highlight the selected row
-                  ref={row.original.id === ID ? highlightedRowRef : null}  // 为匹配的行设置 ref 用于自动滚动到顶部
+                  className={row.original.id === ID ? 'highlight' : '' }
+                  ref={row.original.id === ID ? highlightedRowRef : null}
                   >
                     {row.getVisibleCells().map(cell => (
                       <td key={cell.id} className={cell.column.columnDef.className} >

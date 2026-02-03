@@ -14,9 +14,8 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
-import creditData from '../data/results.json';  // 导入 JSON 数据
+import creditData from '../data/results.json';
 
-// 不符合counterfactual fairness（基于外籍工作人员）的数据ID： [  1  67 103 124 166]  --- json: id+1
 const individualImage = '/individual.png';
 const notCFindividual = [
   {
@@ -47,7 +46,7 @@ const notCFindividual = [
 ]
 
 const data = [
-  { value: 195, label: 'Predictions Unchanged', p: "97.5%" ,color: '#81C784'  }, // 可以随意扩展data的属性, color直接对应成颜色
+  { value: 195, label: 'Predictions Unchanged', p: "97.5%" ,color: '#81C784'  },
   { value: 5, label: 'Predictions Changed', p: "2.5%", color: '#e57373' },
 ];
 
@@ -89,32 +88,29 @@ export default function ForeignerCounterfactualWorld (){
         <Grid container spacing={2} sx={{ marginTop: 2 }}>
         
         <Grid item xs={7}>    
-          {/* 1 title */}
           <Typography variant="h6" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold',textAlign: 'left'  }}>
                 Fairness Result
           </Typography>
 
-          {/* 2  chart*/}
           <PieChart
               series={[
                 {
-                  arcLabel: (item) => `${item.p}`, //`${item.label} (${item.value})`
+                  arcLabel: (item) => `${item.p}`,
                   arcLabelMinAngle: 60,
                   data,
                   highlightScope: { faded: 'global', highlighted: 'item' },
                   faded: { innerRadius: 30, additionalRadius: -30 },  
-                  cx: 170, // piechart 在x轴方向的位置
+                  cx: 170,
                 },
               ]}
               
               sx={{
-                "--ChartsLegend-rootOffsetX": "-350px", //legend的位置
-                "--ChartsLegend-rootOffsetY": "0px", //legend的位置
+                "--ChartsLegend-rootOffsetX": "-350px",
+                "--ChartsLegend-rootOffsetY": "0px",
               }}
               {...size}
             />
 
-            {/* 3  text explanation*/}
             <Paper elevation={3} sx={{ width: '75%', backgroundColor: '#f5f5f5', padding: '10px', margin: '20px',borderRadius: '8px' }}>
               <Typography variant="h6" color="text.secondary" sx={{ margin: "12px",color: "black", width: '95%', fontWeight: "bold"}}>
                 Of the total individuals, for <span style={{ color: '#1976D2' }}>97.5% (195)</span>  of them, 
@@ -124,12 +120,10 @@ export default function ForeignerCounterfactualWorld (){
               </Typography>
             </Paper>
             
-            {/* 4 image title */}
             <Typography variant="h6" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold',textAlign: 'left'  }}>
                   Individuals Violating Counterfactual Fairness
             </Typography>
 
-            {/* 5 image list */}
             <ImageList sx={{ width: 500 }} cols={3} rowHeight={170}>
                 {notCFindividual.map((item) => ( 
                   <ImageListItem key={item.id} className="ImageListItem" onClick={() => handleItemClick(item)}>
@@ -159,13 +153,13 @@ export default function ForeignerCounterfactualWorld (){
           <Grid item xs={5}>
           {selectedData && (
             <Paper elevation={3} sx={{
-              width: '80%',               // 宽度设置为父容器的60%
-              backgroundColor: '#FFE5CF', // 背景颜色为浅橙色
-              padding: '20px',            // 内边距设置为20px
-              margin: '20px auto',        // 外边距为20px，并自动居中
-              borderRadius: '12px',       // 边框半径设置为12px
-              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', // 自定义阴影效果
-              alignSelf: 'flex-start'  // 添加这一行
+              width: '80%',
+              backgroundColor: '#FFE5CF',
+              padding: '20px',
+              margin: '20px auto',
+              borderRadius: '12px',
+              boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+              alignSelf: 'flex-start'
             }}>
               <Typography variant="h3" gutterBottom sx={{ textAlign: 'center',fontWeight: 'bold' }}>
                 ID: {selectedData.id}

@@ -20,11 +20,9 @@ import Paper from '@mui/material/Paper';
 
 import * as dataG from '../data/gendergroups.js';
 
-// import & set: images + group data 
-const femaleImage = '/female.png';// The common image source for 'female'，注意斜杠一定不可以少。有了斜杠，无论路由路径如何变化，都会从绝对路径加载找到图片。否则切换路由使用相对路径，容易找不到。
+const femaleImage = '/female.png';
 const maleImage = '/male.png'; 
 
-//1.1 Job & Female
 const group_predGood_jobMangagement_female = dataG.group_predGood_jobMangagement_female_IDs.map((id) => ({
   source: femaleImage,
   id: id,
@@ -55,7 +53,6 @@ const group_predBad_jobUnskilled_female = dataG.group_predBad_jobUnskilled_femal
   id: id,
 })); 
 
-// female 总数：
 const totalFemale = 
     group_predGood_jobMangagement_female.length +
     group_predBad_jobMangagement_female.length +
@@ -65,7 +62,6 @@ const totalFemale =
     group_predBad_jobUnskilled_female.length;
 
 
-//1.2 Job & Male
 const group_predGood_jobMangagement_male = dataG.group_predGood_jobMangagement_male_IDs.map((id) => ({
   source: maleImage,
   id: id,
@@ -96,7 +92,6 @@ const group_predBad_jobUnskilled_male = dataG.group_predBad_jobUnskilled_male_ID
   id: id,
 })); 
 
-// male 总数：
 const totalMale = 
     group_predGood_jobMangagement_male.length +
     group_predBad_jobMangagement_male.length +
@@ -105,7 +100,6 @@ const totalMale =
     group_predGood_jobUnskilled_male.length +
     group_predBad_jobUnskilled_male.length;
 
-//2.1 Savings: female
 const group_predGood_savingsUnknown_female = dataG.group_predGood_savingsUnknown_female_IDs.map((id) => ({
   source: femaleImage,
   id: id,
@@ -144,7 +138,6 @@ const totalFemaleSavings =
     group_predGood_savingsHigh_female.length +
     group_predBad_savingsHigh_female.length;
 
-//2.2 Savings: male
 const group_predGood_savingsUnknown_male = dataG.group_predGood_savingsUnknown_male_IDs.map((id) => ({
   source: maleImage,
   id: id,
@@ -183,7 +176,6 @@ const totalMaleSavings =
     group_predGood_savingsHigh_male.length +
     group_predBad_savingsHigh_male.length;
 
-//3.1 employment Female
 const group_predGood_employmentUnemployed_female = dataG.group_predGood_employmentUnemployed_female_IDs.map((id) => ({
   source: femaleImage,
   id: id,
@@ -222,7 +214,6 @@ const totalFemaleEmployment =
     group_predGood_employmentHigh_female.length +
     group_predBad_employmentHigh_female.length;
 
-//3.2 employment Male
 const group_predGood_employmentUnemployed_male = dataG.group_predGood_employmentUnemployed_male_IDs.map((id) => ({
   source: maleImage,
   id: id,
@@ -261,7 +252,6 @@ const totalMaleEmployment =
     group_predGood_employmentHigh_male.length +
     group_predBad_employmentHigh_male.length;
 
-//4.1 creditHistory Female
 const group_predGood_creditHistoryPaid_female = dataG.group_predGood_creditHistoryPaid_female_IDs.map((id) => ({
   source: femaleImage,
   id: id,
@@ -300,7 +290,6 @@ const totalFemaleCH =
     group_predGood_creditHistoryOthers_female.length +
     group_predBad_creditHistoryOthers_female.length;
 
-//4.2 creditHistory male
 const group_predGood_creditHistoryPaid_male = dataG.group_predGood_creditHistoryPaid_male_IDs.map((id) => ({
   source: maleImage,
   id: id,
@@ -339,7 +328,6 @@ const totalMaleCH =
     group_predGood_creditHistoryOthers_male.length +
     group_predBad_creditHistoryOthers_male.length;
 
-//CSP——condition:Job Image explanation component
 function JobGender({ selectedID, handleItemClick }){
   const theme = useTheme(); 
 
@@ -350,39 +338,32 @@ function JobGender({ selectedID, handleItemClick }){
           <Box display="flex" flexDirection="column" alignItems="center" 
           
           borderRight={`4px solid ${theme.palette.primary.main}`}> 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Female
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalFemale})
                   </Typography>
                   
 
-                  {/* 2.1.2 female GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Management/Officer: <br/>{group_predGood_jobMangagement_female.length}
@@ -398,7 +379,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -408,7 +389,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -417,7 +398,6 @@ function JobGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           Skilled:<br/> {group_predGood_jobSkilled_female.length}
@@ -434,7 +414,7 @@ function JobGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -444,7 +424,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -453,7 +433,6 @@ function JobGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Unskilled/Unemployed:<br/> {group_predGood_jobUnskilled_female.length}
@@ -470,7 +449,7 @@ function JobGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -480,7 +459,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -493,25 +472,20 @@ function JobGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 female BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 Management/Officer: <br/>{group_predBad_jobMangagement_female.length}
@@ -528,7 +502,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -538,7 +512,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -547,7 +521,6 @@ function JobGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Skilled:<br/> {group_predBad_jobSkilled_female.length}
@@ -564,7 +537,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -574,7 +547,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -583,7 +556,6 @@ function JobGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" backgroundColor="#FDF5ED" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Unskilled/Unemployed:<br/>{group_predBad_jobUnskilled_female.length}
@@ -600,7 +572,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -610,7 +582,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -626,42 +598,33 @@ function JobGender({ selectedID, handleItemClick }){
 
           <Box display="flex" flexDirection="column" alignItems="center" 
           
-          //borderRight={`4px solid ${theme.palette.primary.main}`}
           > 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Male
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalMale})
                   </Typography>
                   
 
-                  {/* 2.1.2 male GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Management/Officer: <br/>{group_predGood_jobMangagement_male.length}
@@ -677,7 +640,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -687,7 +650,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -696,7 +659,6 @@ function JobGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           Skilled:<br/> {group_predGood_jobSkilled_male.length}
@@ -713,7 +675,7 @@ function JobGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -723,7 +685,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -732,7 +694,6 @@ function JobGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Unskilled/Unemployed: <br/>{group_predGood_jobUnskilled_male.length}
@@ -749,7 +710,7 @@ function JobGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -759,7 +720,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -772,25 +733,20 @@ function JobGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 male BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 Management/Officer: <br/>{group_predBad_jobMangagement_male.length}
@@ -807,7 +763,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -817,7 +773,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -826,7 +782,6 @@ function JobGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Skilled: <br/>{group_predBad_jobSkilled_male.length}
@@ -843,7 +798,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -853,7 +808,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -862,7 +817,6 @@ function JobGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  backgroundColor="#FDF5ED"alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Unskilled/Unemployed: <br/>{group_predBad_jobUnskilled_male.length}
@@ -879,7 +833,7 @@ function JobGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -889,7 +843,7 @@ function JobGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -907,7 +861,6 @@ function JobGender({ selectedID, handleItemClick }){
     );
 }
 
-//CSP——condition:Savings
 function SavingsGender({ selectedID, handleItemClick }){
   const theme = useTheme(); 
 
@@ -920,40 +873,32 @@ function SavingsGender({ selectedID, handleItemClick }){
           <Box display="flex" flexDirection="column" alignItems="center" 
           
           borderRight={`4px solid ${theme.palette.primary.main}`}> 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Female
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalFemaleSavings})
                   </Typography>
                   
 
-                  {/* 2.1.2 female GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     {"<"}500DM/Unknown <br/>{group_predGood_savingsUnknown_female.length}
@@ -969,7 +914,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -979,7 +924,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -988,7 +933,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                   500-1000 DM:<br/> {group_predGood_savingsMedium_female.length}
@@ -1005,7 +949,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1015,7 +959,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1024,7 +968,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       {">="}1000DM:<br/> {group_predGood_savingsHigh_female.length}
@@ -1041,7 +984,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1051,7 +994,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1064,25 +1007,20 @@ function SavingsGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 female BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 {"<"}500DM/Unknown <br/>{group_predBad_savingsUnknown_female.length}
@@ -1099,7 +1037,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1109,7 +1047,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1118,7 +1056,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 500-1000 DM:<br/> {group_predBad_savingsMedium_female.length}
@@ -1135,7 +1072,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1145,7 +1082,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1154,7 +1091,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" backgroundColor="#FDF5ED" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     {">="}1000DM:<br/>{group_predBad_savingsHigh_female.length}
@@ -1171,7 +1107,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1181,7 +1117,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1197,42 +1133,33 @@ function SavingsGender({ selectedID, handleItemClick }){
 
           <Box display="flex" flexDirection="column" alignItems="center" 
           
-          //borderRight={`4px solid ${theme.palette.primary.main}`}
           > 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Male
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalMaleSavings})
                   </Typography>
                   
 
-                  {/* 2.1.2 male GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     {"<"}500DM/Unknown <br/>{group_predGood_savingsUnknown_male.length}
@@ -1248,7 +1175,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -1258,7 +1185,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -1267,7 +1194,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           500-1000 DM:<br/> {group_predGood_savingsMedium_male.length}
@@ -1284,7 +1210,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1294,7 +1220,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1303,7 +1229,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       {">="}1000DM: <br/>{group_predGood_savingsHigh_male.length}
@@ -1320,7 +1245,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1330,7 +1255,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1343,25 +1268,20 @@ function SavingsGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 male BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 {"<"}500DM/Unknown <br/>{group_predBad_savingsUnknown_male.length}
@@ -1378,7 +1298,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1388,7 +1308,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1397,7 +1317,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 500-1000 DM: <br/>{group_predBad_savingsMedium_male.length}
@@ -1414,7 +1333,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1424,7 +1343,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1433,7 +1352,6 @@ function SavingsGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  backgroundColor="#FDF5ED"alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     {">="}1000DM: <br/>{group_predBad_savingsHigh_male.length}
@@ -1450,7 +1368,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1460,7 +1378,7 @@ function SavingsGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1479,7 +1397,6 @@ function SavingsGender({ selectedID, handleItemClick }){
 }
 
 
-//CSP——condition:employment Image explanation component
 function EmploymentGender({ selectedID, handleItemClick }){
   const theme = useTheme(); 
 
@@ -1490,40 +1407,32 @@ function EmploymentGender({ selectedID, handleItemClick }){
           <Box display="flex" flexDirection="column" alignItems="center" 
           
           borderRight={`4px solid ${theme.palette.primary.main}`}> 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Female
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalFemaleEmployment})
                   </Typography>
                   
 
-                  {/* 2.1.2 female GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Unemployed/{"<"}1 Year: <br/>{group_predGood_employmentUnemployed_female.length}
@@ -1539,7 +1448,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -1549,7 +1458,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -1558,7 +1467,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           1-4 Years:<br/> {group_predGood_employmentMedium_female.length}
@@ -1575,7 +1483,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1585,7 +1493,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1594,7 +1502,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       {">="}4 Years:<br/> {group_predGood_employmentHigh_female.length}
@@ -1611,7 +1518,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1621,7 +1528,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1634,25 +1541,20 @@ function EmploymentGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 female BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 Unemployed/{"<"}1 Year: <br/>{group_predBad_employmentUnemployed_female.length}
@@ -1669,7 +1571,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1679,7 +1581,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1688,7 +1590,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       1-4 Years:<br/> {group_predBad_employmentMedium_female.length}
@@ -1705,7 +1606,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1715,7 +1616,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1724,7 +1625,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" backgroundColor="#FDF5ED" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     {">="}4 Years:<br/>{group_predBad_employmentHigh_female.length}
@@ -1741,7 +1641,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1751,7 +1651,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1767,42 +1667,33 @@ function EmploymentGender({ selectedID, handleItemClick }){
 
           <Box display="flex" flexDirection="column" alignItems="center" 
           
-          //borderRight={`4px solid ${theme.palette.primary.main}`}
           > 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Male
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalMaleEmployment})
                   </Typography>
                   
 
-                  {/* 2.1.2 male GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Unemployed/{"<"}1 Year: <br/>{group_predGood_employmentUnemployed_male.length}
@@ -1818,7 +1709,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -1828,7 +1719,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -1837,7 +1728,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           1-4 Years:<br/> {group_predGood_employmentMedium_male.length}
@@ -1854,7 +1744,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1864,7 +1754,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1873,7 +1763,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       {">="}4 Years: <br/>{group_predGood_employmentHigh_male.length}
@@ -1890,7 +1779,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -1900,7 +1789,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -1913,25 +1802,20 @@ function EmploymentGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 male BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 Unemployed/{"<"}1 Year: <br/>{group_predBad_employmentUnemployed_male.length}
@@ -1948,7 +1832,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1958,7 +1842,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -1967,7 +1851,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       1-4 Years: <br/>{group_predBad_employmentMedium_male.length}
@@ -1984,7 +1867,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -1994,7 +1877,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2003,7 +1886,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  backgroundColor="#FDF5ED"alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     {">="}4 Years: <br/>{group_predBad_employmentHigh_male.length}
@@ -2020,7 +1902,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2030,7 +1912,7 @@ function EmploymentGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2048,7 +1930,6 @@ function EmploymentGender({ selectedID, handleItemClick }){
     );
 }
 
-//CSP——condition:Job Image explanation component
 function CreditHistoryGender({ selectedID, handleItemClick }){
   const theme = useTheme(); 
 
@@ -2059,40 +1940,32 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
           <Box display="flex" flexDirection="column" alignItems="center" 
           
           borderRight={`4px solid ${theme.palette.primary.main}`}> 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Female
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalFemaleCH})
                   </Typography>
                   
 
-                  {/* 2.1.2 female GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Paid back duly/Paid up/No credits: <br/>{group_predGood_creditHistoryPaid_female.length}
@@ -2108,7 +1981,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -2118,7 +1991,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -2127,7 +2000,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           Delayed:<br/> {group_predGood_creditHistoryDelayed_female.length}
@@ -2144,7 +2016,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -2154,7 +2026,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -2163,7 +2035,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Other Credits Existing:<br/> {group_predGood_creditHistoryOthers_female.length}
@@ -2180,7 +2051,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -2190,7 +2061,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -2203,25 +2074,20 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 female BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 Paid back duly/Paid up/No credits: <br/>{group_predBad_creditHistoryPaid_female.length}
@@ -2238,7 +2104,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2248,7 +2114,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2257,7 +2123,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Delayed:<br/> {group_predBad_creditHistoryDelayed_female.length}
@@ -2274,7 +2139,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2284,7 +2149,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2293,7 +2158,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" backgroundColor="#FDF5ED" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Other Credits Existing:<br/>{group_predBad_creditHistoryOthers_female.length}
@@ -2310,7 +2174,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2320,7 +2184,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2336,42 +2200,33 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
 
           <Box display="flex" flexDirection="column" alignItems="center" 
           
-          //borderRight={`4px solid ${theme.palette.primary.main}`}
           > 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Male
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {totalMaleCH})
                   </Typography>
                   
 
-                  {/* 2.1.2 male GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center"  backgroundColor="#D3EFFE" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Paid back duly/Paid up/No credits: <br/>{group_predGood_creditHistoryPaid_male.length}
@@ -2387,7 +2242,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -2397,7 +2252,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -2406,7 +2261,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#F9FCA4" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                           Delayed:<br/> {group_predGood_creditHistoryDelayed_male.length}
@@ -2423,7 +2277,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -2433,7 +2287,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -2442,7 +2296,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                     </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FFDEBB" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Other Credits Existing: <br/>{group_predGood_creditHistoryOthers_male.length}
@@ -2459,7 +2312,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -2469,7 +2322,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -2482,25 +2335,20 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 male BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
-                    //width = {450}
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， job condition 1*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  backgroundColor="#EEF9FC" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                 Paid back duly/Paid up/No credits: <br/>{group_predBad_creditHistoryPaid_male.length}
@@ -2517,7 +2365,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2527,7 +2375,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2536,7 +2384,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 2*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" backgroundColor="#FDFDEB" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                       Delayed: <br/>{group_predBad_creditHistoryDelayed_male.length}
@@ -2553,7 +2400,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2563,7 +2410,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2572,7 +2419,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， job condition 3*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  backgroundColor="#FDF5ED"alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold',textAlign: 'center'}}>
                                     Other Credits Existing: <br/>{group_predBad_creditHistoryOthers_male.length}
@@ -2589,7 +2435,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -2599,7 +2445,7 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -2627,7 +2473,6 @@ function CreditHistoryGender({ selectedID, handleItemClick }){
 
 
 export default function GroupConditionalStatisticalParityImageGender({ selectedID, handleItemClick }) {
-  //condition selection
   const [selectedCondition, setSelectedCondition] = useState("Job");
 
   const theme = useTheme(); 
@@ -2640,7 +2485,6 @@ export default function GroupConditionalStatisticalParityImageGender({ selectedI
       border={`2px solid #42a5f5`} 
       padding="3px"> 
 
-          {/* 1. Header & condition selector*/}
           <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
               Conditional Statistical Parity for Group Fairness
           </Typography>
@@ -2649,7 +2493,6 @@ export default function GroupConditionalStatisticalParityImageGender({ selectedI
           <Box display="flex" 
             justifyContent="center" 
             padding="3px">
-                {/* RadioGroup */}
                 <FormControl>
                           <FormLabel id="condition-selection-label" sx={{ textAlign: 'left' }}>Choose a condition</FormLabel>
                           <RadioGroup
@@ -2667,23 +2510,19 @@ export default function GroupConditionalStatisticalParityImageGender({ selectedI
                         </FormControl>
            </Box>
 
-            {/* 3 Group Selector*/}
             <Box 
                 display="flex"
                 padding="6px"
-                alignItems="flex-start"  // 控制垂直方向的对齐
-                justifyContent="flex-end" // 控制水平方向的对齐
-                //border={`2px solid #42a5f5`}
+                alignItems="flex-start"
+                justifyContent="flex-end"
                 
             >    
-                    {/* 根据当前的 radio 选择值，动态地渲染相应的 SVG 组件。 */}
                     {selectedCondition === "Job" &&  <JobGender selectedID={selectedID} handleItemClick={handleItemClick} />}
                     {selectedCondition === "Savings" && <SavingsGender  selectedID={selectedID} handleItemClick={handleItemClick} />}
                     {selectedCondition === "Employment" && <EmploymentGender selectedID={selectedID} handleItemClick={handleItemClick}  />}
                     {selectedCondition === "Credit History" && <CreditHistoryGender selectedID={selectedID} handleItemClick={handleItemClick} />}
             </Box>
             
-             {/* 4. text exP*/}    
              <Paper elevation={3} sx={{ width: '98%', backgroundColor: '#f5f5f5', padding: '10px', margin: '10px',borderRadius: '8px' }}>
                 <Typography variant="h6" component="div" gutterBottom color="primary"
                  >

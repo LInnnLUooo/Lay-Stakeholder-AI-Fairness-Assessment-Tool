@@ -8,8 +8,7 @@ import { useTheme } from '@mui/material/styles';
 
 
 const data = [
-  { value: 200, label: 'Predictions Unchanged', p: "100%" ,color: '#81C784'  }, // 可以随意扩展data的属性, color直接对应成颜色
-  //{ value: 0, label: 'Predictions Changed', p: "0%", color: '#e57373' },
+  { value: 200, label: 'Predictions Unchanged', p: "100%" ,color: '#81C784'  },
 ];
 
 const size = {
@@ -26,32 +25,29 @@ export default function IndividualFairnessForeignerCounterfactualWorld ({selecte
             flexDirection="column"
             padding="3px">
 
-          {/* 1 title */}
           <Typography variant="body2" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold',textAlign: 'left'  }}>
                 Fairness Result
           </Typography>
 
-          {/* 2  chart*/}
           <PieChart
               series={[
                 {
-                  arcLabel: (item) => `${item.p}`, //`${item.label} (${item.value})`
+                  arcLabel: (item) => `${item.p}`,
                   arcLabelMinAngle: 60,
                   data,
                   highlightScope: { faded: 'global', highlighted: 'item' },
                   faded: { innerRadius: 30, additionalRadius: -30 },  
-                  cx: 170, // piechart 在x轴方向的位置
+                  cx: 170,
                 },
               ]}
               
               sx={{
-                "--ChartsLegend-rootOffsetX": "-350px", //legend的位置
-                "--ChartsLegend-rootOffsetY": "0px", //legend的位置
+                "--ChartsLegend-rootOffsetX": "-350px",
+                "--ChartsLegend-rootOffsetY": "0px",
               }}
               {...size}
             />
 
-            {/* 3  text explanation*/}
             <Paper elevation={3} sx={{ width: '85%', backgroundColor: '#f5f5f5', padding: '10px', margin: '20px',borderRadius: '8px' }}>
               <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", width: '95%', fontWeight: "bold"}}>
                 Of the total individuals, for <span style={{ color: '#1976D2' }}>100% (197)</span>  of them, 

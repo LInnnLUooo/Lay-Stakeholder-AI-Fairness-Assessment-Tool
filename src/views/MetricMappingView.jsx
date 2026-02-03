@@ -24,7 +24,6 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 
-// import group fairness exploration for these 20 features
 import GroupFairnessExplorationOverall from '../groupFairnessExploration/GroupFairnessExplorationOverall';
 import DurationGroupFairnessExploration from '../groupFairnessExploration/DurationGroupFairnessExploration';
 import CreditAmountGroupFairnessExploration from '../groupFairnessExploration/CreditAmountGroupFairnessExploration';
@@ -51,10 +50,10 @@ import IndividualFairnessMetricsOverall from '../individualFairnessExploration/I
 
 import { styled } from '@mui/system';
 const Image = styled('img')({
-    width: '25px', // 根据需要调整图像大小
+    width: '25px',
     height: '25px',
-    verticalAlign: 'middle', // 确保图像与文本对齐
-    marginRight: '6px', // 调整图像与文本之间的间距
+    verticalAlign: 'middle',
+    marginRight: '6px',
   });
 const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => {
     const completeFeatureList = [
@@ -74,17 +73,8 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
     setFeature(event.target.value);
     };
 
-    // 初始化一个对象来保存每个特征对应的输入值
     const [metrics, setMetrics] = useState({});
 
-    // 处理输入框变化
-    // const handleInputChange = (featureId, event) => {
-    //     const { value } = event.target;
-    //     setMetrics((prevMetrics) => ({
-    //         ...prevMetrics,
-    //         [featureId]: value,
-    //     }));
-    // };
 
     const handleInputChange = (featureId, event) => {
         const { value } = event.target;
@@ -107,16 +97,7 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
     ];
     
 
-    // 处理confirm mapping button,进入Fairness trade off 这个功能页面：
     const navigate = useNavigate();
-    // MetricMappingView.jsx
-    // const handleMappingConfirm = () => {
-    //     const selectedFeaturesWithMetrics = rankedSelection.map((feature) => ({
-    //         ...feature,
-    //         metric: metrics[feature.id] || ''
-    //     }));
-    //     navigate('/FairnessTradeOffView', { state: { selectedFeaturesWithMetrics } });
-    // };
     const handleMappingConfirm = () => {
         const selectedFeaturesWithMetrics = rankedSelection.map((feature) => ({
             ...feature,
@@ -126,7 +107,6 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
     };
     
 
-    // 定义特征名称和对应组件的映射
     const featureComponents = {
         'Duration': <DurationGroupFairnessExploration />,
         'Credit Amount': <CreditAmountGroupFairnessExploration />,
@@ -166,7 +146,6 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
                             padding="6px"
                             margin='6px'
                         >
-                            {/* 1. Header: Overall Fairness results (group,subgroup,individuals)*/}
                     <Typography variant="h4" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold'}}>
                     Metric Exploration
                     </Typography>
@@ -181,10 +160,8 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
                         </TabList>
                         </Box>
 
-                        {/* tab1: Group fairness exploration here */}   
                         <TabPanel value="1">                    
                             <Box display="flex" flexDirection="column" alignItems="left">
-                            {/* 1.1 feature selector */}
                             <Box >
                                 <FormControl sx={{ m: 1, width: 300 }}>
                                     <InputLabel id="demo-simple-select-label"> Feature</InputLabel>
@@ -200,17 +177,10 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
                                         {feature.rank}. {feature.name}
                                         </MenuItem>
                                     ))}
-                                    {/* 下面是增加全部feature的: */}
-                                    {/* {completeFeatureList.filter(f => !rankedSelection.some(rf => rf.name === f)).map((feature, index) => (
-                                        <MenuItem key={rankedSelection.length + index} value={feature}>
-                                        {rankedSelection.length + index + 1}. {feature}
-                                        </MenuItem>
-                                    ))} */}
                                     </Select>
                                 </FormControl>
                              </Box>
 
-                             {/* 1.2 feature-specific component rendering */}
                              {feature && featureComponents[feature]}
                              
                              
@@ -247,9 +217,9 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
                         gutterBottom
                         color="#000000"
                         sx={{
-                            fontSize: '20pt', // 放大字体 // 字体加粗
-                            lineHeight: 1.6, // 增加行高
-                            textShadow: '1px 1px 2px rgba(0,0,0,0.1)', // 添加阴影
+                            fontSize: '20pt',
+                            lineHeight: 1.6,
+                            textShadow: '1px 1px 2px rgba(0,0,0,0.1)',
                             margin: '10px'
                         }}
                             >
@@ -267,14 +237,6 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
                                         primary={`${feature.rank}. ${feature.name}`}
                                         primaryTypographyProps={{ sx: { fontSize: '1.5rem' } }}
                                     />
-                                    {/* <TextField
-                                        label="Metric"
-                                        variant="outlined"
-                                        size="small"
-                                        value={metrics[feature.id] || ''}
-                                        onChange={(event) => handleInputChange(feature.id, event)}
-                                        sx={{ ml: 2 }} // 添加一些左边距以分隔输入框和文本
-                                    /> */}
 
 <Select
                     labelId={`select-label-${feature.id}`}
@@ -304,14 +266,6 @@ const MetricMappingView = ({ rankedSelection, selectedID, handleItemClick }) => 
         </Box>
 
         <Box flexDirection="row" margin = "20px">
-            {/* <Button
-                    style={{ fontSize: '25px' }}
-                    variant="contained"
-                    size="small"
-                    sx={{ marginRight: '25px' }}
-                >
-                    Back
-            </Button> */}
             <Button
                     style={{ fontSize: '25px' }}
                     variant="contained"

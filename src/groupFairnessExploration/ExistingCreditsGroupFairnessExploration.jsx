@@ -29,10 +29,9 @@ Chart.register(...registerables, ChartDataLabels);
 
 
 
-// step1： 为DP,EO,PE,EOS,OT 设置图片矩阵
 const featureName = 'Existing Credits';
 
-const ratedGoodImage = '/RatedGoodIcon.png';// The common image source for 'female'，注意斜杠一定不可以少。有了斜杠，无论路由路径如何变化，都会从绝对路径加载找到图片。否则切换路由使用相对路径，容易找不到。
+const ratedGoodImage = '/RatedGoodIcon.png';
 const ratedBadImage = '/RatedBadIcon.png'; 
 
 
@@ -50,11 +49,11 @@ function ImageSection({selectedGroupFairnessMetric}) {
     };
   
     const calculateMaxHeight = (combinations) => {
-      const imageHeight = 32;  // 图片高度
-      const idHeight = 18;     // ID 文本高度
+      const imageHeight = 32;
+      const idHeight = 18;
       return Math.max(...Object.values(combinations).map(ids => {
         if (!ids) return 0;
-        return Math.ceil(ids.length / 7) * (imageHeight + idHeight + 10); // 每行5个图片，每个图片和ID的总高度加上间距
+        return Math.ceil(ids.length / 7) * (imageHeight + idHeight + 10);
       }));
     };
   
@@ -109,7 +108,7 @@ function ImageSection({selectedGroupFairnessMetric}) {
               border={`2px solid ${theme.palette.primary.main}`}
               margin="10px"
               padding="10px"
-              flexBasis={`calc(100% / ${uniqueValues.length} - 40px)`} // 动态计算每个大Box的宽度
+              flexBasis={`calc(100% / ${uniqueValues.length} - 40px)`}
               flexGrow={1}
             >
               <h2>{featureName}: {encodedFeatureValue}</h2>
@@ -198,7 +197,6 @@ function ImageSection({selectedGroupFairnessMetric}) {
     );
 }
 
-// step2：design CSP 子组件
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -214,7 +212,6 @@ const allFeatures = ['Duration', 'Credit Amount', 'Installment Rate', 'Residence
 
 const featuresForDropdown = allFeatures.filter(feature => feature !== featureName);
 
-// 定义特征类型
 const stringFeatures = ['Installment Rate', 'Residence Length', 'Existing Credits', 'Dependents', 'Debtors', 'Property', 'Installment Plans', 'Housing', 'Telephone', 'Foreign Worker','Gender'];
 const numericFeatures = ['Age', 'Credit Amount', 'Duration'];
 const combinedStringFeatures = ['Checking Account','Job','Employment', 'Savings', 'Purpose', 'Credit History'];
@@ -233,26 +230,23 @@ function ConditionalStatisticalParitySection() {
 
   const selectedFeatureUniqueValues = allUniqueFeatureValues[featureName] || [];
 
-  // 可视化部分的代码
   const [combinations, setCombinations] = useState([]);
   const [currentFeatureCombinations, setCurrentFeatureCombinations] = useState([]);
   
  
   
-  // 正则表达式的提取：
   const createRegexForFeatureValue = (pred, feature, value) => {
     const encodedFeature = feature.toLowerCase().replace(/ /g, '');
     let encodedValue = value.toString().toLowerCase().replace(/ /g, '');
-    // 特殊处理 Property feature 和 特定值
 if (feature === 'Property') {
   if (value === 'Car/Other') {
-    encodedValue = 'car_or_other';  // 特殊处理 '/' 为 '_'
+    encodedValue = 'car_or_other';
     
   } else if (value === 'Real Estate') {
-    encodedValue = 'real_estate';  // 特殊处理空格为下划线
+    encodedValue = 'real_estate';
     
   } else if (value === 'Life Insurance') {
-    encodedValue = 'life_insurance';  // 特殊处理空格为下划线
+    encodedValue = 'life_insurance';
     
   }
 }
@@ -378,39 +372,32 @@ if (feature === 'Property') {
                       sx={{ flexGrow: 1,height: '100%'  }}
                     >
                       <Typography variant="h5" sx={{ fontWeight: 'bold',color: 'primary.main'  }}>{featureName}: {subFeatureValue}</Typography>
-                      {/* 1111 */}
                       
 
                       <Box display="flex" justifyContent="space-between" sx={{ width: '100%' }}>
                         
                     {(() => {
-                      const pred = 'Good'; // 或 'Bad'，根据需求调整
+                      const pred = 'Good';
 
-                      // 检查combinations或currentFeatureCombinations是否有效
                       if (!combinations || !currentFeatureCombinations) {
                         console.error('combinations or currentFeatureCombinations is undefined or null');
                         return null;
                       }
 
-                      // 根据外层Box的selectedFeature和featureValue进行提取:各自取值对应的pred good （包括real good与real bad）
                       const featureValueCombinations = extractIDListsForFeatureValue(combinations, pred, selectedFeature, featureValue);
                       const currentFeatureCombinationsList = extractIDListsForFeatureValue(currentFeatureCombinations, pred, featureName, subFeatureValue);
 
-                      // 使用 Set 去除重复的 ID,获得该特征取值下pred 为good的全部ID
                       const predGood_featureValueCombinationsList = Array.from(new Set([].concat(...Object.values(featureValueCombinations))));
                       const predGood_currentFeatureCombinationsList = Array.from(new Set([].concat(...Object.values(currentFeatureCombinationsList))));
 
-                      // 寻求两者交集
                       const intersection_orig = predGood_featureValueCombinationsList.filter(value => predGood_currentFeatureCombinationsList.includes(value));
                       
                       const intersection = removeUndefinedValues(intersection_orig);
 
-                      // 根据外层Box的selectedFeature和featureValue进行提取:各自取值对应的pred bad （包括real good与real bad）
                       const featureValueCombinations_prebad = extractIDListsForFeatureValue(combinations, 'Bad', selectedFeature, featureValue);
                       const currentFeatureCombinationsList_prebad = extractIDListsForFeatureValue(currentFeatureCombinations, 'Bad', featureName, subFeatureValue);
 
 
-                      // 使用 Set 去除重复的 ID,获得该特征取值下pred 为good的全部ID
                       const predbad_featureValueCombinationsList = Array.from(new Set([].concat(...Object.values(featureValueCombinations_prebad))));
                       const predbad_currentFeatureCombinationsList = Array.from(new Set([].concat(...Object.values(currentFeatureCombinationsList_prebad))));
 
@@ -427,7 +414,6 @@ if (feature === 'Property') {
                           display="flex"
                           flexDirection="column"
                           alignItems="center"
-                          // border={`1px solid ${theme.palette.primary.light}`}
                           margin="5px"
                           padding="5px"
                           borderRadius="4px"
@@ -516,7 +502,6 @@ export default function ExistingCreditsGroupFairnessExploration(){
     
     const theme = useTheme(); 
 
-    // metric value chart:
     const Combinations = featureCombinations_string_allvalues[featureName];
     const uniqueValues = uniqueFeatureValues_string_allvalues[featureName];
 
@@ -734,7 +719,6 @@ export default function ExistingCreditsGroupFairnessExploration(){
       border={`2px solid #42a5f5`} 
       padding="3px"> 
 
-          {/* 1. Header & metric selector*/}
           <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
               Please choose a group fairness metric
           </Typography>
@@ -742,7 +726,6 @@ export default function ExistingCreditsGroupFairnessExploration(){
           <Box display="flex" 
             justifyContent="center" 
             padding="3px">
-                {/* RadioGroup */}
                 <FormControl>
                           <FormLabel id="group-fairness-metrics" sx={{ textAlign: 'left' }}>Group Fainess Metrics</FormLabel>
                           <RadioGroup
@@ -761,7 +744,6 @@ export default function ExistingCreditsGroupFairnessExploration(){
                           </RadioGroup>
                         </FormControl>
            </Box>
-           {/* 2. text exP*/}    
            <Paper elevation={3} sx={{ width: '98%', backgroundColor: '#f5f5f5', padding: '10px', margin: '10px',borderRadius: '8px' }}>
                 <Typography variant="h5" component="div" gutterBottom color="black" sx={{ fontSize: '22px' }}
                  >
@@ -823,31 +805,19 @@ export default function ExistingCreditsGroupFairnessExploration(){
                 </Typography>
               )}
 
-                {/* <Box sx={{ width: '80%', height: '400px', margin: '0 auto' }}>
-                <Bar data={data_MetricValues} options={options} />
-              </Box>
-
-                <Typography variant="body1" component="div" gutterBottom color="black"  sx={{ marginTop: '20px', fontSize: '22px' }}>
-                  <strong>Metric Values Calculation:</strong>
-                  <br />
-                  {getDescriptionForMetric(selectedGroupFairnessMetric)}
-                </Typography> */}
                 
           
             
             
             </Paper>
 
-            {/* 3 metric Selector*/}
             <Box 
                 display="flex"
                 padding="6px"
-                alignItems="flex-start"  // 控制垂直方向的对齐
-                justifyContent="flex-end" // 控制水平方向的对齐
-                //border={`2px solid #42a5f5`}
+                alignItems="flex-start"
+                justifyContent="flex-end"
                 
             >    
-                    {/* 根据当前的 radio 选择值，动态地渲染相应的 SVG 组件。 */}
                     {selectedGroupFairnessMetric === "Demographic Parity" &&  <ImageSection  selectedGroupFairnessMetric={selectedGroupFairnessMetric} />}
                     {selectedGroupFairnessMetric === "Equal Opportunity" && <ImageSection selectedGroupFairnessMetric={selectedGroupFairnessMetric} />}
                     {selectedGroupFairnessMetric === "Predictive Equality" && <ImageSection selectedGroupFairnessMetric={selectedGroupFairnessMetric}  />}

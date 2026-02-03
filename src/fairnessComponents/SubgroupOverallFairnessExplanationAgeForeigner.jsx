@@ -13,8 +13,7 @@ import Paper from '@mui/material/Paper';
 
 export default function SubgroupOverallFairnessExplanationAgeForeigner() {
 
-    // set selected metric：default： DP
-     const [metric, setMetric] = useState("Demographic Parity"); //different group fairness metrics
+     const [metric, setMetric] = useState("Demographic Parity");
    
      const handleChange = (event) => {
         const selectedMetric = event.target.value;
@@ -26,7 +25,6 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {800}> 
          
-        {/* 1 title */}
         <Box display="flex" justifyContent="space-between" width="100%">
             <Typography 
                 variant="h5" 
@@ -41,7 +39,6 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
         </Box>
 
 
-         {/* 2 Select Button */}
          <Box sx={{ minWidth: 130, margin: 2 }}>
             <FormControl fullWidth style={{width: '380px'}} variant="outlined">
                 <InputLabel id="metrics">Metric</InputLabel>
@@ -65,7 +62,6 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
             </FormControl>
         </Box>
 
-         {/* 3 Selected Metric Title */}
          <Box display="flex" justifyContent="space-between" width="100%">
                 <Typography 
                     variant="body2" 
@@ -74,12 +70,12 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                     color="black" 
                     sx={{ flexGrow: 1, textAlign: 'left' }}
                 >
-                    {(() => {  //  ！！！No parameter needed here！
+                    {(() => {
                     switch (metric) {
                         case "Demographic Parity":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & foreign worker subgroups</strong> to have good predicted credit.
@@ -87,7 +83,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Equal Opportunity":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different Rated Good Credit age & foreign worker subgroups</strong> to have good predicted credit.
@@ -95,7 +91,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Predictive Equality":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for<strong> different Rated Bad Credit age & foreign worker subgroups</strong> to have good predicted credit.
@@ -103,7 +99,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Equalized Odds":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if Equal Opportunity and Predictive Equality meet the fairness requirement.
@@ -111,7 +107,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Outcome Test":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability fo <strong>different Predicted as Good Credit age & foreign worker subgroups</strong> to have Rated Good Credit.
@@ -119,7 +115,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Conditional Statistical Parity: Job":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & foreign worker subgroups with sepcific job conditions</strong> to have good predicted credit.
@@ -127,7 +123,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Conditional Statistical Parity: Savings":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & foreign worker subgroups with sepcific savings conditions</strong> to have good predicted credit.
@@ -135,7 +131,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Conditional Statistical Parity: Employment":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & foreign worker subgroups with sepcific employment conditions</strong> to have good predicted credit.
@@ -143,7 +139,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         case "Conditional Statistical Parity: Credit History":
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & foreign worker subgroups with sepcific credit history conditions</strong> to have good predicted credit.
@@ -151,7 +147,7 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                         default:
                             return <span 
                             style={{ 
-                                fontSize: '2em'  // 调整为你需要的大小
+                                fontSize: '2em'
                             }}
                             >
                             The AI application is fairness if it has "equal" probability for <strong>different age & foreign worker subgroups</strong> to have good predicted credit.
@@ -161,17 +157,15 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                 </Typography>  
             </Box>
 
-            {/* 4 chart： fairness metric result */}
             <Box 
                 display="flex"
                 padding="6px"
                 margin="20px" 
-                alignItems="center"  // 控制垂直方向的对齐
-                justifyContent="center" // 控制水平方向的对齐
-                //border={`2px solid #42a5f5`}
+                alignItems="center"
+                justifyContent="center"
             >    
     
-                    {(() => {  //  ！！！No parameter needed here！
+                    {(() => {
                     switch (metric) {
                         case "Demographic Parity":
                             return (
@@ -249,10 +243,9 @@ export default function SubgroupOverallFairnessExplanationAgeForeigner() {
                 })()}  
             </Box>
 
-            {/* 4 Text Explanation */}
             <Paper elevation={3} sx={{ width: '85%', backgroundColor: '#f5f5f5', padding: '10px', margin: '50px',borderRadius: '8px' }}>
               <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", width: '95%', fontWeight: "bold"}}>
-              {(() => {  //  ！！！No parameter needed here！
+              {(() => {
                     switch (metric) {
                         case "Demographic Parity":
                             return (

@@ -15,7 +15,6 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { Chart, BarController, BarElement, LinearScale, CategoryScale } from 'chart.js';
 
 import { useNavigate } from 'react-router-dom';
-//nevigate path：
 const CSPIMAGE_AGE_PATH = "/explanationAge/CSPimage";
 
 Chart.register(BarController, BarElement, LinearScale, CategoryScale);
@@ -24,12 +23,11 @@ export default function GroupConditionalStatisticalParity() {
     const navigate = useNavigate(); 
     const percentFormatter = (value) => `${value}%`;  
     
-    // for conditioanl statistical parity
-     const [condition, setCondition] = useState(10); //job,savings,employment,credit history
+     const [condition, setCondition] = useState(10);
      const [series, setSeries] = useState([{ data: [100, 83, 100], label:'age<25', color: '#8ECFC9', valueFormatter:percentFormatter}, 
      { data: [85, 93, 83], label:'age>=25', color: '#BEB8DC',valueFormatter:percentFormatter },  
      { data: [15, -10, 17], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter } ]); 
-     const [conditionValues,setConditionValues] = useState(['Management/Officer', 'Skilled', 'Unskilled/Unemployed']);//设置不同condition下，不同的condition values 有什么，如job:unemployment,skilled等
+     const [conditionValues,setConditionValues] = useState(['Management/Officer', 'Skilled', 'Unskilled/Unemployed']);
      
      const handleChange = (event) => {
         const selectedCondition = event.target.value;
@@ -38,7 +36,7 @@ export default function GroupConditionalStatisticalParity() {
         let newSeriesData;
         let newConditionValues;
         switch(selectedCondition) {
-            case 10: // Job
+            case 10:
                 newSeriesData = [
                 { data: [100, 83, 100], label:'age<25', color: '#8ECFC9', valueFormatter:percentFormatter}, 
                 { data: [85, 93, 83], label:'age>=25', color: '#BEB8DC',valueFormatter:percentFormatter },  
@@ -46,7 +44,7 @@ export default function GroupConditionalStatisticalParity() {
              ];
                 newConditionValues = ['Management/Officer', 'Skilled', 'Unskilled/Unemployed'];
                 break;
-            case 20: // Savings
+            case 20:
                 newSeriesData = [
                 { data: [86, 100, 100], label:'age<25', color: '#8ECFC9', valueFormatter:percentFormatter}, 
                 { data: [88, 92, 100], label:'age>=25', color: '#BEB8DC',valueFormatter:percentFormatter },  
@@ -54,7 +52,7 @@ export default function GroupConditionalStatisticalParity() {
                 ];
                 newConditionValues = ['<500DM/Unknown','500-1000 DM', '>=1000DM'];
                 break;
-            case 30: // Employment
+            case 30:
                 newSeriesData = [
                 { data: [91, 100, 67], label:'age<25', color: '#8ECFC9', valueFormatter:percentFormatter}, 
                 { data: [71, 91, 95], label:'age>=25', color: '#BEB8DC',valueFormatter:percentFormatter },  
@@ -62,13 +60,13 @@ export default function GroupConditionalStatisticalParity() {
                 ];
                 newConditionValues = ['Unemployed/<1 Year','1-4 Years', '>=4 Years'];
                 break;
-            case 40: // Credit History
+            case 40:
                 newSeriesData = [
                 { data: [84, 100, 100], label:'age<25', color: '#8ECFC9', valueFormatter:percentFormatter}, 
                 { data: [83, 94, 98], label:'age>=25', color: '#BEB8DC',valueFormatter:percentFormatter },  
                 { data: [1, 6, 2], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter } 
                 ];
-                newConditionValues = ['Paid back duly/Paid up/No credits','Delayed', 'Other Credits Existing'];//paidbackduly&no credits taken/paidup
+                newConditionValues = ['Paid back duly/Paid up/No credits','Delayed', 'Other Credits Existing'];
                 break;
             default:
                 newSeriesData = [
@@ -86,7 +84,6 @@ export default function GroupConditionalStatisticalParity() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
          
-            {/* 1 title */}
         <Box display="flex" justifyContent="space-between" width="100%">
             <Typography 
                 variant="h5" 
@@ -102,7 +99,7 @@ export default function GroupConditionalStatisticalParity() {
                 title={
                     <span 
                     style={{ 
-                        fontSize: '2em'  // 调整为你需要的大小
+                        fontSize: '2em'
                     }}
                     >
                     The AI application is fairness if it has "equal" probability for Age{'<'}25 Individuals and Age{'>='}25 Individuals with specific conditions to have good predicted credit.
@@ -115,7 +112,6 @@ export default function GroupConditionalStatisticalParity() {
         </Box>
 
 
-         {/* 2 Select Button */}
          <Box sx={{ minWidth: 130 }}>
             <FormControl fullWidth>
                 <InputLabel id="conditions">Condition</InputLabel>
@@ -134,15 +130,13 @@ export default function GroupConditionalStatisticalParity() {
             </FormControl>
         </Box>
 
-        {/* 3 chart： fairness metric result */}
         <Box 
             display="flex"
             padding="6px"
             margin="12px" 
-            alignItems="center"  // 控制垂直方向的对齐
-            justifyContent="center" // 控制水平方向的对齐
+            alignItems="center"
+            justifyContent="center"
             height="400px"
-            //border={`2px solid #42a5f5`}
         >    
 
                 <BarChart
@@ -158,9 +152,8 @@ export default function GroupConditionalStatisticalParity() {
                  
           </Box>
 
-        {/* 4 Text Explanation */}
         <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", fontWeight: "bold"}}>
-            {(() => {  //  ！！！No parameter needed here！
+            {(() => {
                 switch (condition) {
                     case 10:
                         return (
@@ -208,7 +201,6 @@ export default function GroupConditionalStatisticalParity() {
             })()}   
         </Typography>
 
-        {/* 5 Image Button*/}
         <Box 
             display="flex"
             alignItems="center"  > 

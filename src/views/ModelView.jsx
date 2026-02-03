@@ -23,14 +23,13 @@ import DialogContent from '@mui/material/DialogContent';
 import { styled } from '@mui/system';
 
 
-// // router for data distribution & model weight:
 import { Routes, Route } from "react-router-dom";
 
 const Image = styled('img')({
-  width: '25px', // 根据需要调整图像大小
+  width: '25px',
   height: '25px',
-  verticalAlign: 'middle', // 确保图像与文本对齐
-  marginRight: '6px', // 调整图像与文本之间的间距
+  verticalAlign: 'middle',
+  marginRight: '6px',
 });
 
 export default function ModelView() {
@@ -54,20 +53,16 @@ export default function ModelView() {
   
   return (
     <Box display="flex" flexDirection="column" alignItems="center"  height='100%'> 
-      {/* 根据变量的取值，确定展示的组件 */}
 
       {modelTextExplanation && modelPerformanceExplanation &&  
         <Box width='100%' height='100%'>
-          {/* 1. Model textual descriptions */}
             <Box 
                   display="flex"
                   flexDirection="column"
                   alignItems="center"
                   width="95%"
                   minHeight="34%"
-                  //width={500} // 可根据需要调整
-                  //border={`2px solid #42a5f5`} // 添加边框
-                  boxShadow="0px 4px 12px #7986cb" // 添加阴影效果
+                  boxShadow="0px 4px 12px #7986cb"
                   borderRadius="8px"
                   padding="6px" 
                   margin='6px'
@@ -76,7 +71,6 @@ export default function ModelView() {
                   height="98%"      
                   mb={theme.spacing(2)}
                 >
-                  {/* 1.1 Title at the top center */}
                   <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
                     How the AI model works
                   </Typography>
@@ -85,7 +79,6 @@ export default function ModelView() {
                   Please click the imgae to check explanations.
                   </Typography>
                   
-                  {/* 1.2 Image right after the title */}
                   <Box component="img" 
                       src="model.png" 
                       alt="Model Explanation"
@@ -100,7 +93,7 @@ export default function ModelView() {
                       src="model.png"
                       alt="Model Explanation"
                       sx={{ width: '100%', height: 'auto' }}
-                      onClick={handleClose} // 点击图片关闭Dialog
+                      onClick={handleClose}
                     />
                     <Typography variant="h6" component="div" gutterBottom  >
                   <strong>Training Data:</strong> we take some 800 examples/customers from real life. These examples include the same 20 features and the expert’s credit rating.
@@ -115,34 +108,24 @@ export default function ModelView() {
                   </DialogContent>
                 </Dialog>
 
-                {/* 1.3 model performance */}
                 <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
                           Model Performance
                     </Typography>
-                    {/* <Typography variant="h6" component="div" gutterBottom >
-                    <Image src='/Red_exclaim.png' alt="Info Icon" />
-                    This shows the AI's accuracy in predicting all 200 customers, as well as the accuracy for customers with good credit and those with bad credit.
-                  </Typography> */}
 
-                    {/* 2.2 overall performance */}
                     <Box 
                         display="flex"
                         flexDirection="row"
                         alignItems="center"
                         width="95%"
-                        //width={475} // 可根据需要调整
-                        border={`2px solid #42a5f5`} // 添加边框
-                        //boxShadow="0px 4px 12px #7986cb" // 添加阴影效果
+                        border={`2px solid #42a5f5`}
                         borderRadius="8px"
                         padding="10px"
                         marginBottom="2px"
                       >
-                          {/* 2.2.1 header */}
                           <Typography variant="body2" component="div" gutterBottom color="primary" align="left" sx={{ fontWeight: 'bold' }}>
                             Overall Accuracy
                           </Typography>
 
-                          {/* 2.2.2 overall performance chart */}
                           <Box component="div" height={200} width="95%">
                             <ModelPerformance /> 
                           </Box> 
@@ -153,21 +136,17 @@ export default function ModelView() {
                         flexDirection="row"
                         alignItems="center"
                         width="95%"
-                        //width={475} // 可根据需要调整
-                        border={`2px solid #42a5f5`} // 添加边框
-                        //boxShadow="0px 4px 12px #7986cb" // 添加阴影效果
+                        border={`2px solid #42a5f5`}
                         borderRadius="8px"
                         padding="10px"
                         marginBottom="2px"
                       >
-                          {/* 2.2.1 header */}
                           <Typography variant="body2" component="div" gutterBottom color="primary" align="left" sx={{ fontWeight: 'bold',
-                            width: '100px', // 设置宽度
-                            overflowWrap: 'break-word' // 自动换行
+                            width: '100px',
+                            overflowWrap: 'break-word'
                            }}>
                             Customers with Rated Good Credit: Accuracy
                           </Typography>
-                          {/* 2.2.2 overall performance chart */}
                           <Box component="div" height={200} width="95%">
                               <GoodPerformance/> 
                           </Box> 
@@ -178,21 +157,17 @@ export default function ModelView() {
                         flexDirection="row"
                         alignItems="center"
                         width="95%"
-                        //width={475} // 可根据需要调整
-                        border={`2px solid #42a5f5`} // 添加边框
-                        //boxShadow="0px 4px 12px #7986cb" // 添加阴影效果
+                        border={`2px solid #42a5f5`}
                         borderRadius="8px"
                         padding="10px"
                         marginBottom="2px"
                       >
-                          {/* 2.2.1 header */}
                           <Typography variant="body2" component="div" gutterBottom color="primary" align="left" sx={{ fontWeight: 'bold',
-                            width: '100px', // 设置宽度
-                            overflowWrap: 'break-word' // 自动换行
+                            width: '100px',
+                            overflowWrap: 'break-word'
                            }}>
                              Customers with Rated Bad  Credit: Accuracy
                           </Typography>
-                          {/* 2.2.2 overall performance chart */}
                           <Box component="div" height={200} width="95%">
                               <BadPerformance/> 
                           </Box> 
@@ -204,7 +179,6 @@ export default function ModelView() {
 
 
 
-                  {/* 1.4 Baic fairness Concepts */}
                    
 
                     <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>Protected Features</Typography>

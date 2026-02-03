@@ -25,10 +25,10 @@ import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import StraightenIcon from '@mui/icons-material/Straighten';
 import { styled } from '@mui/system';
 const Image = styled('img')({
-  width: '25px', // 根据需要调整图像大小
+  width: '25px',
   height: '25px',
-  verticalAlign: 'middle', // 确保图像与文本对齐
-  marginRight: '6px', // 调整图像与文本之间的间距
+  verticalAlign: 'middle',
+  marginRight: '6px',
 });
 
 function CustomTabPanel(props) {
@@ -79,14 +79,12 @@ export default function IndividualFairnessMetricsOverall() {
     setSelectedFeature(event.target.value);
   };
   
-  // 0: tab1, counterfactual fairness; 1: tab2, consistency
   const [value, setValue] = React.useState(0); 
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  // in tab 1: conterfactual world selection (radio group)
   const [selectedWorld, setSelectedWorld] = useState("Age");
 
   return (
@@ -98,12 +96,10 @@ export default function IndividualFairnessMetricsOverall() {
             border={`2px solid #42a5f5`} 
             padding="3px"> 
 
-            {/* 1. Header: Individual Fairness Metrics & Results*/}
             <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
                 Individual Fairness Metrics & Results
             </Typography>
 
-            {/* 2. explanation for counterfactual fairness & consistency tabs*/}
             <Box sx={{ width: '100%' }}>
                   <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -112,7 +108,6 @@ export default function IndividualFairnessMetricsOverall() {
                     </Tabs>
                   </Box>
 
-                  {/* 2.1 explanation for counterfactual fairness*/}
                   <CustomTabPanel value={value} index={0}>
                       <Typography variant="h6" component="div" gutterBottom color="black" >
                       <strong>I choose Counterfactual Fairness because:</strong>
@@ -139,11 +134,9 @@ export default function IndividualFairnessMetricsOverall() {
                          
                           padding="3px"> 
 
-                              {/* 2.1.1 radio group for selection counterfactual world*/}
                               <Box display="flex" 
                                   justifyContent="center" 
                                   padding="3px">
-                                  {/* RadioGroup */}
                                   <FormControl>
                                             <FormLabel id="world-selection-label" sx={{ textAlign: 'left' }}>Choose a Counterfactual World You are Interested in</FormLabel>
                                             <RadioGroup
@@ -160,15 +153,12 @@ export default function IndividualFairnessMetricsOverall() {
                                           </FormControl>
                                 </Box>
 
-                                {/* 2.1.2 explanation for each counterfatcual fairness*/}                                 
                                 <Box 
                                     display="flex"
                                     justifyContent="center"
                                     padding="6px"
                       
-                                    //border={`2px solid #42a5f5`}
                                 >    
-                                        {/* 根据当前的 radio 选择值，动态地渲染相应的 SVG 组件。 */}
                                         {selectedWorld === "Age" &&  <AgeCounterfactualWorld  />}
                                         {selectedWorld === "Gender" && <GenderCounterfactualWorld  />}
                                         {selectedWorld === "Foreign Worker" && <ForeignerCounterfactualWorld />}
@@ -201,10 +191,8 @@ export default function IndividualFairnessMetricsOverall() {
                   </FormControl>
                   </Box>
                  
-                    {/* Counterfactual Fairness */}
                   </CustomTabPanel>
 
-                  {/* 2.2 explanation for consistency*/}
                   <CustomTabPanel value={value} index={1}>
                       <Typography variant="h6" component="div" gutterBottom color="black" >
                       <strong>I choose Consistency because:</strong>

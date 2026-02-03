@@ -54,7 +54,7 @@ const FeatureImportance = () => {
                         type: 'category',
                         ticks: {
                             font: {
-                                size: 19 // 调整特征名称的字体大小
+                                size: 19
                             }
                         }
                     },
@@ -63,7 +63,7 @@ const FeatureImportance = () => {
                         beginAtZero: true,
                         ticks: {
                             font: {
-                                size: 19 // 调整权重数字的字体大小
+                                size: 19
                             }
                         }
                     }
@@ -74,7 +74,7 @@ const FeatureImportance = () => {
                         labels: {
                             color: 'rgb(255, 99, 132)',
                             font: {
-                                size: 19 // 调整图例标签的字体大小
+                                size: 19
                             }
                         }
                     },
@@ -83,7 +83,7 @@ const FeatureImportance = () => {
                         align: 'end',
                         anchor: 'end',
                         font: {
-                            size: 19 // 调整数据标签的字体大小
+                            size: 19
                         },
                         formatter: (value) => {
                             return value;

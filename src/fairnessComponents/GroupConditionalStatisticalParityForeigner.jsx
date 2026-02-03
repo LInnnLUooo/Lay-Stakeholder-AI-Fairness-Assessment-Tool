@@ -15,7 +15,6 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { Chart, BarController, BarElement, LinearScale, CategoryScale } from 'chart.js';
 
 import { useNavigate } from 'react-router-dom';
-//nevigate path：
 const CSPIMAGE_FOREIGNER_PATH = "/explanationForeigner/CSPimage";
 
 Chart.register(BarController, BarElement, LinearScale, CategoryScale);
@@ -24,14 +23,13 @@ export default function GroupConditionalStatisticalParityForeigner() {
     const navigate = useNavigate();
     const percentFormatter = (value) => `${value}%`; 
     
-    // for conditioanl statistical parity
-     const [condition, setCondition] = useState(10); //job,savings,employment,credit history
+     const [condition, setCondition] = useState(10);
      const [series, setSeries] = useState([
-        { data: [88, 91, 84], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },  // 红色
-        { data: [50, 100, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-        { data: [38, -9, -16], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+        { data: [88, 91, 84], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },
+        { data: [50, 100, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },
+        { data: [38, -9, -16], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
     ]); 
-     const [conditionValues,setConditionValues] = useState(['Management/Officer', 'Skilled', 'Unskilled/Unemployed']);//设置不同condition下，不同的condition values 有什么，如job:unemployment,skilled等
+     const [conditionValues,setConditionValues] = useState(['Management/Officer', 'Skilled', 'Unskilled/Unemployed']);
      
      const handleChange = (event) => {
         const selectedCondition = event.target.value;
@@ -40,43 +38,43 @@ export default function GroupConditionalStatisticalParityForeigner() {
         let newSeriesData;
         let newConditionValues;
         switch(selectedCondition) {
-            case 10: // Job
+            case 10:
                 newSeriesData = [
-                { data: [88, 91, 84], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },  // 红色
-                { data: [50, 100, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                { data: [38, -9, -16], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                { data: [88, 91, 84], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },
+                { data: [50, 100, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },
+                { data: [38, -9, -16], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['Management/Officer', 'Skilled', 'Unskilled/Unemployed'];
                 break;
-            case 20: // Savings
+            case 20:
                 newSeriesData = [
-                { data: [88, null, 100], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },  // 红色
-                { data: [91, null, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                { data: [-3, null, 0], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                { data: [88, null, 100], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },
+                { data: [91, null, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },
+                { data: [-3, null, 0], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['<500DM/Unknown','500-1000 DM', '>=1000DM'];
                 break;
-            case 30: // Employment
+            case 30:
                 newSeriesData = [
-                { data: [74, 93, 93], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },  // 红色
-                { data: [100, 80, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                { data: [-26, 13, -7], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                { data: [74, 93, 93], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },
+                { data: [100, 80, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },
+                { data: [-26, 13, -7], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['Unemployed/<1 Year','1-4 Years', '>=4 Years'];
                 break;
-            case 40: // Credit History
+            case 40:
                 newSeriesData = [
-                { data: [83, null, 98], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },  // 红色
-                { data: [89, null, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                { data: [-6, null, -2], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                { data: [83, null, 98], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },
+                { data: [89, null, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },
+                { data: [-6, null, -2], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
-                newConditionValues = ['Paid back duly/Paid up/No credits','Delayed', 'Other Credits Existing'];//paidbackduly&no credits taken/paidup
+                newConditionValues = ['Paid back duly/Paid up/No credits','Delayed', 'Other Credits Existing'];
                 break;
             default:
                 newSeriesData = [
-                { data: [88, 91, 84], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },  // 红色
-                { data: [50, 100, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },  // 绿色
-                { data: [38, -9, -16], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }  // 蓝色
+                { data: [88, 91, 84], label:'foreign worker', color: '#8ECFC9',valueFormatter:percentFormatter },
+                { data: [50, 100, 100], label:'local', color: '#BEB8DC',valueFormatter:percentFormatter },
+                { data: [38, -9, -16], label:'difference',color: '#FA7F6F',valueFormatter:percentFormatter }
                 ];
                 newConditionValues = ['Management/Officer', 'Skilled', 'Unskilled/Unemployed'];
                 break;            
@@ -88,7 +86,6 @@ export default function GroupConditionalStatisticalParityForeigner() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
          
-            {/* 1 title */}
         <Box display="flex" justifyContent="space-between" width="100%">
             <Typography 
                 variant="h5" 
@@ -104,7 +101,7 @@ export default function GroupConditionalStatisticalParityForeigner() {
                 title={
                     <span 
                     style={{ 
-                        fontSize: '2em'  // 调整为你需要的大小
+                        fontSize: '2em'
                     }}
                     >
                     The AI application is fairness if it has "equal" probability for foreign workers and locals with specific conditions to have good predicted credit.
@@ -117,7 +114,6 @@ export default function GroupConditionalStatisticalParityForeigner() {
         </Box>
 
 
-         {/* 2 Select Button */}
          <Box sx={{ minWidth: 130 }}>
             <FormControl fullWidth>
                 <InputLabel id="conditions">Condition</InputLabel>
@@ -136,15 +132,13 @@ export default function GroupConditionalStatisticalParityForeigner() {
             </FormControl>
         </Box>
 
-        {/* 3 chart： fairness metric result */}
         <Box 
             display="flex"
             padding="6px"
             margin="12px" 
-            alignItems="center"  // 控制垂直方向的对齐
-            justifyContent="center" // 控制水平方向的对齐
+            alignItems="center"
+            justifyContent="center"
             height="400px"
-            //border={`2px solid #42a5f5`}
         >    
 
                 <BarChart
@@ -160,9 +154,8 @@ export default function GroupConditionalStatisticalParityForeigner() {
                  
           </Box>
 
-        {/* 4 Text Explanation */}
         <Typography variant="body2" color="text.secondary" sx={{ margin: "12px",color: "black", fontWeight: "bold"}}>
-            {(() => {  //  ！！！No parameter needed here！
+            {(() => {
                 switch (condition) {
                     case 10:
                         return (
@@ -210,7 +203,6 @@ export default function GroupConditionalStatisticalParityForeigner() {
             })()}   
         </Typography>
 
-        {/* 5 Image Button*/}
         <Box 
             display="flex"
             alignItems="center" 

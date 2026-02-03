@@ -22,13 +22,11 @@ import SubgroupOverallFairnessGenderForeignerChart from './SubgroupOverallFairne
 import SubgroupOverallFairnessAllThreeChart from './SubgroupOverallFairnessAllThreeChart';
 
 import { useNavigate } from 'react-router-dom';
-//nevigate path：
 const SUBGROUP_EXPLAIN_PATH = "/subgroupOverallFairnessExplanation";
 const SUBGROUP_EXPLAIN_AGEFOREIGNER_PATH = "/subgroupOverallFairnessExplanationAgeForeigner";
 const SUBGROUP_EXPLAIN_GENDERFOREIGNER_PATH = "/subgroupOverallFairnessExplanationGenderForeigner";
 const SUBGROUP_EXPLAIN_ALLTHREE_PATH = "/subgroupOverallFairnessExplanationAllThree";
 
-// set fairness threshold
 const marks = [
   {
     value: 0,
@@ -61,17 +59,14 @@ function valuetext(value) {
 }
 
 export default function SubgroupOverallFairness() {
-    //Set navigate of different 'pages'
     const navigate = useNavigate(); 
   
-  // set selected subgroups (多选框)
     const [selectedGroups, setSelectedGroups] = useState({
       Age: true,
       Gender: true,
       ForeignWorker: false,
       });
 
-    // handle change of checkbox
     const handleCheckboxChange = (event) => {
       setSelectedGroups({
           ...selectedGroups,
@@ -79,7 +74,6 @@ export default function SubgroupOverallFairness() {
       });
     };
     
-    // according to the checkbox to control the svg component
     const renderSVG = () => {
       const { Age, Gender, ForeignWorker } = selectedGroups;
       
@@ -104,12 +98,9 @@ export default function SubgroupOverallFairness() {
       }
     };
 
-    // set dynamic fairness area According to the threshold
-    const [rectHeight,setRectHeight] = useState(20); // null 为不设置初始值。初始化高度为20,代表接受的difference为20%
-    //const [rectLowHeight,setRectLowHeight] = useState(-10); // subgroup fairness 没有明显的protected/unprotected区别，因此不再区分正负。
+    const [rectHeight,setRectHeight] = useState(20);
     
 
-    // Scatter Plot 
     const [data] = useState([[1,12],
       [2,17],[3,14],[4,17],[5,30],[6,40],[7,20],[8,29],[9,28]])
     const xAxisNames = ["", "DP", "EO", "PE", "EOs", "OT", "CSP1", "CSP2", "CSP3", "CSP4"];
@@ -117,9 +108,8 @@ export default function SubgroupOverallFairness() {
     
     useEffect(()=>{
       
-    // step1：set up container dimensons & svg 
-    const w = 430; // width
-    const h = 500; //height
+    const w = 430;
+    const h = 500;
     const svg = d3.select(svgRef.current)
           .attr('width',"90%")
           .attr('height',h)
@@ -127,46 +117,36 @@ export default function SubgroupOverallFairness() {
           .style('overflow','visible')
           .style('margin-top','20px')
 
-    svg.selectAll('*').remove(); //每次渲染 清除其他可能存在的svg 重新渲染整个图
-    // step2：set up scaling
+    svg.selectAll('*').remove();
     const xScale = d3.scaleLinear()
-          .domain([0, 9]) // x value scale
-          .range([0, w]);   // chart dimensions of x
+          .domain([0, 9])
+          .range([0, w]);
     const yScale = d3.scaleLinear()
-          .domain([0, 50]) // x value scale
-          .range([h, 0]);    // chart dimensions of y     
+          .domain([0, 50])
+          .range([h, 0]);
 
-    // step3：set up axis           
-    const xAxis = d3.axisBottom(xScale).ticks(data.length).tickFormat(d => xAxisNames[d]); //  put the x scale in the X axis
-    const yAxis = d3.axisLeft(yScale).ticks(10); // ticks: number of dots in the axis
-    svg.append('g').call(xAxis).attr('transform', `translate(0, ${h})`).style("font-size", "16px");// 将一个<g>元素添加到SVG元素中。<g>元素通常用于组合其他图形元素，例如坐标轴、标签等，以便进行位置和样式的集中管理
+    const xAxis = d3.axisBottom(xScale).ticks(data.length).tickFormat(d => xAxisNames[d]);
+    const yAxis = d3.axisLeft(yScale).ticks(10);
+    svg.append('g').call(xAxis).attr('transform', `translate(0, ${h})`).style("font-size", "16px");
     svg.append('g').call(yAxis).style("font-size", "16px");
 
 
-    // step4：set up axis labelling
     svg.append('text').attr('x',w/3).attr('y',h+45)
         .text('Fairness Metrics')
         .style('font-size', '18px')
     svg.append('text').attr('y',-60).attr('x',-180)
                 .attr('transform', 'rotate(-90)')
-                .style('text-anchor', 'middle') // 水平居中对齐
-                .style('dominant-baseline', 'middle') // 垂直居中对齐
+                .style('text-anchor', 'middle')
+                .style('dominant-baseline', 'middle')
                 .style('font-size', '18px')
                 .text('Fairness Results(difference between subgroups)')
-    // step:5 set up svg data
-    // svg.selectAll().data(data).enter().append('circle')
-    //                               .attr('cx',d => xScale(d[0]))
-    //                               .attr('cy',d => yScale(d[1])) // d是一个二维数组
-    //                               .attr('r',4)
-    //                               .style("fill", "#04a643")
 
 
-    // 渲染数据点
     svg.selectAll('circle').remove();
     svg.selectAll('.red-circle').remove();
     
     svg.selectAll('circle')  
-      .data(data.filter(d => d[1] <= rectHeight)) //.data(data.filter(d => d[1] >= rectLowHeight && d[1] <= rectHeight))
+      .data(data.filter(d => d[1] <= rectHeight))
       .enter()
       .append('circle')
       .attr('cx', d => xScale(d[0]))
@@ -175,7 +155,7 @@ export default function SubgroupOverallFairness() {
       .style('fill', '#047731');
 
     svg.selectAll('.red-circle')
-      .data(data.filter(d => d[1] > rectHeight)) //.data(data.filter(d => d[1] < rectLowHeight || d[1] > rectHeight))
+      .data(data.filter(d => d[1] > rectHeight))
       .enter()
       .append('circle')
       .attr('cx', d => xScale(d[0]))
@@ -184,22 +164,19 @@ export default function SubgroupOverallFairness() {
       .style('fill', 'red')
       .attr('class', 'red-circle');
 
-     // step6: add value “tooltips”
-    // Add text labels above the circles
     svg.selectAll('text.datapoint-label')
     .data(data)
     .enter()
     .append('text')
     .attr('x', d => xScale(d[0]))
-    .attr('y', d => yScale(d[1]) + 20)  // position the text 10 units above the circle
+    .attr('y', d => yScale(d[1]) + 20)
     .attr('class', 'datapoint-label')
-    .attr('text-anchor', 'middle')  // center the text on the circle's position
+    .attr('text-anchor', 'middle')
     .style('font-size', '14px')
     .style('font-weight', 'bold') 
     .text(d => `${d[1]}%`);
     
-      //step 7：创建区域背景颜色
-    svg.select('rect').remove(); // 太重要了 不然 从0.5滑回0的过程中 rect区域会被原来大的覆盖，看起来像没有减小一样。
+    svg.select('rect').remove();
     
     svg
     .insert('rect', ':first-child')
@@ -216,39 +193,32 @@ export default function SubgroupOverallFairness() {
     
     const handleSliderChange = (event, newValue) => {
       setRectHeight(newValue);
-      //setRectLowHeight(-newValue); 
       
-    } // 更新高度状态
+    }
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center" width = {500}> 
 
-        {/* 1 Title at the top center */}
         <Typography variant="h6" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
               Subgroup Fairness Overview
         </Typography>
 
-        {/* 2 subgroup Selector*/}
         <Box 
             display="flex"
             alignItems="left"
             flexDirection="column"
-            width="90%" // 可根据需要调整
+            width="90%"
             height={180}
-            border={`2px solid #42a5f5`} // 添加边框
-            //boxShadow="0px 4px 12px #7986cb" // 添加阴影效果
+            border={`2px solid #42a5f5`}
             borderRadius="8px"
             padding="6px"
             >
-                {/* 2.1Group Selector*/}
                  <Box padding="6px">
-                      {/* RadioGroup */}
                       <FormControl>
                           <FormLabel id="group-selection-label" sx={{ textAlign: 'left' }}>Choose Protected Subgroups According to</FormLabel>
                           <FormGroup
                             row
                             aria-labelledby="group-selection-label"
-                            //defaultValue="Age"
                             name="group-selection"
                           >
                             <FormControlLabel value="Age" control={<Checkbox checked={selectedGroups.Age} onChange={handleCheckboxChange} />}  label="Age" />
@@ -258,7 +228,6 @@ export default function SubgroupOverallFairness() {
                         </FormControl>
                     </Box>
 
-                {/* 2.2 <Threshold>*/}
                 <Box padding="6px">
                     <Typography id="linear-slider" gutterBottom>
                       Set a Threshold (Difference between Groups)
@@ -266,7 +235,6 @@ export default function SubgroupOverallFairness() {
                     
                     <Slider
                       aria-label="Always visible"
-                      //defaultValue={0.2}
                       value={rectHeight}
                       onChange={handleSliderChange}
                       getAriaValueText={valuetext}
@@ -275,26 +243,23 @@ export default function SubgroupOverallFairness() {
                       marks={marks}
                       valueLabelDisplay="on"
                     
-                      min={0} // 设置最小值
-                      max={50} // 设置最大值
+                      min={0}
+                      max={50}
                       sx={{ fontSize: '6px',
                       }}
                     />
                 </Box>
              </Box>       
         
-        {/* 3 chart component for different subgroups*/}
         <Box 
             display="flex"
             padding="6px"
-            alignItems="flex-start"  // 控制垂直方向的对齐
-            justifyContent="flex-end" // 控制水平方向的对齐
-            //border={`2px solid #42a5f5`}
+            alignItems="flex-start"
+            justifyContent="flex-end"
         >    
                 {renderSVG()}
           </Box>
         
-      {/* 4 full metric names*/}
       <Box 
             display="flex"
             margin = "30px"
@@ -327,7 +292,6 @@ export default function SubgroupOverallFairness() {
 
 
 
-        {/* 5 Explanation Button*/}
         <Box 
             display="flex"
             alignItems="center"  > 
@@ -341,23 +305,6 @@ export default function SubgroupOverallFairness() {
                       if (Gender && ForeignWorker && !Age) {navigate(SUBGROUP_EXPLAIN_GENDERFOREIGNER_PATH);};
                       if (Age && Gender && ForeignWorker) {navigate(SUBGROUP_EXPLAIN_ALLTHREE_PATH);};
 
-                      // switch (selectedGroups) {
-                      //     case "Age":
-                      //         navigate(SUBGROUP_EXPLAIN_PATH);
-                      //         break;
-                      //     case "Gender":
-                      //         navigate(SUBGROUP_EXPLAIN_AGEFOREIGNER_PATH); // Assume you have this constant defined for gender explanation path
-                      //         break;
-                      //     case "Foreign Worker":
-                      //         navigate(SUBGROUP_EXPLAIN_GENDERFOREIGNER_PATH); // Assume you have this constant defined for foreign worker explanation path
-                      //         break;
-                      //     case "Foreign Worker":
-                      //         navigate(SUBGROUP_EXPLAIN_ALLTHREE_PATH); // Assume you have this constant defined for foreign worker explanation path
-                      //         break;
-                      //     default:
-                      //         navigate(SUBGROUP_EXPLAIN_PATH);
-                      //         break;
-                      // }
                   }}
                     >
               View Explanations

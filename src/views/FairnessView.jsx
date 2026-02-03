@@ -24,10 +24,10 @@ import TabPanel from '@mui/lab/TabPanel';
 
 import { styled } from '@mui/system';
 const Image = styled('img')({
-  width: '25px', // 根据需要调整图像大小
+  width: '25px',
   height: '25px',
-  verticalAlign: 'middle', // 确保图像与文本对齐
-  marginRight: '6px', // 调整图像与文本之间的间距
+  verticalAlign: 'middle',
+  marginRight: '6px',
 });
 
 export default function FairnessView() {
@@ -49,7 +49,6 @@ export default function FairnessView() {
             margin='6px'
             > 
 
-            {/* 1. Header: Overall Fairness results (group,subgroup,individuals)*/}
             <Typography variant="h4" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold'}}>
               Feature Exploration
             </Typography>

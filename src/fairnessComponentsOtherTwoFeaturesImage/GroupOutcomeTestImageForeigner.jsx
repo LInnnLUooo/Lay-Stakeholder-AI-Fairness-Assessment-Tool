@@ -16,79 +16,62 @@ import {group_predGood_realBad_female_IDs, group_predGood_realBad_male_IDs, grou
   group_predBad_realBad_female_IDs, group_predBad_realBad_male_IDs, group_predBad_realGood_female_IDs, group_predBad_realGood_male_IDs }
   from '../data/foreignergroups.js';
 
-// import & set: images + group data 
 const goodfemaleImage = '/goodforeigner.png';
-const badfemaleImage = '/badforeigner.png'; // The common image source for 'female'，注意斜杠一定不可以少。有了斜杠，无论路由路径如何变化，都会从绝对路径加载找到图片。否则切换路由使用相对路径，容易找不到。
+const badfemaleImage = '/badforeigner.png';
 const goodmaleImage = '/goodlocal.png';
 const badmaleImage = '/badlocal.png'; 
 
-//group1: Good predictions & real good & Female
 const itemsForgroup_predGood_realGood_female = group_predGood_realGood_female_IDs.map((id) => ({
   source: goodfemaleImage,
   id: id,
 }));  
 const Num_predGood_realGood_female = group_predGood_realGood_female_IDs.length
 
-//group2: Good predictions & real bad & Female
 const itemsForgroup_predGood_realBad_female = group_predGood_realBad_female_IDs.map((id) => ({
   source: badfemaleImage,
   id: id,
 }));  
 const Num_predGood_realBad_female = group_predGood_realBad_female_IDs.length
 
-//group3: Bad predictions & real good & Female
 const itemsForgroup_predBad_realGood_female = group_predBad_realGood_female_IDs.map((id) => ({
   source: goodfemaleImage,
   id: id,
 })); 
 const Num_predBad_realGood_female = group_predBad_realGood_female_IDs.length
 
-//group4: Bad predictions & real bad & Female
 const itemsForgroup_predBad_realBad_female = group_predBad_realBad_female_IDs.map((id) => ({
   source: badfemaleImage,
   id: id,
 })); 
 const Num_predBad_realBad_female = group_predBad_realBad_female_IDs.length
 
-//group5: Good predictions & real good & Male
 const itemsForgroup_predGood_realGood_male = group_predGood_realGood_male_IDs.map((id) => ({
   source: goodmaleImage,
   id: id,
 }));  
 const Num_predGood_realGood_male = group_predGood_realGood_male_IDs.length
 
-//group6: Good predictions & real bad & Male
 const itemsForgroup_predGood_realBad_male = group_predGood_realBad_male_IDs.map((id) => ({
   source: badmaleImage,
   id: id,
 }));  
 const Num_predGood_realBad_male =  group_predGood_realBad_male_IDs.length
 
-//group7: Bad predictions & real good & Male
 const itemsForgroup_predBad_realGood_male = group_predBad_realGood_male_IDs.map((id) => ({
   source: goodmaleImage,
   id: id,
 })); 
 const Num_predBad_realGood_male =  group_predBad_realGood_male_IDs.length
 
-//group8: Bad predictions & real bad & Mmale
 const itemsForgroup_predBad_realBad_male = group_predBad_realBad_male_IDs.map((id) => ({
   source: badmaleImage,
   id: id,
 })); 
 const Num_predBad_realBad_male =  group_predBad_realBad_male_IDs.length
 
-// const handleItemClick = (item) => {
   
-//   console.log(`Clicked image with ID: ${item.id}`);
-//   // You can display the ID in a modal, a tooltip, or perform any other desired action
-// };
 
 export default function GroupOutcomeTestImageGender({ selectedID, handleItemClick }) {
-  // const handleImageClick = (id) => {
-  //   // 将选定的 ID 传递给父组件
-  //   handleItemClick(id);
-  // };
 
   const theme = useTheme(); 
   return (
@@ -100,52 +83,42 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
       border={`2px solid #42a5f5`} 
       padding="3px"> 
 
-          {/* 1. Header: Group Fairness Metrics & Results*/}
           <Typography variant="h6" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
               Outcome Test for Group Fairness
           </Typography>
 
-          {/* 2. row：female & male groups*/}
           <Box display="flex" 
             justifyContent="center" 
             padding="3px">
 
-              {/* 2.1 right part： female GOOD & BAD credictions*/}
               <Box display="flex" flexDirection="column" alignItems="center" width = {1100} borderRight={`4px solid ${theme.palette.primary.main}`}> 
-                  {/* 2.1.1 female title*/}
                  
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Foreign Worker
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {Num_predGood_realGood_female+Num_predGood_realBad_female+Num_predBad_realGood_female+Num_predBad_realBad_female})
                   </Typography>
                   
 
-                  {/* 2.1.2 female GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
                     width = '96%'
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px" >          
                   
-                            {/* (2.1)instances：Good Predictions， Rated Good Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding="6px" marginRight = "3px" alignItems="center" backgroundColor="#FEFDD2" sx={{ border: '2px solid #18C82A' }}>
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold'}}>
                                     Rated Good Credit: {Num_predGood_realGood_female}
@@ -161,7 +134,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                 />
 
                                                 <ImageListItemBar title={item.id} 
-                                                  position="below"  // 将标题放在图片的下方
+                                                  position="below"
                                                   sx={{
                                                     '& .MuiImageListItemBar-titleWrap': {
                                                       paddingTop: 0,  
@@ -171,7 +144,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                     '& .MuiImageListItemBar-title': {
                                                          
                                                         textAlign: 'center' ,
-                                                        color: '#3DC852',//green
+                                                        color: '#3DC852',
                                                     }
                                                   }} />
 
@@ -180,7 +153,6 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                           </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， Rated Bad Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" sx={{ border: '2px solid #18C82A' }}>            
                                   <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold'}}>
                                           Rated Bad Credit: {Num_predGood_realBad_female}
@@ -197,7 +169,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                           />
 
                                           <ImageListItemBar title={item.id} 
-                                            position="below"  // 将标题放在图片的下方
+                                            position="below"
                                             sx={{
                                               '& .MuiImageListItemBar-titleWrap': {
                                                 paddingTop: 0,  
@@ -207,7 +179,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                               '& .MuiImageListItemBar-title': {
                                                    
                                                   textAlign: 'center' ,
-                                                  color: '#3DC852',//green
+                                                  color: '#3DC852',
                                               }
                                             }} />
 
@@ -219,26 +191,22 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 female BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
                     width = '96%'
                     backgroundColor="#CFCFCB"
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px" >          
                   
-                            {/* (2.1)instances：Bad Predictions， Rated Good Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold'}}>
                                         Rated Good Credit: {Num_predBad_realGood_female}
@@ -255,7 +223,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -265,7 +233,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//RED
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -274,7 +242,6 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                         </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， Rated Bad Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#E75555' sx={{ fontWeight: 'bold'}}>
                                       Rated Bad Credit: {Num_predBad_realBad_female}
@@ -291,7 +258,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                               />
 
                                               <ImageListItemBar title={item.id} 
-                                                position="below"  // 将标题放在图片的下方
+                                                position="below"
                                                 sx={{
                                                   '& .MuiImageListItemBar-titleWrap': {
                                                     paddingTop: 0,  
@@ -301,7 +268,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                   '& .MuiImageListItemBar-title': {
                                                        
                                                       textAlign: 'center' ,
-                                                      color: '#E75555',//green
+                                                      color: '#E75555',
                                                   }
                                                 }} />
 
@@ -315,40 +282,32 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
               </Box>
 
 
-              {/* 2.2 male GOOD & BAD credictions*/}
               <Box display="flex" flexDirection="column" alignItems="center" width = {900} > 
-                  {/* 2.1.1 male title*/}
                   <Typography variant="h5" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       Local
                   </Typography>
 
                   <Typography variant="h6" component="div" gutterBottom color="primary" 
                     sx={{ fontWeight: 'bold'}}> 
-                      {/* //border: `4px solid ${theme.palette.primary.main}` */}
                       (Total: {Num_predGood_realGood_male+Num_predGood_realBad_male+Num_predBad_realGood_male+Num_predBad_realBad_male})
                   </Typography>
 
-                  {/* 2.1.2 male GOOD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
                     width = '96%'
                     sx={{
-                      border: '4px dashed #18C82A'  // 设置为绿色的虚线边框
+                      border: '4px dashed #18C82A'
                     }}>
 
-                        {/* (1)title： Good Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#18C82A'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as GOOD Credit
                         </Typography>
 
-                        {/* (2)instances: Good Predictions*/}
                         <Box display="flex" justifyContent="center" padding="3px">          
                   
-                            {/* (2.1)instances：Good Predictions， Rated Good Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center" backgroundColor="#FEFDD2" sx={{ border: '2px solid #18C82A' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold',fontSize:"16px"}}>
                                         Rated Good Credit: {Num_predGood_realGood_male}
@@ -365,7 +324,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                     />
 
                                                     <ImageListItemBar title={item.id} 
-                                                      position="below"  // 将标题放在图片的下方
+                                                      position="below"
                                                       sx={{
                                                         '& .MuiImageListItemBar-titleWrap': {
                                                           paddingTop: 0,  
@@ -375,7 +334,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                         '& .MuiImageListItemBar-title': {
                                                              
                                                             textAlign: 'center' ,
-                                                            color: '#3DC852',//green
+                                                            color: '#3DC852',
                                                         }
                                                       }} />
 
@@ -384,7 +343,6 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                               </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Good Predictions， Rated Bad Credit Lables*/}
                             <Box   display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" sx={{ border: '2px solid #18C82A' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom color='#18C82A'sx={{ fontWeight: 'bold'}}>
                                             Rated Bad Credit: {Num_predGood_realBad_male}
@@ -401,7 +359,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                     />
 
                                                     <ImageListItemBar title={item.id} 
-                                                      position="below"  // 将标题放在图片的下方
+                                                      position="below"
                                                       sx={{
                                                         '& .MuiImageListItemBar-titleWrap': {
                                                           paddingTop: 0,  
@@ -411,7 +369,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                         '& .MuiImageListItemBar-title': {
                                                              
                                                             textAlign: 'center' ,
-                                                            color: '#3DC852',//green
+                                                            color: '#3DC852',
                                                         }
                                                       }} />
 
@@ -423,26 +381,22 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                         </Box>
                   </Box>
 
-                  {/* 2.1.3 female BAD predictions*/}
                   <Box display="flex" flexDirection="column" alignItems="center"
                     padding="3px"
                     margin="5px"
                     width = '96%'
                     backgroundColor="#CFCFCB"
                     sx={{
-                      border: '4px dashed #E75555'  // 设置为红色的虚线边框
+                      border: '4px dashed #E75555'
                     }}>
 
-                        {/* (1)title： BAD Predictions*/}
                         <Typography variant="h6" component="div" gutterBottom color='#E75555'
                           sx={{ fontWeight: 'bold'}}>
                             Predicted as BAD Credit
                         </Typography>
 
-                        {/* (2)instances: BAD Predictions*/}
                         <Box display="flex" justifyContent="center"  padding="3px">          
                   
-                            {/* (2.1)instances：Bad Predictions， Rated Good Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px" alignItems="center"  sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom  color='#E75555' sx={{ fontWeight: 'bold'}}>
                                                 Rated Good Credit: {Num_predBad_realGood_male}
@@ -459,7 +413,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                     />
 
                                                     <ImageListItemBar title={item.id} 
-                                                      position="below"  // 将标题放在图片的下方
+                                                      position="below"
                                                       sx={{
                                                         '& .MuiImageListItemBar-titleWrap': {
                                                           paddingTop: 0,  
@@ -469,7 +423,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                         '& .MuiImageListItemBar-title': {
                                                              
                                                             textAlign: 'center' ,
-                                                            color: '#E75555',//green
+                                                            color: '#E75555',
                                                         }
                                                       }} />
 
@@ -478,7 +432,6 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                               </ImageList>
                             </Box>
 
-                            {/* (2.1)instances：Bad Predictions， Rated Bad Credit Lables*/}
                             <Box  display="flex"  flex="3" flexDirection="column" padding='6px' marginRight = "3px"  alignItems="center" sx={{ border: '2px solid #E75555' }}>
                                 <Typography Typography variant="h7" component="div" gutterBottom  color='#E75555' sx={{ fontWeight: 'bold'}}>
                                                     Rated Bad Credit: {Num_predBad_realBad_male}
@@ -495,7 +448,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                     />
 
                                                     <ImageListItemBar title={item.id} 
-                                                      position="below"  // 将标题放在图片的下方
+                                                      position="below"
                                                       sx={{
                                                         '& .MuiImageListItemBar-titleWrap': {
                                                           paddingTop: 0,  
@@ -505,7 +458,7 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
                                                         '& .MuiImageListItemBar-title': {
                                                              
                                                             textAlign: 'center' ,
-                                                            color: '#E75555',//green
+                                                            color: '#E75555',
                                                         }
                                                       }} />
 
@@ -522,7 +475,6 @@ export default function GroupOutcomeTestImageGender({ selectedID, handleItemClic
           </Box>
 
    
-          {/* 3. text exP*/}    
             <Paper elevation={3} sx={{ width: '86%', backgroundColor: '#f5f5f5', padding: '10px', margin: '10px',borderRadius: '8px' }}>
                 <Typography variant="h6" component="div" gutterBottom color="primary"
                  >

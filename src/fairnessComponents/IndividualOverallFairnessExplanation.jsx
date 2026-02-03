@@ -55,14 +55,12 @@ function a11yProps(index) {
 
 export default function IndividualOverallFairnessExplanation({selectedID, handleItemClick}) {
   
-  // 0: tab1, counterfactual fairness; 1: tab2, consistency
   const [value, setValue] = React.useState(0); 
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  // in tab 1: conterfactual world selection (radio group)
   const [selectedWorld, setSelectedWorld] = useState("Age");
 
   return (
@@ -74,12 +72,10 @@ export default function IndividualOverallFairnessExplanation({selectedID, handle
             border={`2px solid #42a5f5`} 
             padding="3px"> 
 
-            {/* 1. Header: Individual Fairness Metrics & Results*/}
             <Typography variant="h5" component="div" gutterBottom color="primary" sx={{ fontWeight: 'bold' }}>
                 Individual Fairness Metrics & Results
             </Typography>
 
-            {/* 2. explanation for counterfactual fairness & consistency tabs*/}
             <Box sx={{ width: '100%' }}>
                   <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -88,7 +84,6 @@ export default function IndividualOverallFairnessExplanation({selectedID, handle
                     </Tabs>
                   </Box>
 
-                  {/* 2.1 explanation for counterfactual fairness*/}
                   <CustomTabPanel value={value} index={0}>
                       <Typography variant="h6" component="div" gutterBottom color="black" >
                         <ZoomInIcon /> <strong>What aspect does countefactual fairness concern?</strong> <br/>
@@ -113,11 +108,9 @@ export default function IndividualOverallFairnessExplanation({selectedID, handle
                           borderRadius="8px"
                           padding="3px"> 
 
-                              {/* 2.1.1 radio group for selection counterfactual world*/}
                               <Box display="flex" 
                                   justifyContent="center" 
                                   padding="3px">
-                                  {/* RadioGroup */}
                                   <FormControl>
                                             <FormLabel id="world-selection-label" sx={{ textAlign: 'left' }}>Choose a Counterfactual World You are Interested in</FormLabel>
                                             <RadioGroup
@@ -134,25 +127,20 @@ export default function IndividualOverallFairnessExplanation({selectedID, handle
                                           </FormControl>
                                 </Box>
 
-                                {/* 2.1.2 explanation for each counterfatcual fairness*/}                                 
                                 <Box 
                                     display="flex"
                                     padding="6px"
-                                    alignItems="flex-start"  // 控制垂直方向的对齐
-                                    justifyContent="flex-end" // 控制水平方向的对齐
-                                    //border={`2px solid #42a5f5`}
+                                    alignItems="flex-start"
+                                    justifyContent="flex-end"
                                 >    
-                                        {/* 根据当前的 radio 选择值，动态地渲染相应的 SVG 组件。 */}
                                         {selectedWorld === "Age" &&  <IndividualFairnessAgeCounterfactualWorld selectedID={selectedID} handleItemClick={handleItemClick} />}
                                         {selectedWorld === "Gender" && <IndividualFairnessGenderCounterfactualWorld selectedID={selectedID} handleItemClick={handleItemClick} />}
                                         {selectedWorld === "Foreign Worker" && <IndividualFairnessForeignerCounterfactualWorld selectedID={selectedID} handleItemClick={handleItemClick} />}
                                 </Box>
 
                        </Box>
-                    {/* Counterfactual Fairness */}
                   </CustomTabPanel>
 
-                  {/* 2.2 explanation for consistency*/}
                   <CustomTabPanel value={value} index={1}>
                       <Typography variant="h6" component="div" gutterBottom color="black" >
                       <ZoomInIcon /> <strong>What aspect does consistency concern?</strong> <br/>
